@@ -4,6 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../reuseable-components/CustomButton";
 import { Link, router } from "expo-router";
 
+//TESTING SOMETHING
+
 const SignUp = () => {
   const [reTypedPassword, setreTypedPassword] = useState("");
 
