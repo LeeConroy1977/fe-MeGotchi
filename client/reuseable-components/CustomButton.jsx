@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     letterSpacing: "0.03rem",
   },
   btnSignIn: {
-    width: "240px",
+    width: "80%",
     height: "40px",
     display: "flex",
     justifyContent: "center",
