@@ -22,6 +22,8 @@ const SignIn = () => {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [validSubmit, setvalidSubmit] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState("Password is invalid");
+  const [showPassword, setShowPassword] = useState(false);
 
   console.log(checkEmail);
 
@@ -36,13 +38,35 @@ const SignIn = () => {
   }
 
   function handleValidPassword(text) {
-    const validLength = /^.{8,}$/;
+    const containsUppercase = /^(?=.*[A-Z]).*$/;
+    if (!containsUppercase.test(text)) {
+      setCheckPassword(false);
+      return setPasswordMessage("Must have an uppercase character");
+    }
+    const containsLowercase = /^(?=.*[a-z]).*$/;
+    if (!containsLowercase.test(text)) {
+      setCheckPassword(false);
+      return setPasswordMessage("Must have a lowercase character");
+    }
 
+    const containsNumber = /^(?=.*[0-9]).*$/;
+    if (!containsNumber.test(text)) {
+      setCheckPassword(false);
+      return setPasswordMessage("Must have at least one digit");
+    }
+
+    const containsSpecialCharacter = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (!containsSpecialCharacter.test(text)) {
+      setCheckPassword(false);
+      return setPasswordMessage("Must have at least one special character");
+    }
+
+    const validLength = /^.{8,20}$/;
     if (!validLength.test(text) || text === "") {
       setCheckPassword(false);
-    } else {
-      setCheckPassword(true);
+      return setPasswordMessage("Must be between 8-20 charcters");
     }
+    setCheckPassword(true);
   }
 
   function handleSubmit(e) {
@@ -102,7 +126,10 @@ const SignIn = () => {
               setForm({ ...form, email: e });
               handleValidEmail(e);
             }}
-            onFocus={() => setEmailFocus(true)}
+            onFocus={() => {
+              setEmailFocus(true);
+              setvalidSubmit(false);
+            }}
             onBlur={() => {
               setEmailFocus(false);
             }}
@@ -116,7 +143,7 @@ const SignIn = () => {
             style={
               checkPassword
                 ? styles.validationMsgTrue
-                : !checkPassword && form.password !== ""
+                : (!checkPassword && form.password !== "") || validSubmit
                 ? styles.validationMsgFalse
                 : ""
             }
@@ -124,7 +151,7 @@ const SignIn = () => {
             {checkPassword
               ? "Amazing"
               : (form.password !== "" && !passwordFocus) || validSubmit
-              ? `Password is invalid`
+              ? passwordMessage
               : null}
             <Text style={styles.heart}>{checkPassword ? "❤" : null}</Text>
           </Text>
@@ -148,12 +175,16 @@ const SignIn = () => {
               setForm({ ...form, password: e });
               handleValidPassword(e);
             }}
-            onFocus={() => setPasswordFocus(true)}
+            onFocus={() => {
+              setPasswordFocus(true);
+              setvalidSubmit(false);
+            }}
             onBlur={() => {
               setPasswordFocus(false);
             }}
+            secureTextEntry={!showPassword}
           />
-          {name === "password" && (
+          {
             <TouchableOpacity
               style={styles.eyeBox}
               onPress={() => setShowPassword(!showPassword)}
@@ -168,7 +199,7 @@ const SignIn = () => {
                 resizeMode="contain"
               />
             </TouchableOpacity>
-          )}
+          }
         </View>
       </View>
       <CustomButton
