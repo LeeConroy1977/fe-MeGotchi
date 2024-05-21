@@ -14,7 +14,7 @@ const AuthLayout = () => {
         options={{ headerShown: false }}
       ></Stack.Screen>
       <Stack.Screen
-        name="select-meGotchi"
+        name="character"
         options={{ headerShown: false }}
       ></Stack.Screen>
     </Stack>
