@@ -104,8 +104,8 @@ const SignUp = () => {
     ) {
       setValidSubmit(true);
     }
-    if (checkEmail && checkPassword && checkDisplayName && passwordMatch) {
-      router.replace("/home");
+    if (!checkEmail && !checkPassword && !checkDisplayName && !passwordMatch) {
+      router.replace("/character");
     }
   }
 
