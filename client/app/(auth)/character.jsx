@@ -37,6 +37,7 @@ const Character = () => {
   const handleSelected = (id) => {
     setSelected(id);
   };
+
   return (
     <SafeAreaView style={styles.character}>
       <Text style={styles.logoHeader}>MeGotchi</Text>
@@ -58,6 +59,7 @@ const Character = () => {
         title="Submit"
         titleStyleName="homeTitle"
         styleName="btnSignIn"
+        route="/home"
       />
     </SafeAreaView>
   );
