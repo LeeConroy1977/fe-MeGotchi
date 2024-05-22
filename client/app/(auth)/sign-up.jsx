@@ -97,18 +97,29 @@ const SignUp = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (
-      form.email === "" ||
-      form.password === "" ||
-      form.displayName === "" ||
-      reTypedPassword === ""
+      form.email.length > 0 &&
+      form.password.length > 0 &&
+      form.displayName.length > 0 &&
+      reTypedPassword.length > 0
     ) {
       setValidSubmit(true);
     }
-    if (!checkEmail && !checkPassword && !checkDisplayName && !passwordMatch) {
-      router.replace("/character");
+    if (checkEmail && checkPassword && checkDisplayName && passwordMatch) {
+      const item = {
+        displayName: form.displayName,
+        email: form.email,
+        password: form.password,
+      }
+      router.push({
+        pathname: "/character",
+        params: {
+          displayName: form.displayName,
+          email: form.email,
+          password: form.password,
+        }
+      });
     }
   }
-
   return (
     <SafeAreaView style={styles.signUp}>
       <Text style={styles.logoHeader}>MeGotchi</Text>
