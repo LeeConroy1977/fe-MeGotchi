@@ -42,8 +42,37 @@ const Character = () => {
 
   function handleSubmit(e){
     e.preventDefault()
-    console.log(selected)
+    if(selected !== null){
+
+      const userSubmit = {
+        "displayName": displayName,
+        "email": email,
+        "password": password,
+        "megotchi": {
+          "color": selected.colour
+        }
+      };
+  
+      fetch('https://megotchi-api.onrender.com/users', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userSubmit),
+      })
+      .then(response => response.json())
+      .then(json => {
+        //set user context
+        //route to /home
+      })
+      .catch(error => {
+        return { "message": error};
+      });
+
+    }
   }
+
   return (
     <SafeAreaView style={styles.character}>
       <Text style={styles.logoHeader}>MeGotchi</Text>
