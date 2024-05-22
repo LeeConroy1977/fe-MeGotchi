@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-web";
 import CustomButton from "../../reuseable-components/CustomButton";
 import MeGotchi from "../../reuseable-components/MeGotchi";
+import { useLocalSearchParams } from "expo-router";
 
 const meGotchiArr = [
   {
@@ -33,11 +34,16 @@ const meGotchiArr = [
 
 const Character = () => {
   const [selected, setSelected] = useState(null);
+  const {displayName, email, password} = useLocalSearchParams();
 
   const handleSelected = (id) => {
     setSelected(id);
   };
 
+  function handleSubmit(e){
+    e.preventDefault()
+    console.log(selected)
+  }
   return (
     <SafeAreaView style={styles.character}>
       <Text style={styles.logoHeader}>MeGotchi</Text>
@@ -49,8 +55,8 @@ const Character = () => {
               avatarBox="selectAvatarBox"
               avatarImage="selectAvatarImage"
               key={meGotchi.id}
-              handlePress={() => handleSelected(meGotchi.id)}
-              isSelected={selected === meGotchi.id}
+              handlePress={() => handleSelected(meGotchi)}
+              isSelected={selected === meGotchi}
             />
           );
         })}
@@ -59,7 +65,8 @@ const Character = () => {
         title="Submit"
         titleStyleName="homeTitle"
         styleName="btnSignIn"
-        route="/home"
+        // route="/home"
+        handlePress={handleSubmit}
       />
     </SafeAreaView>
   );
