@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { SafeAreaView } from "react-native-web";
 import CustomButton from "../../reuseable-components/CustomButton";
 import MeGotchi from "../../reuseable-components/MeGotchi";
 import { useLocalSearchParams } from "expo-router";
+import userContext from "../(contexts)/userContext";
+import { router } from "expo-router";
 
 const meGotchiArr = [
   {
@@ -35,12 +37,13 @@ const meGotchiArr = [
 const Character = () => {
   const [selected, setSelected] = useState(null);
   const {displayName, email, password} = useLocalSearchParams();
+  const { setUser } = useContext(userContext);
 
   const handleSelected = (id) => {
     setSelected(id);
   };
 
-  function handleSubmit(e){
+  const handleSubmit = (e) => {
     e.preventDefault()
     if(selected !== null){
 
@@ -64,7 +67,10 @@ const Character = () => {
       .then(response => response.json())
       .then(json => {
         //set user context
+        
+        setUser(json)
         //route to /home
+        router.push("/home");
       })
       .catch(error => {
         return { "message": error};

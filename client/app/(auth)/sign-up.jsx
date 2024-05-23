@@ -97,19 +97,15 @@ const SignUp = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (
-      form.email.length > 0 &&
-      form.password.length > 0 &&
-      form.displayName.length > 0 &&
-      reTypedPassword.length > 0
+      checkEmail &&
+      checkPassword &&
+      checkDisplayName &&
+      passwordMatch
     ) {
       setValidSubmit(true);
     }
-    if (checkEmail && checkPassword && checkDisplayName && passwordMatch) {
-      const item = {
-        displayName: form.displayName,
-        email: form.email,
-        password: form.password,
-      }
+    if (validSubmit) {
+      
       router.push({
         pathname: "/character",
         params: {
@@ -120,6 +116,7 @@ const SignUp = () => {
       });
     }
   }
+
   return (
     <SafeAreaView style={styles.signUp}>
       <Text style={styles.logoHeader}>MeGotchi</Text>
