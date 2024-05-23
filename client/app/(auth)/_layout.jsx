@@ -21,6 +21,10 @@ const AuthLayout = () => {
         name="wellness"
         options={{ headerShown: false }}
       ></Stack.Screen>
+      <Stack.Screen
+        name="wellness-main"
+        options={{ headerShown: false }}
+      ></Stack.Screen>
     </Stack>
   );
 };
