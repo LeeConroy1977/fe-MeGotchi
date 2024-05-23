@@ -21,12 +21,11 @@ export default WelcomePage;
 
 const styles = StyleSheet.create({
   welcomePage: {
+    ...StyleSheet.absoluteFillObject,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
-    width: "100%",
-    height: "100%",
     backgroundColor: "#FF6363",
   },
   welcomeText: {

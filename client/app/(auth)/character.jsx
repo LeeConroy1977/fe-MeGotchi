@@ -59,7 +59,7 @@ const Character = () => {
         title="Submit"
         titleStyleName="homeTitle"
         styleName="btnSignIn"
-        route="/home"
+        route="/wellness"
       />
     </SafeAreaView>
   );

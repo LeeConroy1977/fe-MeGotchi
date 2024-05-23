@@ -17,6 +17,10 @@ const AuthLayout = () => {
         name="character"
         options={{ headerShown: false }}
       ></Stack.Screen>
+      <Stack.Screen
+        name="wellness"
+        options={{ headerShown: false }}
+      ></Stack.Screen>
     </Stack>
   );
 };
