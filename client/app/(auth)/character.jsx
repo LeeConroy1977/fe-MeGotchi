@@ -1,8 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { SafeAreaView } from "react-native-web";
 import CustomButton from "../../reuseable-components/CustomButton";
 import MeGotchi from "../../reuseable-components/MeGotchi";
+import { useLocalSearchParams } from "expo-router";
+import userContext from "../(contexts)/userContext";
+import { router } from "expo-router";
 
 const meGotchiArr = [
   {
@@ -33,10 +36,48 @@ const meGotchiArr = [
 
 const Character = () => {
   const [selected, setSelected] = useState(null);
+  const {displayName, email, password} = useLocalSearchParams();
+  const { setUser } = useContext(userContext);
 
   const handleSelected = (id) => {
     setSelected(id);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(selected !== null){
+
+      const userSubmit = {
+        "displayName": displayName,
+        "email": email,
+        "password": password,
+        "megotchi": {
+          "color": selected.colour
+        }
+      };
+  
+      fetch('https://megotchi-api.onrender.com/users', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userSubmit),
+      })
+      .then(response => response.json())
+      .then(json => {
+        //set user context
+        
+        setUser(json)
+        //route to /home
+        router.push("/wellness");
+      })
+      .catch(error => {
+        return { "message": error};
+      });
+
+    }
+  }
 
   return (
     <SafeAreaView style={styles.character}>
@@ -49,8 +90,8 @@ const Character = () => {
               avatarBox="selectAvatarBox"
               avatarImage="selectAvatarImage"
               key={meGotchi.id}
-              handlePress={() => handleSelected(meGotchi.id)}
-              isSelected={selected === meGotchi.id}
+              handlePress={() => handleSelected(meGotchi)}
+              isSelected={selected === meGotchi}
             />
           );
         })}
@@ -59,7 +100,7 @@ const Character = () => {
         title="Submit"
         titleStyleName="homeTitle"
         styleName="btnSignIn"
-        route="/wellness"
+        handlePress={handleSubmit}
       />
     </SafeAreaView>
   );

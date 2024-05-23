@@ -7,15 +7,18 @@ import {
   Image,
   SafeAreaView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CustomButton from "../../reuseable-components/CustomButton";
 import { Link, router } from "expo-router";
+import userContext from "../(contexts)/userContext";
 
 const SignIn = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
+  const { setUser } = useContext(userContext);
 
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkPassword, setCheckPassword] = useState(false);
@@ -25,7 +28,6 @@ const SignIn = () => {
   const [passwordMessage, setPasswordMessage] = useState("Password is invalid");
   const [showPassword, setShowPassword] = useState(false);
 
-  console.log(checkEmail);
 
   function handleValidEmail(text) {
     const regex1 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -71,11 +73,34 @@ const SignIn = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (form.email === "" || form.password === "") {
+    if (checkPassword && checkEmail) {
       setvalidSubmit(true);
     }
-    if (checkEmail && checkPassword) {
-      router.replace("/home");
+    if (validSubmit) {
+      const userSubmit = {
+        email: form.email,
+        password: form.password
+      }
+
+      fetch('https://megotchi-api.onrender.com/users/signin', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userSubmit),
+      })
+      .then(response => response.json())
+      .then(json => {
+        //set user context
+        console.log(json)
+        setUser(json)
+        //route to /home
+        router.push("/home");
+      })
+      .catch(error => {
+        return { "message": error};
+      });
     }
   }
 

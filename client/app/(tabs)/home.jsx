@@ -1,12 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import userContext from "../(contexts)/userContext";
 
 const home = () => {
+  const { user, setUser } = useContext(userContext);
+
   return (
     <View style={styles.container}>
       <Text style={styles.homeText}>Home</Text>
     </View>
   );
+
 };
 export default home;
 
