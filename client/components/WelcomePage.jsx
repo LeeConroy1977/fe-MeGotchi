@@ -21,12 +21,11 @@ export default WelcomePage;
 
 const styles = StyleSheet.create({
   welcomePage: {
+    ...StyleSheet.absoluteFillObject,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
-    width: "100%",
-    height: "590px",
     backgroundColor: "#FF6363",
   },
   welcomeText: {
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     color: "white",
-    fontFamily: "Marko One",
+    fontFamily: "MarkoOne-Regular",
   },
   logo: {
     width: "160px",
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
   avatarNameText: {
     fontSize: 18,
     color: "white",
-    fontFamily: "Marko One",
+    fontFamily: "MarkoOne-Regular",
     fontWeight: "bold",
   },
 });

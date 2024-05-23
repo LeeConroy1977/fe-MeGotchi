@@ -70,7 +70,7 @@ const Character = () => {
         
         setUser(json)
         //route to /home
-        router.push("/home");
+        router.push("/wellness");
       })
       .catch(error => {
         return { "message": error};
@@ -100,7 +100,6 @@ const Character = () => {
         title="Submit"
         titleStyleName="homeTitle"
         styleName="btnSignIn"
-        // route="/home"
         handlePress={handleSubmit}
       />
     </SafeAreaView>
