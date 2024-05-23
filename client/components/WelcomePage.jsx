@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     width: "100%",
-    height: "590px",
+    height: "100%",
     backgroundColor: "#FF6363",
   },
   welcomeText: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     color: "white",
-    fontFamily: "Marko One",
+    fontFamily: "MarkoOne-Regular",
   },
   logo: {
     width: "160px",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   avatarNameText: {
     fontSize: 18,
     color: "white",
-    fontFamily: "Marko One",
+    fontFamily: "MarkoOne-Regular",
     fontWeight: "bold",
   },
 });
