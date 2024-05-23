@@ -28,7 +28,6 @@ const SignIn = () => {
   const [passwordMessage, setPasswordMessage] = useState("Password is invalid");
   const [showPassword, setShowPassword] = useState(false);
 
-
   function handleValidEmail(text) {
     const regex1 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
@@ -79,28 +78,28 @@ const SignIn = () => {
     if (validSubmit) {
       const userSubmit = {
         email: form.email,
-        password: form.password
-      }
+        password: form.password,
+      };
 
-      fetch('https://megotchi-api.onrender.com/users/signin', {
-        method: 'POST',
+      fetch("https://megotchi-api.onrender.com/users/signin", {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(userSubmit),
       })
-      .then(response => response.json())
-      .then(json => {
-        //set user context
-        console.log(json)
-        setUser(json)
-        //route to /home
-        router.push("/home");
-      })
-      .catch(error => {
-        return { "message": error};
-      });
+        .then((response) => response.json())
+        .then((json) => {
+          //set user context
+          console.log(json);
+          setUser(json);
+          //route to /home
+          router.push("/wellness-main");
+        })
+        .catch((error) => {
+          return { message: error };
+        });
     }
   }
 
