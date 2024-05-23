@@ -1,20 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import WelcomePage from "../../components/WelcomePage";
-import WellnessCheck from "../../components/WellnessCheck";
+import React, { useEffect, useState, useContext } from "react";
+import userContext from "../(contexts)/userContext";
 
 const home = () => {
-  const [showWelcomePage, setShowWelcomePage] = useState(true);
+  const { user, setUser } = useContext(userContext);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowWelcomePage(false);
-    }, 5000);
+  return (
+    <View>
+      <Text style={styles.pageMessage}>Welcome: {user.displayName}</Text>
+    </View>
+  );
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  return <View>{showWelcomePage ? <WelcomePage /> : <WellnessCheck />}</View>;
 };
 
 export default home;

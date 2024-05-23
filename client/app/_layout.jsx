@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
+import userContext from './(contexts)/userContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -10,6 +11,8 @@ const RootLayout = () => {
     "MarkoOne-Regular": require("../assets/fonts/MarkoOne-Regular.ttf"),
   });
 
+  const [user, setUser] = useState(false);
+  
   useEffect(() => {
     if (error) throw error;
     if (fontsLoaded) SplashScreen.hideAsync();
@@ -17,20 +20,22 @@ const RootLayout = () => {
 
   if (!fontsLoaded && !error) return null;
   return (
-    <Stack>
-      <Stack.Screen
-        name="(tabs)"
-        options={{ headerShown: false }}
-      ></Stack.Screen>
-      <Stack.Screen
-        name="index"
-        options={{ headerShown: false }}
-      ></Stack.Screen>
-      <Stack.Screen
-        name="(auth)"
-        options={{ headerShown: false }}
-      ></Stack.Screen>
-    </Stack>
+    <userContext.Provider value={{ user, setUser }}>
+      <Stack>
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="index"
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="(auth)"
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+      </Stack>
+    </userContext.Provider>
   );
 };
 
