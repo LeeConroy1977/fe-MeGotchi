@@ -10,7 +10,7 @@ const WellnessCheck = () => {
   const options = [
     { id: 1, text: "Great", emoji: "😃" },
     { id: 2, text: "Okay", emoji: "😐" },
-    { id: 3, text: "Been Better", emoji: "😟" },
+    { id: 3, text: "Meh", emoji: "😟" },
   ];
 
   const handleOptionSelect = (id) => {
