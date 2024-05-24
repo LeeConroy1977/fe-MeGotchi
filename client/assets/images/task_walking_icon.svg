@@ -1,0 +1,2185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="206.46786mm"
+   height="179.50565mm"
+   viewBox="0 0 206.46786 179.50565"
+   version="1.1"
+   id="svg36814"
+   sodipodi:docname="task_walking_icon.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview36816"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.52913967"
+     inkscape:cx="49.136365"
+     inkscape:cy="299.54284"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs36811">
+    <clipPath
+       id="ap">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38230" />
+    </clipPath>
+    <clipPath
+       id="aq">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38275" />
+    </clipPath>
+    <mask
+       id="as"
+       mask-type="alpha">
+      <g
+         id="use38491"
+         clip-path="url(#ah)"
+         style="display:none">
+        <g
+           clip-path="url(#ai)"
+           mask="url(#aj)"
+           style="display:none"
+           id="g40572">
+          <g
+             clip-path="url(#ak)"
+             mask="url(#al)"
+             style="display:none"
+             id="g40568">
+            <g
+               clip-path="url(#am)"
+               mask="url(#an)"
+               style="display:none"
+               id="g40560">
+              <g
+                 mask="url(#ao)"
+                 style="display:none"
+                 id="g40556">
+                <path
+                   fill-opacity="0"
+                   stroke-linecap="round"
+                   stroke-linejoin="round"
+                   class="secondary"
+                   id="path40554"
+                   d="" />
+              </g>
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="primary"
+                 style="display:none"
+                 id="path40558"
+                 d="" />
+            </g>
+            <path
+               fill-opacity="0"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               class="primary"
+               style="display:none"
+               id="path40562"
+               d="" />
+            <path
+               fill-opacity="0"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               class="secondary"
+               style="display:none"
+               id="path40564"
+               d="" />
+            <path
+               fill-opacity="0"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               class="secondary"
+               style="display:none"
+               id="path40566"
+               d="" />
+          </g>
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             style="display:none"
+             id="path40570"
+             d="" />
+        </g>
+        <path
+           fill-opacity="0"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           class="secondary"
+           style="display:none"
+           id="path40574"
+           d="" />
+        <path
+           fill-opacity="0"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           class="primary"
+           style="display:none"
+           id="path40576"
+           d="" />
+      </g>
+    </mask>
+    <clipPath
+       id="ah">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38278" />
+    </clipPath>
+    <clipPath
+       id="ai">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38281" />
+    </clipPath>
+    <mask
+       id="aj"
+       mask-type="alpha">
+      <g
+         filter="url(#F)"
+         id="g38488">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38484" />
+        <g
+           id="use38486"
+           style="display:none">
+          <path
+             id="path40680"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40682"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="F"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38370">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38368" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="ak">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38284" />
+    </clipPath>
+    <mask
+       id="al"
+       mask-type="alpha">
+      <g
+         filter="url(#D)"
+         id="g38481">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38477" />
+        <g
+           id="use38479"
+           style="display:none">
+          <path
+             id="path40664"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40666"
+             d="" />
+          <path
+             id="path40668"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="D"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38365">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38363" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="am">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38287" />
+    </clipPath>
+    <mask
+       id="an"
+       mask-type="alpha">
+      <g
+         filter="url(#B)"
+         id="g38474">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38470" />
+        <g
+           id="use38472"
+           style="display:none">
+          <path
+             id="path40652"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40654"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="B"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38360">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38358" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="ao"
+       mask-type="alpha">
+      <g
+         filter="url(#z)"
+         id="g38467">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38463" />
+        <g
+           id="use38465"
+           style="display:none">
+          <path
+             id="path40640"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40642"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="z"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38355">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38353" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath38883">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38881" />
+    </clipPath>
+    <clipPath
+       id="clipPath38887">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38885" />
+    </clipPath>
+    <mask
+       id="mask38895"
+       mask-type="alpha">
+      <g
+         filter="url(#F)"
+         id="g38893">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38889" />
+        <g
+           id="use38891"
+           style="display:none">
+          <path
+             id="path40686"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40688"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter38901"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38899">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38897" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath38905">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38903" />
+    </clipPath>
+    <mask
+       id="mask38913"
+       mask-type="alpha">
+      <g
+         filter="url(#D)"
+         id="g38911">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38907" />
+        <g
+           id="use38909"
+           style="display:none">
+          <path
+             id="path40672"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40674"
+             d="" />
+          <path
+             id="path40676"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter38919"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38917">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38915" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath38923">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38921" />
+    </clipPath>
+    <mask
+       id="mask38931"
+       mask-type="alpha">
+      <g
+         filter="url(#B)"
+         id="g38929">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38925" />
+        <g
+           id="use38927"
+           style="display:none">
+          <path
+             id="path40658"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40660"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter38937"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38935">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38933" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="mask38945"
+       mask-type="alpha">
+      <g
+         filter="url(#z)"
+         id="g38943">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38939" />
+        <g
+           id="use38941"
+           style="display:none">
+          <path
+             id="path40646"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40648"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter38951"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38949">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38947" />
+      </feComponentTransfer>
+    </filter>
+    <filter
+       id="ar"
+       width="3"
+       height="3"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="filter_result_0"
+         id="feGaussianBlur38373" />
+    </filter>
+    <clipPath
+       id="at">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38233" />
+    </clipPath>
+    <mask
+       id="au"
+       mask-type="alpha">
+      <g
+         id="use38460"
+         clip-path="url(#I)"
+         style="display:block">
+        <g
+           clip-path="url(#J)"
+           style="display:block"
+           transform="matrix(-1,0,0,1,430,-1)"
+           id="g40402">
+          <g
+             clip-path="url(#K)"
+             mask="url(#L)"
+             style="display:block"
+             id="g40396">
+            <g
+               clip-path="url(#M)"
+               mask="url(#N)"
+               style="display:block"
+               id="g40392">
+              <g
+                 clip-path="url(#O)"
+                 mask="url(#P)"
+                 style="display:block"
+                 id="g40384">
+                <g
+                   mask="url(#Q)"
+                   style="display:block"
+                   id="g40380">
+                  <path
+                     fill-opacity="0"
+                     stroke="#08a88a"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     stroke-width="12.04"
+                     d="m 218.064,119.363 c -0.356,-0.012 -2.98,-0.088 -4.617,0.032 -4.227,0.31 -16.485,3.063 -26.408,18.664 l -29.389,43.734 -57.87,23.845 c 0,0 3.82,31.056 34.4,18.456 l 42.429,-18.17 49.472,-69.528"
+                     class="secondary"
+                     id="path40378" />
+                </g>
+                <path
+                   fill-opacity="0"
+                   stroke="#121331"
+                   stroke-linecap="round"
+                   stroke-linejoin="round"
+                   stroke-width="12.04"
+                   d="m 130.297,7.743 10.015,64.074 46.179,48.63 17.586,16.872 c 0,0 -30.354,33.327 -36.271,39.776 -15.168,-2.726 -7.101,-30.099 -7.101,-30.099 L 104.849,93.313 66.855,5.922"
+                   class="primary"
+                   style="display:block"
+                   transform="translate(115.5,220)"
+                   id="path40382" />
+              </g>
+              <path
+                 fill-opacity="0"
+                 stroke="#121331"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 stroke-width="12.04"
+                 d="m 83.533,6.38 -29.162,75.621 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 L 94.352,89.033 147.267,7.752"
+                 class="primary"
+                 style="display:block"
+                 transform="translate(98.75,220)"
+                 id="path40386" />
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="secondary"
+                 style="display:none"
+                 id="path40388"
+                 d="" />
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="secondary"
+                 style="display:none"
+                 id="path40390"
+                 d="" />
+            </g>
+            <path
+               fill-opacity="0"
+               stroke="#08a88a"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               stroke-width="12.04"
+               d="m 1129.031,417.37 c -15.906,0 -32,13.13 -32,31.99 v 75.71 h 64 v -75.71 c 0,-16.735 -15.031,-31.99 -32,-31.99 z"
+               class="secondary"
+               style="display:block"
+               transform="rotate(2,9207.996,-25835.61)"
+               id="path40394" />
+          </g>
+          <path
+             fill-opacity="0"
+             stroke="#08a88a"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="12.04"
+             d="m 106.356,-105.954 c 8.269,0.329 15.519,4.454 18.113,6.829 4.156,3.5 9.656,10.625 12.367,15.438 l 21.481,51.146 c 0,0 0.046,35.361 0,48.014 0,13.027 -7.317,28.777 -31.15,21.503 L 127.584,-25 106.875,-72.087"
+             class="secondary"
+             style="display:block"
+             transform="rotate(2,-6299.413,3220.774)"
+             id="path40398" />
+          <path
+             fill-opacity="0"
+             stroke="#121331"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="12.04"
+             d="m 89.875,-128.757 h 19.25 c 11.051,0 20.094,-9.043 20.094,-20.094 v -17.552 c 0,-11.579 -9.474,-21.053 -21.053,-21.053 h -4.516 c -11.579,0 -21.053,9.474 -21.053,21.053 v 30.368 c 0,4.003 3.275,7.278 7.278,7.278 z"
+             class="primary"
+             style="display:block"
+             transform="rotate(3.611,-3359.834,1641.24)"
+             id="path40400" />
+        </g>
+        <g
+           clip-path="url(#R)"
+           style="display:none"
+           id="g40428">
+          <g
+             clip-path="url(#S)"
+             mask="url(#T)"
+             style="display:none"
+             id="g40422">
+            <g
+               clip-path="url(#U)"
+               mask="url(#V)"
+               style="display:none"
+               id="g40418">
+              <g
+                 clip-path="url(#W)"
+                 mask="url(#X)"
+                 style="display:none"
+                 id="g40410">
+                <g
+                   mask="url(#Y)"
+                   style="display:none"
+                   id="g40406">
+                  <path
+                     fill-opacity="0"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="secondary"
+                     id="path40404"
+                     d="" />
+                </g>
+                <path
+                   fill-opacity="0"
+                   stroke-linecap="round"
+                   stroke-linejoin="round"
+                   class="primary"
+                   style="display:none"
+                   id="path40408"
+                   d="" />
+              </g>
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="primary"
+                 style="display:none"
+                 id="path40412"
+                 d="" />
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="secondary"
+                 style="display:none"
+                 id="path40414"
+                 d="" />
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="secondary"
+                 style="display:none"
+                 id="path40416"
+                 d="" />
+            </g>
+            <path
+               fill-opacity="0"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               class="secondary"
+               style="display:none"
+               id="path40420"
+               d="" />
+          </g>
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             style="display:none"
+             id="path40424"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             style="display:none"
+             id="path40426"
+             d="" />
+        </g>
+        <g
+           clip-path="url(#Z)"
+           style="display:none"
+           id="g40454">
+          <g
+             clip-path="url(#aa)"
+             mask="url(#ab)"
+             style="display:none"
+             id="g40448">
+            <g
+               clip-path="url(#ac)"
+               mask="url(#ad)"
+               style="display:none"
+               id="g40444">
+              <g
+                 clip-path="url(#ae)"
+                 mask="url(#af)"
+                 style="display:none"
+                 id="g40436">
+                <g
+                   mask="url(#ag)"
+                   style="display:none"
+                   id="g40432">
+                  <path
+                     fill-opacity="0"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="secondary"
+                     id="path40430"
+                     d="" />
+                </g>
+                <path
+                   fill-opacity="0"
+                   stroke-linecap="round"
+                   stroke-linejoin="round"
+                   class="primary"
+                   style="display:none"
+                   id="path40434"
+                   d="" />
+              </g>
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="primary"
+                 style="display:none"
+                 id="path40438"
+                 d="" />
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="secondary"
+                 style="display:none"
+                 id="path40440"
+                 d="" />
+              <path
+                 fill-opacity="0"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="secondary"
+                 style="display:none"
+                 id="path40442"
+                 d="" />
+            </g>
+            <path
+               fill-opacity="0"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               class="secondary"
+               style="display:none"
+               id="path40446"
+               d="" />
+          </g>
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             style="display:none"
+             id="path40450"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             style="display:none"
+             id="path40452"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <clipPath
+       id="I">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38236" />
+    </clipPath>
+    <clipPath
+       id="J">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38263" />
+    </clipPath>
+    <clipPath
+       id="K">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38266" />
+    </clipPath>
+    <mask
+       id="L"
+       mask-type="alpha">
+      <g
+         filter="url(#w)"
+         id="g38457">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38453" />
+        <g
+           id="use38455"
+           style="display:block">
+          <path
+             fill="#ff0000"
+             d="m 218.555,119.63 c 8.252,0.618 15.354,4.994 17.864,7.458 4.031,3.643 9.279,10.955 11.82,15.86 l 19.683,51.864 c 0,0 -1.188,35.341 -1.675,47.985 -0.455,13.02 -8.317,28.504 -31.882,20.403 l 2.58,-61.924 -19.053,-47.78"
+             id="path40514" />
+          <path
+             fill-opacity="0"
+             stroke="#08a88a"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 218.555,119.63 c 8.252,0.618 15.354,4.994 17.864,7.458 4.031,3.643 9.279,10.955 11.82,15.86 l 19.683,51.864 c 0,0 -1.188,35.341 -1.675,47.985 -0.455,13.02 -8.317,28.504 -31.882,20.403 l 2.58,-61.924 -19.053,-47.78"
+             class="secondary"
+             id="path40516" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="w"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38347">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38345" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="M">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38269" />
+    </clipPath>
+    <mask
+       id="N"
+       mask-type="alpha">
+      <g
+         filter="url(#u)"
+         id="g38450">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38446" />
+        <g
+           id="use38448"
+           style="display:block">
+          <path
+             fill="#ff0000"
+             d="m 202.506,122.853 c -9.79,4.91 -17.423,14.744 -17.866,27.427 l -2.643,75.664 63.961,2.233 2.643,-75.664 c 0.4,-11.458 -6.274,-22.466 -15.97,-28.455"
+             id="path40538" />
+          <path
+             fill-opacity="0"
+             stroke="#08a88a"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 202.506,122.853 c -9.79,4.91 -17.423,14.744 -17.866,27.427 l -2.643,75.664 63.961,2.233 2.643,-75.664 c 0.4,-11.458 -6.274,-22.466 -15.97,-28.455"
+             class="secondary"
+             id="path40540" />
+          <path
+             fill="#ff0000"
+             d="m 202.506,122.853 c -9.79,4.91 -17.423,14.744 -17.866,27.427 l -2.643,75.664 63.961,2.233 2.643,-75.664 c 0.4,-11.458 -6.274,-22.466 -15.97,-28.455"
+             id="path40542" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="u"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38342">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38340" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="O">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38272" />
+    </clipPath>
+    <mask
+       id="P"
+       mask-type="alpha">
+      <g
+         filter="url(#s)"
+         id="g38443">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38439" />
+        <g
+           id="use38441"
+           style="display:block">
+          <path
+             fill="#ff0000"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             id="path40592" />
+          <path
+             fill-opacity="0"
+             stroke="#121331"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             class="primary"
+             id="path40594" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="s"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38337">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38335" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="Q"
+       mask-type="alpha">
+      <g
+         filter="url(#q)"
+         id="g38436">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38432" />
+        <g
+           id="use38434"
+           style="display:block">
+          <path
+             fill="#ffffff"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             id="path40580" />
+          <path
+             fill-opacity="0"
+             stroke="#121331"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             class="primary"
+             id="path40582" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="q"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38332">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38330" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="R">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38251" />
+    </clipPath>
+    <clipPath
+       id="S">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38254" />
+    </clipPath>
+    <mask
+       id="T"
+       mask-type="alpha">
+      <g
+         filter="url(#o)"
+         id="g38429">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38425" />
+        <g
+           id="use38427"
+           style="display:none">
+          <path
+             id="path40526"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40528"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="o"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38327">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38325" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="U">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38257" />
+    </clipPath>
+    <mask
+       id="V"
+       mask-type="alpha">
+      <g
+         filter="url(#m)"
+         id="g38422">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38418" />
+        <g
+           id="use38420"
+           style="display:none">
+          <path
+             id="path40470"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40472"
+             d="" />
+          <path
+             id="path40474"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="m"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38322">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38320" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="W">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38260" />
+    </clipPath>
+    <mask
+       id="X"
+       mask-type="alpha">
+      <g
+         filter="url(#k)"
+         id="g38415">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38411" />
+        <g
+           id="use38413"
+           style="display:none">
+          <path
+             id="path40616"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40618"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="k"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38317">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38315" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="Y"
+       mask-type="alpha">
+      <g
+         filter="url(#i)"
+         id="g38408">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38404" />
+        <g
+           id="use38406"
+           style="display:none">
+          <path
+             id="path40458"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40460"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="i"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38312">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38310" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="Z">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38239" />
+    </clipPath>
+    <clipPath
+       id="aa">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38242" />
+    </clipPath>
+    <mask
+       id="ab"
+       mask-type="alpha">
+      <g
+         filter="url(#g)"
+         id="g38401">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38397" />
+        <g
+           id="use38399"
+           style="display:none">
+          <path
+             id="path40628"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40630"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="g"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38307">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38305" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="ac">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38245" />
+    </clipPath>
+    <mask
+       id="ad"
+       mask-type="alpha">
+      <g
+         filter="url(#e)"
+         id="g38394">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38390" />
+        <g
+           id="use38392"
+           style="display:none">
+          <path
+             id="path40486"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40488"
+             d="" />
+          <path
+             id="path40490"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="e"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38302">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38300" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="ae">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path38248" />
+    </clipPath>
+    <mask
+       id="af"
+       mask-type="alpha">
+      <g
+         filter="url(#c)"
+         id="g38387">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38383" />
+        <g
+           id="use38385"
+           style="display:none">
+          <path
+             id="path40502"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40504"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="c"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38297">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38295" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="ag"
+       mask-type="alpha">
+      <g
+         filter="url(#a)"
+         id="g38380">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path38376" />
+        <g
+           id="use38378"
+           style="display:none">
+          <path
+             id="path40604"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40606"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="a"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer38292">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA38290" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39071">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39069" />
+    </clipPath>
+    <clipPath
+       id="clipPath39075">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39073" />
+    </clipPath>
+    <clipPath
+       id="clipPath39079">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39077" />
+    </clipPath>
+    <mask
+       id="mask39087"
+       mask-type="alpha">
+      <g
+         filter="url(#w)"
+         id="g39085">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39081" />
+        <g
+           id="use39083"
+           style="display:block">
+          <path
+             fill="#ff0000"
+             d="m 218.555,119.63 c 8.252,0.618 15.354,4.994 17.864,7.458 4.031,3.643 9.279,10.955 11.82,15.86 l 19.683,51.864 c 0,0 -1.188,35.341 -1.675,47.985 -0.455,13.02 -8.317,28.504 -31.882,20.403 l 2.58,-61.924 -19.053,-47.78"
+             id="path40520" />
+          <path
+             fill-opacity="0"
+             stroke="#08a88a"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 218.555,119.63 c 8.252,0.618 15.354,4.994 17.864,7.458 4.031,3.643 9.279,10.955 11.82,15.86 l 19.683,51.864 c 0,0 -1.188,35.341 -1.675,47.985 -0.455,13.02 -8.317,28.504 -31.882,20.403 l 2.58,-61.924 -19.053,-47.78"
+             class="secondary"
+             id="path40522" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39093"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39091">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39089" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39097">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39095" />
+    </clipPath>
+    <mask
+       id="mask39105"
+       mask-type="alpha">
+      <g
+         filter="url(#u)"
+         id="g39103">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39099" />
+        <g
+           id="use39101"
+           style="display:block">
+          <path
+             fill="#ff0000"
+             d="m 202.506,122.853 c -9.79,4.91 -17.423,14.744 -17.866,27.427 l -2.643,75.664 63.961,2.233 2.643,-75.664 c 0.4,-11.458 -6.274,-22.466 -15.97,-28.455"
+             id="path40546" />
+          <path
+             fill-opacity="0"
+             stroke="#08a88a"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 202.506,122.853 c -9.79,4.91 -17.423,14.744 -17.866,27.427 l -2.643,75.664 63.961,2.233 2.643,-75.664 c 0.4,-11.458 -6.274,-22.466 -15.97,-28.455"
+             class="secondary"
+             id="path40548" />
+          <path
+             fill="#ff0000"
+             d="m 202.506,122.853 c -9.79,4.91 -17.423,14.744 -17.866,27.427 l -2.643,75.664 63.961,2.233 2.643,-75.664 c 0.4,-11.458 -6.274,-22.466 -15.97,-28.455"
+             id="path40550" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39111"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39109">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39107" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39115">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39113" />
+    </clipPath>
+    <mask
+       id="mask39123"
+       mask-type="alpha">
+      <g
+         filter="url(#s)"
+         id="g39121">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39117" />
+        <g
+           id="use39119"
+           style="display:block">
+          <path
+             fill="#ff0000"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             id="path40598" />
+          <path
+             fill-opacity="0"
+             stroke="#121331"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             class="primary"
+             id="path40600" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39129"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39127">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39125" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="mask39137"
+       mask-type="alpha">
+      <g
+         filter="url(#q)"
+         id="g39135">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39131" />
+        <g
+           id="use39133"
+           style="display:block">
+          <path
+             fill="#ffffff"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             id="path40586" />
+          <path
+             fill-opacity="0"
+             stroke="#121331"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="0"
+             d="m 182.283,226.38 -4.639,12.028 -5.156,13.372 -19.367,50.221 2.433,76.746 c 0,0 -24.179,9.003 -16.371,24.111 11.567,0 44.727,0.009 53.479,0.009 0.338,-14.242 0.324,-25.585 0.324,-25.585 l 0.116,-68.249 52.915,-81.281"
+             class="primary"
+             id="path40588" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39143"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39141">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39139" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39147">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39145" />
+    </clipPath>
+    <clipPath
+       id="clipPath39151">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39149" />
+    </clipPath>
+    <mask
+       id="mask39159"
+       mask-type="alpha">
+      <g
+         filter="url(#o)"
+         id="g39157">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39153" />
+        <g
+           id="use39155"
+           style="display:none">
+          <path
+             id="path40532"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40534"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39165"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39163">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39161" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39169">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39167" />
+    </clipPath>
+    <mask
+       id="mask39177"
+       mask-type="alpha">
+      <g
+         filter="url(#m)"
+         id="g39175">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39171" />
+        <g
+           id="use39173"
+           style="display:none">
+          <path
+             id="path40478"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40480"
+             d="" />
+          <path
+             id="path40482"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39183"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39181">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39179" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39187">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39185" />
+    </clipPath>
+    <mask
+       id="mask39195"
+       mask-type="alpha">
+      <g
+         filter="url(#k)"
+         id="g39193">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39189" />
+        <g
+           id="use39191"
+           style="display:none">
+          <path
+             id="path40622"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40624"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39201"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39199">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39197" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="mask39209"
+       mask-type="alpha">
+      <g
+         filter="url(#i)"
+         id="g39207">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39203" />
+        <g
+           id="use39205"
+           style="display:none">
+          <path
+             id="path40464"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40466"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39215"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39213">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39211" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39219">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39217" />
+    </clipPath>
+    <clipPath
+       id="clipPath39223">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39221" />
+    </clipPath>
+    <mask
+       id="mask39231"
+       mask-type="alpha">
+      <g
+         filter="url(#g)"
+         id="g39229">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39225" />
+        <g
+           id="use39227"
+           style="display:none">
+          <path
+             id="path40634"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40636"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39237"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39235">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39233" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39241">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39239" />
+    </clipPath>
+    <mask
+       id="mask39249"
+       mask-type="alpha">
+      <g
+         filter="url(#e)"
+         id="g39247">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39243" />
+        <g
+           id="use39245"
+           style="display:none">
+          <path
+             id="path40494"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="secondary"
+             id="path40496"
+             d="" />
+          <path
+             id="path40498"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39255"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39253">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39251" />
+      </feComponentTransfer>
+    </filter>
+    <clipPath
+       id="clipPath39259">
+      <path
+         d="M 0,0 H 430 V 430 H 0 Z"
+         id="path39257" />
+    </clipPath>
+    <mask
+       id="mask39267"
+       mask-type="alpha">
+      <g
+         filter="url(#c)"
+         id="g39265">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39261" />
+        <g
+           id="use39263"
+           style="display:none">
+          <path
+             id="path40508"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40510"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39273"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39271">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39269" />
+      </feComponentTransfer>
+    </filter>
+    <mask
+       id="mask39281"
+       mask-type="alpha">
+      <g
+         filter="url(#a)"
+         id="g39279">
+        <path
+           fill="#ffffff"
+           d="M 0,0 H 430 V 430 H 0 Z"
+           opacity="0"
+           id="path39275" />
+        <g
+           id="use39277"
+           style="display:none">
+          <path
+             id="path40610"
+             d="" />
+          <path
+             fill-opacity="0"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             class="primary"
+             id="path40612"
+             d="" />
+        </g>
+      </g>
+    </mask>
+    <filter
+       id="filter39287"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       filterUnits="objectBoundingBox">
+      <feComponentTransfer
+         in="SourceGraphic"
+         id="feComponentTransfer39285">
+        <feFuncA
+           tableValues="1.0 0.0"
+           type="table"
+           id="feFuncA39283" />
+      </feComponentTransfer>
+    </filter>
+    <filter
+       id="av"
+       width="1.4668897"
+       height="1.4620599"
+       x="-0.23344487"
+       y="-0.23102988">
+      <feGaussianBlur
+         result="filter_result_0"
+         stdDeviation="52.5 52.5"
+         id="feGaussianBlur38350" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-3.5089107,-118.25452)">
+    <g
+       id="g37742"
+       style="stroke:#000000;stroke-width:0.6;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0.91364733,0,0,0.91364733,8.303412,16.711926)">
+      <path
+         sodipodi:type="star"
+         style="fill:#00d2ff;stroke:none;stroke-width:0.752604;stroke-dasharray:none;stroke-opacity:1"
+         id="path37350"
+         inkscape:flatsided="false"
+         sodipodi:sides="3"
+         sodipodi:cx="69.003525"
+         sodipodi:cy="177.00903"
+         sodipodi:r1="129.33952"
+         sodipodi:r2="128.77846"
+         sodipodi:arg1="-1.2155494"
+         sodipodi:arg2="-0.17023275"
+         inkscape:rounded="-3.469447e-18"
+         inkscape:randomized="0"
+         d="M 113.99064,55.745388 195.92054,155.19245 151.52736,276.60084 24.438734,297.83068 -58.507431,198.68087 -13.348696,78.003968 Z"
+         inkscape:transform-center-x="17.018961"
+         inkscape:transform-center-y="-10.38011"
+         transform="matrix(0.78672679,0.12899428,-0.12899428,0.78672679,75.514129,59.995815)" />
+    </g>
+    <path
+       sodipodi:type="star"
+       style="fill:#00d2ff;fill-opacity:1;stroke:none;stroke-width:1.08479;stroke-opacity:1"
+       id="path37350-4"
+       inkscape:flatsided="false"
+       sodipodi:sides="3"
+       sodipodi:cx="69.003525"
+       sodipodi:cy="177.00903"
+       sodipodi:r1="129.33952"
+       sodipodi:r2="128.77846"
+       sodipodi:arg1="-1.2155494"
+       sodipodi:arg2="-0.17023275"
+       inkscape:rounded="-3.469447e-18"
+       inkscape:randomized="0"
+       d="M 113.99064,55.745388 195.92054,155.19245 151.52736,276.60084 24.438734,297.83068 -58.507431,198.68087 -13.348696,78.003968 Z"
+       inkscape:transform-center-x="12.006544"
+       inkscape:transform-center-y="-7.3229643"
+       transform="matrix(0.55502034,0.09100294,-0.09100294,0.55502034,82.698752,100.14739)" />
+    <g
+       id="g1597"
+       transform="matrix(1.2957767,0,0,1.2957767,-29.809152,-57.469461)"
+       style="fill:#ffffff;fill-opacity:1">
+      <g
+         id="g40773"
+         transform="matrix(0.91364733,0,0,0.91364733,5.2345347,11.220252)"
+         style="fill:#ffffff;fill-opacity:1">
+        <g
+           id="g44568"
+           transform="matrix(0.82124637,0,0,0.82124637,18.419385,35.287011)"
+           style="fill:#ffffff;fill-opacity:1">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.2;stroke-dasharray:none;stroke-opacity:1"
+             d="m 107.83928,158.57678 -3.53571,1.76786 -1.2375,4.59643 0.70714,4.41964 1.06072,3.7125 2.475,0.88393 4.59643,0.17679 3.7125,-0.35357 1.94464,-2.29822 -1.06072,-7.77857 -1.59107,-3.53571 -4.95,-1.94465 z"
+             id="path40758" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.2;stroke-dasharray:none;stroke-opacity:1"
+             d="m 108.36964,180.675 -3.88928,1.94464 -5.303574,5.65714 -2.828573,8.13215 -1.060715,7.425 0.883928,9.36964 0.707144,4.77321 3.88929,1.59108 3.00535,-0.88393 -0.35357,-13.25893 v -2.65179 l 4.77322,-13.08214 z"
+             id="path40760" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.2;stroke-dasharray:none;stroke-opacity:1"
+             d="m 108.54643,179.79107 5.83393,-1.06072 h 5.30357 l 2.82857,4.06608 1.2375,8.6625 -0.70714,7.07143 -1.06072,10.07678 -1.06071,5.12678 5.48035,21.56786 -1.41428,23.5125 4.77321,3.53572 v 1.76785 l -12.72857,-0.35357 1.06072,-27.40178 -6.01072,-9.54643 -5.30357,-6.1875 -3.00536,-3.7125 v -14.14286 l 4.77322,-13.6125 z"
+             id="path40762" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.2;stroke-dasharray:none;stroke-opacity:1"
+             d="m 99.530356,219.56786 -0.883927,9.01607 -16.264287,25.10357 8.132143,7.95535 1.237499,-3.35892 -0.176784,-5.12679 16.61786,-23.15893 0.88392,-6.36428 -4.59642,-4.95 z"
+             id="path40764" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.2;stroke-dasharray:none;stroke-opacity:1"
+             d="m 120.0375,178.90714 3.35893,4.77321 6.36428,13.25893 15.02679,7.07143 -5.65714,4.59643 -13.78929,-4.41964 -2.82857,-3.53572 1.2375,-9.01607 -1.06071,-8.30893 z"
+             id="path40766" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

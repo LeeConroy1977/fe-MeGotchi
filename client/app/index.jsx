@@ -17,7 +17,7 @@ export default function App() {
       <View style={styles.logo}>
         <Image
           style={styles.logoImage}
-          source={require("../assets/images//megotchi_home_Avatar.svg")}
+          source={require("../assets/images/megotchi_home_Avatar.svg")}
         />
       </View>
       <View style={styles.sloganBox}>

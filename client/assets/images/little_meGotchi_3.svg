@@ -8,7 +8,7 @@
    version="1.1"
    id="svg7584"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="megotchi_home_Avatar.svg"
+   sodipodi:docname="little_meGotchi_3.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g3831" />
+     inkscape:current-layer="g10949" />
   <defs
      id="defs7581">
     <clipPath
@@ -399,7 +399,7 @@
            y="174.69096" />
         <path
            id="path9901"
-           style="fill:#f1f2ff;fill-opacity:1;fill-rule:evenodd;filter:url(#filter9999-0);stroke:#000000;stroke-opacity:1;stroke-width:1.15699639;stroke-dasharray:none;opacity:1"
+           style="fill:#aefde6;fill-opacity:1;fill-rule:evenodd;filter:url(#filter9999-0);stroke:#000000;stroke-opacity:1;stroke-width:1.15699639;stroke-dasharray:none;opacity:1"
            d="m 342.36914,105.66016 a 27.563654,42.561523 0 0 0 -26.86719,33.5332 18.306856,29.643662 24.136547 0 0 -9.97656,14.32031 18.306856,29.643662 24.136547 0 0 4.95117,34.28321 18.306856,29.643662 24.136547 0 0 16.88282,-3.99805 27.563654,42.561523 0 0 0 15.02929,6.98437 27.563654,42.561523 0 0 0 15.58985,-7.57226 29.643662,18.306856 65.863453 0 0 17.39257,4.45117 29.643662,18.306856 65.863453 0 0 4.95118,-34.2832 29.643662,18.306856 65.863453 0 0 -11.21875,-15.43164 27.563654,42.561523 0 0 0 -26.73438,-32.28711 z"
            transform="matrix(1.2722598,0,0,1.2722598,-326.84793,-56.84444)" />
         <path
