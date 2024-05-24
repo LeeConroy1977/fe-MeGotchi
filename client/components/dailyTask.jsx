@@ -1,16 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native-web";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-const DailyTask = ({ task, id, oncurrOpen, currOpen }) => {
-  // const [isSelected, setIsSelected] = useState(false);
-  const { title, body, color, coins, isCompleted } = task;
+const DailyTask = ({
+  task,
+  id,
+  oncurrOpen,
+  currOpen,
+  setCompletedModalVisible,
+  handleSelectedTask,
+}) => {
+  const { title, body, color, coins, icon } = task;
 
   const isSelected = id === currOpen;
 
   function handleIsSelected(id) {
-    // setIsSelected((isSelected) => !isSelected);
     oncurrOpen(isSelected ? null : id);
   }
 
@@ -21,20 +27,27 @@ const DailyTask = ({ task, id, oncurrOpen, currOpen }) => {
       style={
         (styles.taskContainer,
         {
-          backgroundColor: color,
-          boxShadow: "4px 4px 2px 0px black",
-          borderRadius: "8px",
-          width: "300px",
-          minHeight: "48px",
-          border: "1px solid black",
+          boxShadow: "2px 2px 1px 0px black",
+          borderRadius: "16px",
+          width: "320px",
+          minHeight: "54px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "flex-start",
+          backgroundColor: "white",
         })
       }
     >
       <View style={styles.titleContainer}>
+        <View style={styles.iconContainer}>
+          {task && (
+            <Image
+              source={require(`../assets/images/task_walking_icon.svg`)}
+              style={styles.taskIcon}
+            />
+          )}
+        </View>
         <Text style={styles.title}>{title}</Text>
         {isSelected ? (
           <AntDesign
@@ -62,8 +75,16 @@ const DailyTask = ({ task, id, oncurrOpen, currOpen }) => {
             <View style={styles.durationBox}>
               <Text style={styles.durationText}>Duration: 15mins</Text>
             </View>
-            <TouchableOpacity style={styles.completedBox}>
-              <Text style={styles.completedText}>Done</Text>
+            <TouchableOpacity
+              style={styles.completedBox}
+              onPress={() => {
+                setCompletedModalVisible(true);
+                handleSelectedTask(task);
+              }}
+            >
+              <Text style={styles.completedText}>
+                <MaterialIcons name="done-outline" size={18} color="white" />
+              </Text>
               <View style={styles.completedIndicator}></View>
             </TouchableOpacity>
           </View>
@@ -76,15 +97,31 @@ const DailyTask = ({ task, id, oncurrOpen, currOpen }) => {
 export default DailyTask;
 
 const styles = StyleSheet.create({
-  taskContainer: {},
+  taskContainer: {
+    backgroundColor: "white",
+  },
 
   titleContainer: {
-    height: "48px",
-    width: "280px",
+    height: "54px",
+    width: "320px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
+    backgroundColor: "white",
+    borderRadius: "16px",
+  },
+  iconContainer: {
+    width: "15%",
+    height: "100%",
+    marginLeft: "0.6rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  taskIcon: {
+    width: "38px",
+    height: "38px",
   },
   title: {
     fontSize: "0.8rem",
@@ -98,103 +135,83 @@ const styles = StyleSheet.create({
     alignItems: "center",
     fontFamily: "MarkoOne-regular",
     textAlign: "center",
+    color: "#264653",
   },
-
   titleIcon: {
     marginRight: "1.4rem",
   },
-
-  bodyContainer: {
+  accordion: {
     width: "100%",
     height: "180px",
-    // backgroundColor: "red",
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  bodyContainer: {
+    width: "90%",
+    height: "100px",
+    backgroundColor: "white",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     padding: "0.4rem",
     borderRadius: "20px",
-    border: "4px solid white",
+    border: "4px solid #264653",
+    marginTop: "0.8rem",
   },
   body: {
-    height: "130px",
+    height: "60px",
     width: "240px",
     display: "flex",
     flexWrap: "wrap",
     fontWeight: "bold",
-    // marginTop: "1rem",
     fontFamily: "MarkoOne-regular",
     fontSize: "0.75rem",
-    padding: "0.8rem",
+    padding: "1.2rem",
     textAlign: "center",
     lineHeight: "1.2rem",
+    color: "#264653",
   },
   textDots: {
     fontWeight: "bold",
-    color: "white",
-    fontSize: "1.2rem",
+    color: "#264653",
+    fontSize: "1.5rem",
     fontFamily: "MarkoOne-regular",
+    paddingBottom: "0.5rem",
   },
   iconBox: {
     height: "60px",
-    width: "100%",
+    width: "90%",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginLeft: "auto",
     marginRight: "0.2rem",
-    // backgroundColor: "white",
   },
-
-  // durationBox: {
-  //   height: "30px",
-  //   width: "120px",
-  //   border: "2px solid white",
-  //   display: "flex",
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   alignItems: "center",
-  //   borderRadius: "8px",
-  //   padding: "0.2rem",
-  //   // backgroundColor: "white",
-  // },
   durationText: {
     fontWeight: "bold",
-    color: "black",
+    color: "#264653",
     fontSize: "0.7rem",
     fontFamily: "MarkoOne-regular",
-    // marginRight: "1rem",
     marginLeft: "0.7rem",
   },
-
   completedBox: {
-    height: "30px",
-    width: "80px",
-    // border: "2px solid white",
+    height: "34px",
+    width: "70px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "8px",
     padding: "0.2rem",
-    marginRight: "0.2rem",
-    backgroundColor: "#5dbea3",
-    boxShadow: "2px 2px 1px 0px black",
+    marginRight: "0.4rem",
+    backgroundColor: "#00D2FF",
+    boxShadow: "2px 2px 1px 0px #264653",
   },
   completedText: {
     fontWeight: "500",
     color: "white",
     fontSize: "0.55rem",
     fontFamily: "MarkoOne-regular",
-    // marginRight: "1rem",
-    // marginLeft: "0.4rem",
   },
-  // completedIndicator: {
-  //   width: "14px",
-  //   height: "16px",
-  //   borderRadius: "50%",
-  //   backgroundColor: "green",
-  //   border: " 2px solid black",
-  //   marginRight: "0.4rem",
-  // },
 });

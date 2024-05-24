@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import DailyTask from "./dailyTask";
 import { ScrollView } from "react-native-web";
 
-const DailyTasks = ({ dailyTasks }) => {
+const DailyTasks = ({
+  dailyTasks,
+  setCompletedModalVisible,
+  handleSelectedTask,
+}) => {
   const [currOpen, setCurrOpen] = useState(null);
   return (
     <ScrollView>
@@ -17,6 +21,8 @@ const DailyTasks = ({ dailyTasks }) => {
                 id={task.id}
                 oncurrOpen={setCurrOpen}
                 currOpen={currOpen}
+                setCompletedModalVisible={setCompletedModalVisible}
+                handleSelectedTask={handleSelectedTask}
               />
             );
           })}
