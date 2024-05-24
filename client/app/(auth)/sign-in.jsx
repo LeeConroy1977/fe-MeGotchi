@@ -91,10 +91,9 @@ const SignIn = () => {
       })
         .then((response) => response.json())
         .then((json) => {
-          //set user context
-          console.log(json);
           setUser(json);
-          //route to /home
+        })
+        .then(() => {
           router.push("/wellness-main");
         })
         .catch((error) => {

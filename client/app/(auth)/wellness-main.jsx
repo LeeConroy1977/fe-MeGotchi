@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
 import { router } from "expo-router";
+import dailyTasks from '../../assets/Data/dailyTasks'
+import userContext from "../(contexts)/userContext";
 
 const WellnessCheck = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const { user, setUser } = useContext(userContext);
 
   const options = [
     { id: 1, text: "Great", emoji: "😃" },
@@ -19,7 +22,32 @@ const WellnessCheck = () => {
 
   const handleNextPress = () => {
     if (selectedOption !== null) {
-      router.replace("/home");
+      const sentList = {
+        isDelete: false,  
+        taskList: []
+      };
+      if(selectedOption === 1) sentList.taskList = dailyTasks.setHappy;
+      else if(selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
+      else if(selectedOption === 3) sentList.taskList = dailyTasks.setSad;
+      
+      fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sentList),
+      })
+      .then((response) => response.json())
+      .then((json) => {
+        setUser(json);
+      })
+      .then(() => {
+        router.push("/home");
+      })
+      .catch((error) => {
+        return { message: error };
+      });
     }
   };
 

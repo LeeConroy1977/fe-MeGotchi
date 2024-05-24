@@ -30,6 +30,7 @@ const WellnessCheck = () => {
     if (selectedOption !== null) {
       router.replace("/home");
     }
+
   };
 
   return (
