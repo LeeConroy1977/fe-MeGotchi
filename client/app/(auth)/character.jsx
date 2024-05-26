@@ -36,7 +36,6 @@ const meGotchiArr = [
 
 const Character = () => {
   const [selected, setSelected] = useState(null);
-
   const { displayName, email, password } = useLocalSearchParams();
   const { setUser } = useContext(userContext);
   const [name, setName] = useState("");
@@ -91,10 +90,9 @@ const Character = () => {
       })
         .then((response) => response.json())
         .then((json) => {
-          //set user context
-
           setUser(json);
-          //route to /home
+        })
+        .then(() => {
           router.push("/wellness");
         })
         .catch((error) => {
