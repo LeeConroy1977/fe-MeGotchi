@@ -30,12 +30,6 @@ const tasks = () => {
   const [selectedTask, setSelectedTask] = useState({});
 
   useEffect(() => {
-    setGoalForm({
-      title: "",
-      body: "",
-      iconUrl: "custom_task_icon",
-      message: "Good work. You completed another goal!"
-    });
   }, [setUser])
 
   function handleAddTask() {
@@ -93,6 +87,7 @@ const tasks = () => {
   }
 
   function handleGoalsubmit(e) {
+    console.log(goalForm);
     e.preventDefault();
     if (goalForm.title.length < 4) {
       return;
@@ -120,6 +115,12 @@ const tasks = () => {
         }
         setModalVisible(false);
         setIsAddTask(false);
+        setGoalForm({
+          title: "",
+          body: "",
+          iconUrl: "custom_task_icon",
+          message: "Good work. You completed another goal!"
+        });
         setUser(data);
       })
       .catch((error) => {
@@ -155,6 +156,8 @@ const tasks = () => {
                   setGoalForm({
                     title: "",
                     body: "",
+                    iconUrl: "custom_task_icon",
+                    message: "Good work. You completed another goal!"
                   });
                 }}
               >
