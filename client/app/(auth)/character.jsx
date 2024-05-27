@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState, useContext } from "react";
-import { SafeAreaView } from "react-native-web";
+import { SafeAreaView, TextInput } from "react-native-web";
 import CustomButton from "../../reuseable-components/CustomButton";
 import MeGotchi from "../../reuseable-components/MeGotchi";
 import { useLocalSearchParams } from "expo-router";
@@ -36,53 +36,90 @@ const meGotchiArr = [
 
 const Character = () => {
   const [selected, setSelected] = useState(null);
-  const {displayName, email, password} = useLocalSearchParams();
+  const { displayName, email, password } = useLocalSearchParams();
   const { setUser } = useContext(userContext);
+  const [name, setName] = useState("");
+  const [isValidated, setIsValidated] = useState(false);
+  const [isBlur, setIsBlur] = useState(false);
 
   const handleSelected = (id) => {
     setSelected(id);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if(selected !== null){
+  function handleValidation(e) {
+    if (e === "" || (e === "" && isBlur)) {
+      return setIsValidated(false);
+    }
+    if (e !== "") {
+      return setIsValidated(true);
+    }
+  }
 
+  console.log(name);
+  console.log(selected);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name === "") {
+      setIsValidated(false);
+      setIsBlur(true);
+    }
+    if (selected === null || selected === false) {
+      setSelected(false);
+    } else if (
+      (selected !== null && isValidated) ||
+      (selected !== false && isValidated)
+    ) {
       const userSubmit = {
-        "displayName": displayName,
-        "email": email,
-        "password": password,
-        "megotchi": {
-          "color": selected.colour
-        }
+        displayName: displayName,
+        email: email,
+        password: password,
+        megotchi: {
+          color: selected.colour,
+          name,
+        },
       };
-  
-      fetch('https://megotchi-api.onrender.com/users', {
-        method: 'POST',
+
+      fetch("https://megotchi-api.onrender.com/users", {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(userSubmit),
       })
-      .then(response => response.json())
-      .then(json => {
-        //set user context
-        
-        setUser(json)
-        //route to /home
-        router.push("/wellness");
-      })
-      .catch(error => {
-        return { "message": error};
-      });
-
+        .then((response) => response.json())
+        .then((data) => {
+          if(data.error){
+            console.log(data.error);
+            alert(`Sign-up error: ${data.error}`);
+          }
+          else{
+            setUser(data);
+            router.push("/wellness");
+          }
+        })
+        .catch((error) => {
+          alert("Error creating user");
+        });
     }
-  }
+    setName("");
+  };
 
   return (
     <SafeAreaView style={styles.character}>
       <Text style={styles.logoHeader}>MeGotchi</Text>
-      <Text style={styles.pageMessage}>Adopt a MeGotchi...</Text>
+      <View style={styles.pageMsgBox}>
+        <Text style={styles.pageMessage}>Adopt a MeGotchi...</Text>
+        {selected === false ? (
+          <Text style={styles.pageMessageInvalid}>Choose a MeGotchi...</Text>
+        ) : (
+          <View style={styles.validMsgBox}>
+            <Text style={styles.pageMessageValid}>Amazing</Text>
+            <Text style={styles.heart}>{"❤"}</Text>
+          </View>
+        )}
+      </View>
       <View style={styles.avatarsContainer}>
         {meGotchiArr.map((meGotchi) => {
           return (
@@ -95,6 +132,36 @@ const Character = () => {
             />
           );
         })}
+      </View>
+      <View style={styles.inputBox}>
+        <View style={styles.textBox}>
+          <Text style={styles.inputQuestion}>What's my name?</Text>
+          {!isValidated && isBlur ? (
+            <Text style={styles.inputinValidMsg}>Should not be empty...</Text>
+          ) : isValidated ? (
+            <View style={styles.validMsgBox}>
+              <Text style={styles.inputValidMsg}>Awesome</Text>
+              <Text style={styles.heart}>{"❤"}</Text>
+            </View>
+          ) : null}
+        </View>
+
+        <TextInput
+          style={
+            !isValidated && isBlur
+              ? styles.textInputInvalid
+              : isValidated
+              ? styles.textInputValid
+              : styles.textInput
+          }
+          value={name}
+          placeholder={"Enter a name..."}
+          onBlur={() => setIsBlur((isBlur) => !isBlur)}
+          onChangeText={(e) => {
+            setName(e);
+            handleValidation(e);
+          }}
+        />
       </View>
       <CustomButton
         title="Submit"
@@ -121,12 +188,37 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontFamily: "MarkoOne-regular",
     marginTop: "2.3rem",
+    color: "#264653",
+  },
+  pageMsgBox: {
+    width: "80%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: "2rem",
   },
   pageMessage: {
     fontWeight: "bold",
-    marginTop: "2rem",
-    marginRight: "auto",
-    marginLeft: "2rem",
+    color: "#264653",
+    fontFamily: "MarkoOne-regular",
+    fontSize: "0.85rem",
+    marginLeft: "0.2rem",
+  },
+  pageMessageValid: {
+    fontWeight: "bold",
+    color: "#264653",
+    fontFamily: "MarkoOne-regular",
+    fontSize: "0.75rem",
+    marginRight: "0.2rem",
+  },
+
+  pageMessageInvalid: {
+    fontWeight: "bold",
+    color: "red",
+    fontFamily: "MarkoOne-regular",
+    fontSize: "0.75rem",
+    marginRight: "0.2rem",
   },
   avatarsContainer: {
     display: "flex",
@@ -136,6 +228,159 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     width: "80%",
-    height: "54%",
+    height: "33%",
+  },
+
+  inputBox: {
+    display: "flex",
+    flexDirection: "column",
+    width: "80%",
+    height: "10%",
+
+    marginTop: "3.5rem",
+    marginBottom: "1rem",
+  },
+
+  textBox: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "15%",
+  },
+  inputQuestion: {
+    color: "#264653",
+    fontWeight: "bold",
+    fontSize: "0.85rem",
+    fontFamily: "MarkoOne-regular",
+    marginLeft: "0.2rem",
+  },
+  inputValidMsg: {
+    color: "#264653",
+    fontWeight: "bold",
+    fontSize: "0.75rem",
+    fontFamily: "MarkoOne-regular",
+    marginRight: "0.2rem",
+  },
+  validMsgBox: {
+    width: "40%",
+    flexDirection: "row",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    marginRight: "0.2rem",
+  },
+
+  inputinValidMsg: {
+    color: "red",
+    fontWeight: "bold",
+    fontSize: "0.75rem",
+    fontFamily: "MarkoOne-regular",
+  },
+  heart: {
+    fontSize: "0.7rem",
+    marginLeft: "0.3rem",
+    color: "#FF6363",
+  },
+  textInput: {
+    color: "white",
+    fontSize: "0.6rem",
+    fontFamily: "MarkoOne-regular",
+    outlineStyle: "none",
+    marginTop: "0.8rem",
+    border: "3px solid black",
+    width: "100%",
+    height: "80%",
+    borderRadius: "12px",
+    paddingLeft: "0.8rem",
+    fontWeight: "bold",
+    fontSize: "0.7rem",
+    fontFamily: "MarkoOne-regular",
+    backgroundColor: "#959595",
+  },
+  textInputInvalid: {
+    color: "white",
+    fontSize: "0.6rem",
+    fontFamily: "MarkoOne-regular",
+    outlineStyle: "none",
+    marginTop: "0.8rem",
+    border: "3px solid red",
+    width: "100%",
+    height: "80%",
+    borderRadius: "12px",
+    paddingLeft: "0.8rem",
+    fontWeight: "bold",
+    fontSize: "0.7rem",
+    fontFamily: "MarkoOne-regular",
+    backgroundColor: "#959595",
+  },
+  textInputValid: {
+    color: "white",
+    fontSize: "0.6rem",
+    fontFamily: "MarkoOne-regular",
+    outlineStyle: "none",
+    marginTop: "0.8rem",
+    border: "3px solid green",
+    width: "100%",
+    height: "80%",
+    borderRadius: "12px",
+    paddingLeft: "0.8rem",
+    fontWeight: "bold",
+    fontSize: "0.7rem",
+    fontFamily: "MarkoOne-regular",
+    backgroundColor: "#959595",
+  },
+  inputBoxValidated: {
+    width: "80%",
+    height: "40px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    border: "4px solid #339933",
+    borderRadius: "8px",
+    backgroundColor: "#a6a6a6",
+    paddingLeft: "0.8rem",
+    marginTop: "0.3rem",
+  },
+  inputBoxInvalidated: {
+    width: "80%",
+    height: "40px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    border: "4px solid #FF6363",
+    borderRadius: "8px",
+    backgroundColor: "#a6a6a6",
+    paddingLeft: "0.8rem",
+    marginTop: "0.3rem",
+  },
+  label: {
+    fontSize: "0.6rem",
+    fontWeight: "bold",
+    color: "black",
+    marginTop: "0.5rem",
+    marginRight: "auto",
+    marginLeft: "2rem",
+    fontFamily: "MarkoOne-regular",
+  },
+
+  validationMsgTrue: {
+    fontSize: "0.6rem",
+    fontWeight: "bold",
+    color: "#264653",
+    marginTop: "0.5rem",
+    fontFamily: "MarkoOne-regular",
+    marginRight: "2rem",
+  },
+  validationMsgFalse: {
+    fontSize: "0.6rem",
+    fontWeight: "bold",
+    color: "red",
+    marginTop: "0.5rem",
+    fontFamily: "MarkoOne-regular",
+    marginRight: "2rem",
   },
 });

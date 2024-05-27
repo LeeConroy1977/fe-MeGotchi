@@ -1,3 +1,4 @@
+
 import {
   StyleSheet,
   Text,
@@ -6,19 +7,29 @@ import {
   Image,
   ActivityIndicator,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+
+
+
+import React, { useEffect, useState, useContext } from "react";
+
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
 import { router } from "expo-router";
+import dailyTasks from '../../assets/Data/dailyTasks'
+import userContext from "../(contexts)/userContext";
 
 const WellnessCheck = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+
   const [isLoading, setIsLoading] = useState(false);
+
+  const { user, setUser } = useContext(userContext);
+
 
   const options = [
     { id: 1, text: "Great", emoji: "😃" },
     { id: 2, text: "Okay", emoji: "😐" },
-    { id: 3, text: "Been Better", emoji: "😟" },
+    { id: 3, text: "Meh", emoji: "😟" },
   ];
 
   const handleOptionSelect = (id) => {
@@ -28,11 +39,33 @@ const WellnessCheck = () => {
   const handleNextPress = () => {
     if (selectedOption !== null) {
       setIsLoading(true);
-      // Simulate lag
-      setTimeout(() => {
-        setIsLoading(false);
-        router.replace("/home");
-      }, 250);
+      const sentList = {
+        isDelete: false,  
+        taskList: []
+      };
+      
+      if(selectedOption === 1) sentList.taskList = dailyTasks.setHappy;
+      else if(selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
+      else if(selectedOption === 3) sentList.taskList = dailyTasks.setSad;
+      fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sentList),
+      })
+      .then((response) => response.json())
+      .then((json) => {
+        setUser(json);
+        router.push("/home");
+      })
+      .catch((error) => {
+        return { message: error };
+      })
+      .finally(() => {
+      setIsLoading(false);
+    });
     }
   };
 

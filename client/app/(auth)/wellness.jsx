@@ -1,3 +1,4 @@
+
 import {
   StyleSheet,
   Text,
@@ -6,16 +7,24 @@ import {
   Image,
   ActivityIndicator,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+
+
+import React, { useEffect, useState, useContext } from "react";
+
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
 import { router } from "expo-router";
 import WelcomePage from "../../components/WelcomePage";
+import dailyTasks from '../../assets/Data/dailyTasks'
+import userContext from "../(contexts)/userContext";
 
 const WellnessCheck = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showWelcomePage, setShowWelcomePage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { user, setUser } = useContext(userContext);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,12 +45,39 @@ const WellnessCheck = () => {
 
   const handleNextPress = () => {
     if (selectedOption !== null) {
-      setIsLoading(true);
-      // Simulate lag
-      setTimeout(() => {
-        setIsLoading(false);
-        router.replace("/home");
-      }, 250);
+        setIsLoading(true);
+      const sentList = {
+        isDelete: false,  
+        taskList: []
+      };
+
+      if(selectedOption === 1) sentList.taskList = dailyTasks.setHappy;
+      else if(selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
+      else if(selectedOption === 3) sentList.taskList = dailyTasks.setSad;
+      
+      fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sentList),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.error){
+          console.log(data.error);
+          alert(`Sign-up error: ${data.error}`);
+        }
+        setUser(data);
+        router.push("/home");
+      })
+      .catch((error) => {
+        return { message: error };
+      })
+      .finally(() => {
+      setIsLoading(false);
+    });
     }
   };
 
