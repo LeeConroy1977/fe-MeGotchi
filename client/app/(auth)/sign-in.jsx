@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState, useContext } from "react";
 import CustomButton from "../../reuseable-components/CustomButton";
@@ -27,6 +28,7 @@ const SignIn = () => {
   const [validSubmit, setvalidSubmit] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState("Password is invalid");
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleValidEmail(text) {
     const regex1 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -79,6 +81,7 @@ const SignIn = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (checkPassword && checkEmail) {
+        setIsLoading(true);
       const userSubmit = {
         email: form.email,
         password: form.password,
@@ -103,12 +106,15 @@ const SignIn = () => {
         }
       })
       .catch((error) => {
-        console.error(error);
-        alert(`Error: ${error}`);
-      });
-      } else {
-        alert("Please enter valid email and password.");
-      }
+          console.error(error);
+          alert(`Error: ${error}`);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      alert("Please enter valid email and password.");
+    }
   }
 
   return (
@@ -238,7 +244,13 @@ const SignIn = () => {
       </View>
       <CustomButton
         styleName="btnSignIn"
-        title="Submit"
+        title={
+          isLoading ? (
+            <ActivityIndicator size="small" color="#FFFFFF" />
+          ) : (
+            "Submit"
+          )
+        }
         titleStyleName="homeTitle"
         handlePress={handleSubmit}
       />

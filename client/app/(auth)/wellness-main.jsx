@@ -1,5 +1,17 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from "react-native";
+
+
+
 import React, { useEffect, useState, useContext } from "react";
+
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
 import { router } from "expo-router";
@@ -8,7 +20,11 @@ import userContext from "../(contexts)/userContext";
 
 const WellnessCheck = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const { user, setUser } = useContext(userContext);
+
 
   const options = [
     { id: 1, text: "Great", emoji: "😃" },
@@ -22,15 +38,15 @@ const WellnessCheck = () => {
 
   const handleNextPress = () => {
     if (selectedOption !== null) {
+      setIsLoading(true);
       const sentList = {
         isDelete: false,  
         taskList: []
       };
-
+      
       if(selectedOption === 1) sentList.taskList = dailyTasks.setHappy;
       else if(selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
       else if(selectedOption === 3) sentList.taskList = dailyTasks.setSad;
-      
       fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
         method: "PATCH",
         headers: {
@@ -46,7 +62,10 @@ const WellnessCheck = () => {
       })
       .catch((error) => {
         return { message: error };
-      });
+      })
+      .finally(() => {
+      setIsLoading(false);
+    });
     }
   };
 
@@ -86,9 +105,13 @@ const WellnessCheck = () => {
           { backgroundColor: selectedOption !== null ? "#FF6363" : "gray" },
         ]}
         onPress={handleNextPress}
-        disabled={selectedOption === null}
+        disabled={selectedOption === null || isLoading}
       >
-        <Text style={styles.nextButtonText}>Next</Text>
+        {isLoading ? (
+          <ActivityIndicator size="small" color="#FFFFFF" />
+        ) : (
+          <Text style={styles.nextButtonText}>Next</Text>
+        )}
       </TouchableOpacity>
     </View>
   );

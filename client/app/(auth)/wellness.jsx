@@ -1,5 +1,16 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from "react-native";
+
+
 import React, { useEffect, useState, useContext } from "react";
+
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
 import { router } from "expo-router";
@@ -10,7 +21,10 @@ import userContext from "../(contexts)/userContext";
 const WellnessCheck = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showWelcomePage, setShowWelcomePage] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
   const { user, setUser } = useContext(userContext);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,6 +45,7 @@ const WellnessCheck = () => {
 
   const handleNextPress = () => {
     if (selectedOption !== null) {
+        setIsLoading(true);
       const sentList = {
         isDelete: false,  
         taskList: []
@@ -59,7 +74,10 @@ const WellnessCheck = () => {
       })
       .catch((error) => {
         return { message: error };
-      });
+      })
+      .finally(() => {
+      setIsLoading(false);
+    });
     }
   };
 
@@ -103,9 +121,13 @@ const WellnessCheck = () => {
               { backgroundColor: selectedOption !== null ? "#FF6363" : "gray" },
             ]}
             onPress={handleNextPress}
-            disabled={selectedOption === null}
+            disabled={selectedOption === null || isLoading}
           >
-            <Text style={styles.nextButtonText}>Next</Text>
+            {isLoading ? (
+              <ActivityIndicator size="small" color="#FFFFFF" />
+            ) : (
+              <Text style={styles.nextButtonText}>Next</Text>
+            )}
           </TouchableOpacity>
         </>
       )}
