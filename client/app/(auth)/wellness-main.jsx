@@ -26,6 +26,7 @@ const WellnessCheck = () => {
         isDelete: false,  
         taskList: []
       };
+
       if(selectedOption === 1) sentList.taskList = dailyTasks.setHappy;
       else if(selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
       else if(selectedOption === 3) sentList.taskList = dailyTasks.setSad;
@@ -41,8 +42,6 @@ const WellnessCheck = () => {
       .then((response) => response.json())
       .then((json) => {
         setUser(json);
-      })
-      .then(() => {
         router.push("/home");
       })
       .catch((error) => {
