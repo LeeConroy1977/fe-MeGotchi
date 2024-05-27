@@ -29,8 +29,8 @@ const DailyTask = ({
         {
           boxShadow: "2px 2px 1px 0px black",
           borderRadius: "16px",
-          width: "320px",
-          minHeight: "54px",
+          width: "300px",
+          minHeight: "46px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -43,7 +43,7 @@ const DailyTask = ({
         <View style={styles.iconContainer}>
           {task && (
             <Image
-              source={require(`../assets/images/task_walking_icon.svg`)}
+              source={require(`../assets/images/task_icon.svg`)}
               style={styles.taskIcon}
             />
           )}
@@ -82,9 +82,7 @@ const DailyTask = ({
                 handleSelectedTask(task);
               }}
             >
-              <Text style={styles.completedText}>
-                <MaterialIcons name="done-outline" size={18} color="white" />
-              </Text>
+              <Text style={styles.completedText}>Done</Text>
               <View style={styles.completedIndicator}></View>
             </TouchableOpacity>
           </View>
@@ -102,8 +100,8 @@ const styles = StyleSheet.create({
   },
 
   titleContainer: {
-    height: "54px",
-    width: "320px",
+    height: "46px",
+    width: "300px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
@@ -120,8 +118,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   taskIcon: {
-    width: "38px",
-    height: "38px",
+    width: "28px",
+    height: "28px",
   },
   title: {
     fontSize: "0.8rem",
@@ -142,7 +140,7 @@ const styles = StyleSheet.create({
   },
   accordion: {
     width: "100%",
-    height: "180px",
+    height: "170px",
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -196,8 +194,8 @@ const styles = StyleSheet.create({
     marginLeft: "0.7rem",
   },
   completedBox: {
-    height: "34px",
-    width: "70px",
+    height: "30px",
+    width: "60px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
@@ -205,12 +203,12 @@ const styles = StyleSheet.create({
     borderRadius: "8px",
     padding: "0.2rem",
     marginRight: "0.4rem",
-    backgroundColor: "#00D2FF",
-    boxShadow: "2px 2px 1px 0px #264653",
+    backgroundColor: "#5adbb5",
+    boxShadow: "1px 1px 1px 0px #264653",
   },
   completedText: {
     fontWeight: "500",
-    color: "white",
+    color: "#264653",
     fontSize: "0.55rem",
     fontFamily: "MarkoOne-regular",
   },

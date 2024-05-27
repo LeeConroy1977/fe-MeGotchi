@@ -30,7 +30,7 @@ const shopItems = [
     celebrationMsg: `How can we ever thank you for rescuing Noya from the wicked MeGotchi catcher Yamauba. Please try and complete some more goals so all our friends can be free...`,
     price: 20,
     available: true,
-    purchased: true,
+    purchased: false,
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const shopItems = [
     celebrationMsg: `You will be forever in our hearts for setting free the wise Mashimo. Now our tribe will be guided with great wisdom once again. Good luck with completing the rest of your goals...`,
     price: 30,
     available: true,
-    purchased: true,
+    purchased: false,
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const shopItems = [
     celebrationMsg: `The tribe Will always love you for this kind act. The village was so quiet and well behaved without Okuma around. You are doing great. Keep reaching your goals... `,
     price: 40,
     available: true,
-    purchased: true,
+    purchased: false,
   },
 ];
 
@@ -62,10 +62,10 @@ const shop = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [isModalOpen, setisModalOpen] = useState(false);
   const [isPurchasedModalOpen, setisPurchasedModalOpen] = useState(false);
-  const [isShopMessageModalOpen, setisShopMessageModalOpen] = useState(true);
+  const [isShopMessageModalOpen, setisShopMessageModalOpen] = useState(false);
   const [itemIndex, setItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [itemsCompleted, setItemsCompleted] = useState(true);
+  const [itemsCompleted, setItemsCompleted] = useState(false);
 
   function handleSelectedItem(index) {
     setItemIndex(index);
