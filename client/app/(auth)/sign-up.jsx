@@ -94,23 +94,17 @@ const SignUp = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (
-      checkEmail &&
-      checkPassword &&
-      checkDisplayName &&
-      passwordMatch
-    ) {
-      setValidSubmit(true);
+    if (!checkEmail || !checkPassword || !checkDisplayName || !passwordMatch) {
+      setValidSubmit(false);
     }
-    if (validSubmit) {
-      
+    if (checkEmail && checkPassword && checkDisplayName && passwordMatch) {
       router.push({
         pathname: "/character",
         params: {
           displayName: form.displayName,
           email: form.email,
           password: form.password,
-        }
+        },
       });
     }
   }
