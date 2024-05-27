@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
@@ -8,6 +15,7 @@ import WelcomePage from "../../components/WelcomePage";
 const WellnessCheck = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [showWelcomePage, setShowWelcomePage] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,7 +36,12 @@ const WellnessCheck = () => {
 
   const handleNextPress = () => {
     if (selectedOption !== null) {
-      router.replace("/home");
+      setIsLoading(true);
+      // Simulate lag
+      setTimeout(() => {
+        setIsLoading(false);
+        router.replace("/home");
+      }, 250);
     }
   };
 
@@ -72,9 +85,13 @@ const WellnessCheck = () => {
               { backgroundColor: selectedOption !== null ? "#FF6363" : "gray" },
             ]}
             onPress={handleNextPress}
-            disabled={selectedOption === null}
+            disabled={selectedOption === null || isLoading}
           >
-            <Text style={styles.nextButtonText}>Next</Text>
+            {isLoading ? (
+              <ActivityIndicator size="small" color="#FFFFFF" />
+            ) : (
+              <Text style={styles.nextButtonText}>Next</Text>
+            )}
           </TouchableOpacity>
         </>
       )}
