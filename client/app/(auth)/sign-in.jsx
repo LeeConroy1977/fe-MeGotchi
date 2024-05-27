@@ -18,7 +18,7 @@ const SignIn = () => {
     password: "",
   });
 
-  const { setUser } = useContext(userContext);
+  const { user, setUser } = useContext(userContext);
 
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkPassword, setCheckPassword] = useState(false);
@@ -70,12 +70,15 @@ const SignIn = () => {
     setCheckPassword(true);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function checkValidSubmit(){
     if (checkPassword && checkEmail) {
       setvalidSubmit(true);
     }
-    if (validSubmit) {
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (checkPassword && checkEmail) {
       const userSubmit = {
         email: form.email,
         password: form.password,
@@ -89,17 +92,23 @@ const SignIn = () => {
         },
         body: JSON.stringify(userSubmit),
       })
-        .then((response) => response.json())
-        .then((json) => {
-          setUser(json);
-        })
-        .then(() => {
-          router.push("/wellness-main");
-        })
-        .catch((error) => {
-          return { message: error };
-        });
-    }
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          console.error(data.error);
+          alert(`Sign-in error: ${data.error}`);
+        } else {
+          setUser(data);
+          router.push(data.taskList.length > 0 ? "/home" : "/wellness-main");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(`Error: ${error}`);
+      });
+      } else {
+        alert("Please enter valid email and password.");
+      }
   }
 
   return (
@@ -155,6 +164,7 @@ const SignIn = () => {
             }}
             onBlur={() => {
               setEmailFocus(false);
+              checkValidSubmit();
             }}
           />
         </View>
@@ -204,6 +214,7 @@ const SignIn = () => {
             }}
             onBlur={() => {
               setPasswordFocus(false);
+              checkValidSubmit();
             }}
             secureTextEntry={!showPassword}
           />

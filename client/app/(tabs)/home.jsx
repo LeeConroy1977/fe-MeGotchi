@@ -4,7 +4,8 @@ import userContext from "../(contexts)/userContext";
 
 const home = () => {
   const { user, setUser } = useContext(userContext);
-
+  
+  console.log(user);
   return (
     <View style={styles.container}>
       <Text style={styles.homeText}>Home</Text>

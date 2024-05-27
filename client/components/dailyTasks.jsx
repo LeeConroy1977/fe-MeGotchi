@@ -9,6 +9,7 @@ const DailyTasks = ({
   handleSelectedTask,
 }) => {
   const [currOpen, setCurrOpen] = useState(null);
+  console.log(dailyTasks)
   return (
     <ScrollView>
       <View style={styles.dailyTaskList}>
@@ -17,8 +18,8 @@ const DailyTasks = ({
             return (
               <DailyTask
                 task={task}
-                key={task.id}
-                id={task.id}
+                key={task._id}
+                id={task._id}
                 oncurrOpen={setCurrOpen}
                 currOpen={currOpen}
                 setCompletedModalVisible={setCompletedModalVisible}

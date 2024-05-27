@@ -92,8 +92,7 @@ const SignUp = () => {
     setCheckPassword(true);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function checkValidSubmit() {
     if (
       checkEmail &&
       checkPassword &&
@@ -102,6 +101,10 @@ const SignUp = () => {
     ) {
       setValidSubmit(true);
     }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
     if (validSubmit) {
       
       router.push({
@@ -188,6 +191,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setDisplayNameFocus(false);
+              checkValidSubmit();
             }}
           />
         </View>
@@ -236,6 +240,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setEmailFocus(false);
+              checkValidSubmit();
             }}
           />
         </View>
@@ -285,6 +290,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setPasswordFocus(false);
+              checkValidSubmit();
             }}
             secureTextEntry={!showPassword}
           />
@@ -352,6 +358,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setRetypePasswordFocus(false);
+              checkValidSubmit();
             }}
             secureTextEntry={!showRetypedPassword}
           />
