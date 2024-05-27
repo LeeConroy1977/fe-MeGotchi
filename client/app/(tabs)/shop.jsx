@@ -7,6 +7,7 @@ import Foundation from "@expo/vector-icons/Foundation";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Profiles from "../../db/Images";
 import ConfettiCannon from "react-native-confetti-cannon";
+import { router } from "expo-router";
 
 const shopItems = [
   {
@@ -29,7 +30,7 @@ const shopItems = [
     celebrationMsg: `How can we ever thank you for rescuing Noya from the wicked MeGotchi catcher Yamauba. Please try and complete some more goals so all our friends can be free...`,
     price: 20,
     available: true,
-    purchased: false,
+    purchased: true,
   },
   {
     id: 3,
@@ -40,7 +41,7 @@ const shopItems = [
     celebrationMsg: `You will be forever in our hearts for setting free the wise Mashimo. Now our tribe will be guided with great wisdom once again. Good luck with completing the rest of your goals...`,
     price: 30,
     available: true,
-    purchased: false,
+    purchased: true,
   },
   {
     id: 4,
@@ -51,7 +52,7 @@ const shopItems = [
     celebrationMsg: `The tribe Will always love you for this kind act. The village was so quiet and well behaved without Okuma around. You are doing great. Keep reaching your goals... `,
     price: 40,
     available: true,
-    purchased: false,
+    purchased: true,
   },
 ];
 
@@ -60,9 +61,12 @@ const shop = () => {
   const [selectedItem, setSelectedItem] = useState(items[0]);
   const [isSelected, setIsSelected] = useState(false);
   const [isModalOpen, setisModalOpen] = useState(false);
-  const [isPurchasedModalOpen, setisPurchasedModalOpen] = useState(true);
+  const [isPurchasedModalOpen, setisPurchasedModalOpen] = useState(false);
+  const [isShopMessageModalOpen, setisShopMessageModalOpen] = useState(true);
   const [itemIndex, setItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [itemsCompleted, setItemsCompleted] = useState(true);
+
   function handleSelectedItem(index) {
     setItemIndex(index);
     setSelectedItem(items[index]);
@@ -82,10 +86,29 @@ const shop = () => {
     console.log(items);
   }
 
+  function handleItemsCompleted() {
+    let count = 0;
+    items.map((item) => {
+      if (item.purchased === true) {
+        count++;
+      }
+    });
+
+    if (count === items.length) {
+      setisShopMessageModalOpen(true);
+      return setItemsCompleted(true);
+    }
+  }
+
   useEffect(() => {
     setSelectedItem(items[itemIndex]);
     setSelectedImage(Profiles[itemIndex].image_url);
-  }, [itemIndex, items]);
+    handleItemsCompleted();
+  }, [itemIndex, items, itemsCompleted, isModalOpen, isPurchasedModalOpen]);
+
+  console.log(itemsCompleted, "itemcomp");
+  console.log(isModalOpen, "modelopen");
+  console.log(isPurchasedModalOpen, "purchaseMoadl");
 
   return (
     <View
@@ -97,7 +120,59 @@ const shop = () => {
           : styles.shop
       }
     >
-      {!isPurchasedModalOpen && (
+      {itemsCompleted && !isModalOpen && !isPurchasedModalOpen && (
+        <Modal
+          style={styles.modal}
+          animationType="fade"
+          transparent={true}
+          visible={isShopMessageModalOpen}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setisShopMessageModalOpen(!isShopMessageModalOpen);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <View style={styles.itemView}>
+                <View style={styles.itemContainerMessage}>
+                  <View style={styles.closeIcon}>
+                    <AntDesign
+                      name="closecircleo"
+                      size={24}
+                      color="white"
+                      onPress={() =>
+                        setisShopMessageModalOpen(!isShopMessageModalOpen)
+                      }
+                    />
+                  </View>
+                  <View style={styles.shopMessageBox}>
+                    <Text style={styles.shopMessage}>
+                      You have completed your daily goals and bought back the
+                      MeGotchis but I'll be out again soon to catch some more...
+                    </Text>
+                  </View>
+                  <Pressable
+                    style={styles.returnBtnCelebration}
+                    onPress={() => {
+                      setisShopMessageModalOpen(!isShopMessageModalOpen);
+                      router.replace("/home");
+                    }}
+                  >
+                    <AntDesign
+                      name="pluscircleo"
+                      size={24}
+                      color="white"
+                      style={styles.plusIcon}
+                    />
+                    <Text style={styles.returnShopMessage}>Return to Home</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      )}
+      {!isPurchasedModalOpen && isSelected && (
         <Modal
           style={styles.modal}
           animationType="fade"
@@ -204,6 +279,7 @@ const shop = () => {
                           <Pressable
                             style={styles.purchaseBtnModal}
                             onPress={() => {
+                              handleItemsCompleted();
                               handlePurchaseItem(itemIndex);
                               setisPurchasedModalOpen(
                                 (isPurchasedModalOpen) => !isPurchasedModalOpen
@@ -357,6 +433,19 @@ const shop = () => {
           </View>
         </View>
       </Modal>
+      {/* sd */}
+
+      {/*  */}
+
+      {/* sd */}
+
+      {/*  */}
+
+      {/* sd */}
+
+      {/*  */}
+
+      {/* shop Message */}
 
       {!isPurchasedModalOpen && (
         <>
@@ -541,6 +630,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#00D2FF",
     marginTop: "1.5rem",
+    boxShadow: "1px 1px 1px 0px black",
   },
   closeIcon: {
     position: "absolute",
@@ -674,7 +764,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#264653",
     backgroundColor: "green",
     boxShadow: "1px 1px 2px 0px black",
-    borderRadius: "8px",
+    // borderRadius: "8px",
     fontSize: "0.58rem",
     marginLeft: "auto",
     marginRight: "auto",
@@ -766,6 +856,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
+    boxShadow: "2px 2px 2px 1px black",
   },
 
   celebrationBackgroundBox: {
@@ -890,5 +981,55 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: "10%",
+  },
+
+  // message modal
+
+  itemViewMessage: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#4D5057",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  itemContainerMessage: {
+    width: "82%",
+    height: "82%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#00D2FF",
+    backgroundColor: "#08415C",
+    borderRadius: "12px",
+    marginTop: "1.5rem",
+    boxShadow: "2px 2px 2px 1px black",
+  },
+  shopMessageBox: {
+    width: "70%",
+    height: "67%",
+    marginTop: "2rem",
+  },
+
+  shopMessage: {
+    fontSize: "1rem",
+    // fontWeight: "bold",
+    color: "white",
+    fontFamily: "MarkoOne-regular",
+    marginBottom: "0.5rem",
+    textAlign: "center",
+    marginTop: "1rem",
+  },
+
+  returnShopMessage: {
+    fontSize: "0.85rem",
+    // fontWeight: "bold",
+    color: "#264653",
+    color: "white",
+    fontFamily: "MarkoOne-regular",
+    marginLeft: "0.5rem",
+    textAlign: "center",
   },
 });
