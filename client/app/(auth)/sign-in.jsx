@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState, useContext } from "react";
 import CustomButton from "../../reuseable-components/CustomButton";
@@ -18,7 +19,7 @@ const SignIn = () => {
     password: "",
   });
 
-  const { setUser } = useContext(userContext);
+  const { user, setUser } = useContext(userContext);
 
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkPassword, setCheckPassword] = useState(false);
@@ -27,6 +28,7 @@ const SignIn = () => {
   const [validSubmit, setvalidSubmit] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState("Password is invalid");
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleValidEmail(text) {
     const regex1 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -70,12 +72,16 @@ const SignIn = () => {
     setCheckPassword(true);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function checkValidSubmit(){
     if (checkPassword && checkEmail) {
       setvalidSubmit(true);
     }
-    if (validSubmit) {
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (checkPassword && checkEmail) {
+        setIsLoading(true);
       const userSubmit = {
         email: form.email,
         password: form.password,
@@ -89,17 +95,25 @@ const SignIn = () => {
         },
         body: JSON.stringify(userSubmit),
       })
-        .then((response) => response.json())
-        .then((json) => {
-          //set user context
-          console.log(json);
-          setUser(json);
-          //route to /home
-          router.push("/wellness-main");
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          console.error(data.error);
+          alert(`Sign-in error: ${data.error}`);
+        } else {
+          setUser(data);
+          router.push(data.taskList.length > 0 ? "/home" : "/wellness-main");
+        }
+      })
+      .catch((error) => {
+          console.error(error);
+          alert(`Error: ${error}`);
         })
-        .catch((error) => {
-          return { message: error };
+        .finally(() => {
+          setIsLoading(false);
         });
+    } else {
+      alert("Please enter valid email and password.");
     }
   }
 
@@ -156,6 +170,7 @@ const SignIn = () => {
             }}
             onBlur={() => {
               setEmailFocus(false);
+              checkValidSubmit();
             }}
           />
         </View>
@@ -205,6 +220,7 @@ const SignIn = () => {
             }}
             onBlur={() => {
               setPasswordFocus(false);
+              checkValidSubmit();
             }}
             secureTextEntry={!showPassword}
           />
@@ -228,7 +244,13 @@ const SignIn = () => {
       </View>
       <CustomButton
         styleName="btnSignIn"
-        title="Submit"
+        title={
+          isLoading ? (
+            <ActivityIndicator size="small" color="#FFFFFF" />
+          ) : (
+            "Submit"
+          )
+        }
         titleStyleName="homeTitle"
         handlePress={handleSubmit}
       />
