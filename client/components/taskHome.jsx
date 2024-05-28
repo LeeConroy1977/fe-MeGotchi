@@ -2,8 +2,8 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 
-const TaskHome = ({ task, index, handleDeletedTask }) => {
-  const { title, body, color, coins, icon, id } = task;
+const TaskHome = ({ task, handleDeletedTask }) => {
+  const { title, body, iconURL, message} = task;
   return (
     <View style={styles.taskCard}>
       <View style={styles.iconContainer}>
@@ -15,7 +15,7 @@ const TaskHome = ({ task, index, handleDeletedTask }) => {
         )}
       </View>
       <Text style={styles.taskTitle}>{title}</Text>
-      <Pressable style={styles.taskBtn} onPress={() => handleDeletedTask(id)}>
+      <Pressable style={styles.taskBtn} onPress={() => handleDeletedTask(task)}>
         <FontAwesome name="check" size={16} color="green" />
       </Pressable>
     </View>

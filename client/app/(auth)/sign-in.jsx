@@ -12,6 +12,7 @@ import React, { useState, useContext } from "react";
 import CustomButton from "../../reuseable-components/CustomButton";
 import { Link, router } from "expo-router";
 import userContext from "../(contexts)/userContext";
+import tasksContext from "../(contexts)/tasksContext";
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -19,8 +20,8 @@ const SignIn = () => {
     password: "",
   });
 
-  const { user, setUser } = useContext(userContext);
-
+  const { setUser } = useContext(userContext);
+  const { taskInfo, setTaskInfo } = useContext(tasksContext);
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkPassword, setCheckPassword] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
@@ -102,6 +103,7 @@ const SignIn = () => {
           alert(`Sign-in error: ${data.error}`);
         } else {
           setUser(data);
+          setTaskInfo({ tasksCompleted: 0, tasksTotal: data.taskList.length });
           router.push(data.taskList.length > 0 ? "/home" : "/wellness-main");
         }
       })

@@ -9,14 +9,12 @@ import {
 } from "react-native";
 import React, { useEffect, useState, useContext } from "react";
 import userContext from "../(contexts)/userContext";
+import tasksContext from "../(contexts)/tasksContext";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import DailyTaskListHome from "../../components/dailyTaskListHome";
-import { router } from "expo-router";
 import { Modal, ScrollView } from "react-native-web";
 import ConfettiCannon from "react-native-confetti-cannon";
 import * as Progress from "react-native-progress";
-import Coins from "../../components/coins";
 
 const shopItems = [
   {
@@ -64,98 +62,72 @@ const shopItems = [
     purchased: false,
   },
 ];
-const dailyTasks = [
-  {
-    id: 1,
-    title: "Take a nice walk",
-    body: "Take a nice walk somewhere and breathe in the air!",
-    coins: 10,
-    icon: "task_walking_icon",
-    message:
-      "Congratulations on taking a walk. It's good to stay healthy and to get some exercise!",
-  },
-  {
-    id: 2,
-    title: "Make a lovely meal",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "I hope your meal was tasty and nutritious!",
-  },
-  {
-    id: 3,
-    title: "Take a hot shower",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 4,
-    title: "Drink some water",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 5,
-    title: "Take a walk",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 6,
-    title: "Take a walk",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    color: "#FFD0EF",
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-];
 
 const home = () => {
   const { user, setUser } = useContext(userContext);
-
+  const { taskInfo, setTaskInfo } = useContext(tasksContext);
   const [items, setItems] = useState(shopItems);
-  const [allDailyTasks, setAllDailyTasks] = useState(dailyTasks);
   const [showMessage, setShowMessage] = useState(false);
-  const [taskLength, setTasksLength] = useState(dailyTasks.length);
-  const [taskCount, setTaskCount] = useState(0);
   const [showTaskMessage, setShowTaskMessage] = useState(false);
-
-  // setModalVisible(true);
-
-  function handleDeletedTask(id) {
-    const filteredTask = allDailyTasks.filter((task) => task.id !== id);
-    setAllDailyTasks([...filteredTask]);
-    setTaskCount((taskCount) => taskCount + 1);
-    setShowTaskMessage(true);
-    const timer = setTimeout(() => {
-      setShowTaskMessage(false);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }
-
-  function handleProgressBar() {
-    const progress = 1 - allDailyTasks.length / taskLength;
-
-    return progress;
-  }
-  console.log(handleProgressBar());
+  const [progress, setProgress] = useState(1);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMessage(true);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+    setProgress(1 * taskInfo.tasksCompleted / taskInfo.tasksTotal);
+    setShowMessage(true);
+  }, [user, taskInfo]);
 
-
-  
-
+  function handleDeletedTask(task) {
+    const sentItem = {
+      isDelete: true,
+      taskList: [ task ]
+    }
+    fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sentItem),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.error){
+          console.log(data.error);
+        }
+        const moneyIncrement = { balance: 10 }
+        fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
+          method: "PATCH",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(moneyIncrement),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if(data.error){
+            console.log(data.error);
+          }
+          setTaskInfo(() => {
+            const taskInfoCopy = {...taskInfo}
+            taskInfoCopy.tasksCompleted += 1
+            return taskInfoCopy;
+          });
+          setShowTaskMessage(true);
+          let timer1 = setTimeout(() => setShowTaskMessage(false), 3000);
+          setUser(data);
+          return () => {
+            clearTimeout(timer1);
+          }   
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
 
   return (
     <ScrollView>
@@ -174,7 +146,7 @@ const home = () => {
                 source={require("../../assets/images/japanese_coins_1.svg")}
                 style={styles.coinsImg}
               />
-              <Text style={styles.coinText}>10</Text>
+              <Text style={styles.coinText}>{user.balance}</Text>
             </View>
             {showMessage && (
               <View style={styles.homeMsgBox}>
@@ -191,7 +163,7 @@ const home = () => {
                 <FontAwesome6 name="circle-info" size={16} color="black" />
                 <View style={styles.homeMsgTextBox}>
                   <Text style={styles.homeMsg}>
-                    That's great name! Congratulations on completing your
+                    That's great {user.displayName}! Congratulations on completing your
                     goal...
                   </Text>
                 </View>
@@ -264,10 +236,10 @@ const home = () => {
           )}
           <View style={styles.infoContainer}>
             <Text style={styles.progressText}>
-              Completed tasks {taskCount}/{taskLength}
+              Completed tasks {taskInfo.tasksCompleted}/{taskInfo.tasksTotal}
             </Text>
             <Progress.Bar
-              progress={handleProgressBar()}
+              progress={progress}
               width={294}
               height={12}
               borderColor="black"
@@ -280,12 +252,12 @@ const home = () => {
             <View style={styles.tasksRemaingBox}>
               <FontAwesome6 name="circle-info" size={16} color="white" />
               <Text style={styles.tasksRemainingText}>
-                You have {allDailyTasks.length} tasks remaining
+                You have {user.taskList.length} tasks remaining
               </Text>
             </View>
             <View style={styles.tasksListContainer}>
               <DailyTaskListHome
-                tasks={allDailyTasks}
+                tasks={user.taskList}
                 handleDeletedTask={handleDeletedTask}
               />
               {/* <TouchableOpacity

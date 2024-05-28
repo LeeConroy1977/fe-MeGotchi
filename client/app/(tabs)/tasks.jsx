@@ -14,64 +14,11 @@ import {
 } from "react-native-web";
 import DailyTasks from "../../components/dailyTasks";
 import userContext from "../(contexts)/userContext";
-
-const dailyTasks = [
-  {
-    id: 1,
-    title: "Take a nice walk",
-    body: "Take a nice walk somewhere and breathe in the air!",
-    coins: 10,
-    icon: "task_walking_icon",
-    message:
-      "Congratulations on taking a walk. It's good to stay healthy and to get some exercise!",
-  },
-  {
-    id: 2,
-    title: "Make a lovely meal",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "I hope your meal was tasty and nutritious!",
-  },
-  {
-    id: 3,
-    title: "Take a hot shower",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 4,
-    title: "Drink some water",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 5,
-    title: "Take a walk",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 6,
-    title: "Take a walk",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    color: "#FFD0EF",
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-];
-
-
+import tasksContext from "../(contexts)/tasksContext";
 
 const tasks = () => {
-
   const { user, setUser } = useContext(userContext);
+  const { taskInfo, setTaskInfo } = useContext(tasksContext);
   const [isAddTask, setIsAddTask] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [goalForm, setGoalForm] = useState({
@@ -80,12 +27,11 @@ const tasks = () => {
     iconUrl: "../assets/images/task_walking_icon.svg",
     message: "Good work. You completed another goal!"
   });
-  const [allDailyTasks, setAllDailyTasks] = useState();
   const [completedModalVisible, setCompletedModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
 
   useEffect(() => {
-  }, [setUser])
+  }, [setUser, setTaskInfo])
 
   function handleAddTask() {
     setIsAddTask(true);
@@ -129,6 +75,11 @@ const tasks = () => {
           if(data.error){
             console.log(data.error);
           }
+          setTaskInfo(() => {
+            const taskInfoCopy = {...taskInfo}
+            taskInfoCopy.tasksCompleted += 1
+            return taskInfoCopy;
+          });
           setUser(data);
         })
         .catch((error) => {
@@ -141,14 +92,11 @@ const tasks = () => {
     
   }
 
-  function handleGoalsubmit(e) {
-    console.log(goalForm);
-    e.preventDefault();
+  function handleGoalsubmit() {
     if (goalForm.title.length < 4) {
       return;
     }
     if (goalForm.title.length > 3) {
-
       const sentItem = {
         isDelete: false,
         taskList: [ goalForm ]
@@ -175,6 +123,12 @@ const tasks = () => {
           body: "",
           iconUrl: "custom_task_icon",
           message: "Good work. You completed another goal!"
+        });
+        setTaskInfo(() => {
+          const taskInfoCopy = {...taskInfo}
+          taskInfoCopy.tasksTotal += 1
+          console.log(taskInfoCopy)
+          return taskInfoCopy;
         });
         setUser(data);
       })
@@ -386,7 +340,7 @@ const tasks = () => {
               <View style={styles.tasksRamaingBox}>
                 <FontAwesome6 name="circle-info" size={16} color="black" />
                 <Text style={styles.tasksRamainingText}>
-                  You have {allDailyTasks.length} tasks remaining
+                  You have {user.taskList.length} tasks remaining
                 </Text>
               </View>
               <Image
