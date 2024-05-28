@@ -5,6 +5,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -32,6 +33,7 @@ const SignUp = () => {
   const [validSubmit, setValidSubmit] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState("Password is invalid");
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (form.password === reTypedPassword && checkPassword) {
@@ -92,12 +94,22 @@ const SignUp = () => {
     setCheckPassword(true);
   }
 
+ function checkValidSubmit() {
+    if (
+      checkEmail &&
+      checkPassword &&
+      checkDisplayName &&
+      passwordMatch
+    ) {
+      setIsLoading(true);
+      setValidSubmit(true);
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    if (!checkEmail || !checkPassword || !checkDisplayName || !passwordMatch) {
-      setValidSubmit(false);
-    }
-    if (checkEmail && checkPassword && checkDisplayName && passwordMatch) {
+    if (validSubmit) {
+
       router.push({
         pathname: "/character",
         params: {
@@ -107,6 +119,7 @@ const SignUp = () => {
         },
       });
     }
+    setIsLoading(false);
   }
 
   return (
@@ -182,6 +195,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setDisplayNameFocus(false);
+              checkValidSubmit();
             }}
           />
         </View>
@@ -230,6 +244,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setEmailFocus(false);
+              checkValidSubmit();
             }}
           />
         </View>
@@ -279,6 +294,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setPasswordFocus(false);
+              checkValidSubmit();
             }}
             secureTextEntry={!showPassword}
           />
@@ -346,6 +362,7 @@ const SignUp = () => {
             }}
             onBlur={() => {
               setRetypePasswordFocus(false);
+              checkValidSubmit();
             }}
             secureTextEntry={!showRetypedPassword}
           />
@@ -368,7 +385,13 @@ const SignUp = () => {
         </View>
       </View>
       <CustomButton
-        title="Submit"
+        title={
+          isLoading ? (
+            <ActivityIndicator size="small" color="#FFFFFF" />
+          ) : (
+            "Submit"
+          )
+        }
         titleStyleName="homeTitle"
         styleName="btnSignIn"
         handlePress={handleSubmit}

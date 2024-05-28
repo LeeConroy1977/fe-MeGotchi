@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import ConfettiCannon from "react-native-confetti-cannon";
-
 import {
   Modal,
   SafeAreaView,
@@ -13,72 +12,25 @@ import {
   ImageBackground,
 } from "react-native-web";
 import DailyTasks from "../../components/dailyTasks";
-
-const dailyTasks = [
-  {
-    id: 1,
-    title: "Take a nice walk",
-    body: "Take a nice walk somewhere and breathe in the air!",
-    coins: 10,
-    icon: "task_walking_icon",
-    message: "Congratulations on taking a walk. It's good to stay healthy!",
-  },
-  {
-    id: 2,
-    title: "Make a lovely meal",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "I hope your meal was tasty and nutritious!",
-  },
-  {
-    id: 3,
-    title: "Take a hot shower",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 4,
-    title: "Drink some water",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 5,
-    title: "Take a walk",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    coins: 10,
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-  {
-    id: 6,
-    title: "Take a walk",
-    body: "Lorem Ipsum is simply dummy text of the printing.",
-    color: "#FFD0EF",
-    icon: "food_icon",
-    message: "Congratulations on taking a walk!",
-  },
-];
+import userContext from "../(contexts)/userContext";
 
 const tasks = () => {
+
+  const { user, setUser } = useContext(userContext);
   const [isAddTask, setIsAddTask] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [goalForm, setGoalForm] = useState({
     title: "",
     body: "",
-    color: "#6665DD",
-    icon: "custom_task_icon",
-    message: "Good work. You completed another goal!",
-    coins: 10,
+    iconUrl: "../assets/images/task_walking_icon.svg",
+    message: "Good work. You completed another goal!"
   });
-  const [allDailyTasks, setAllDailyTasks] = useState(dailyTasks);
+  const [allDailyTasks, setAllDailyTasks] = useState();
   const [completedModalVisible, setCompletedModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
+
+  useEffect(() => {
+  }, [setUser])
 
   function handleAddTask() {
     setIsAddTask(true);
@@ -89,28 +41,90 @@ const tasks = () => {
     setSelectedTask(task);
   }
 
-  function handleDeletedTask(id) {
-    const filteredTask = allDailyTasks.filter((task) => task.id !== id);
-    setAllDailyTasks([...filteredTask]);
+  function handleDeletedTask(task) {
+    const sentItem = {
+      isDelete: true,
+      taskList: [ task ]
+    }
+
+    fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sentItem),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.error){
+          console.log(data.error);
+        }
+        const moneyIncrement = { balance: 10 }
+        fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
+          method: "PATCH",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(moneyIncrement),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if(data.error){
+            console.log(data.error);
+          }
+          setUser(data);
+        })
+        .catch((error) => {
+          alert(`Error completing goal`);
+        });
+      })
+      .catch((error) => {
+        alert(`Error completing goal`);
+      });
+    
   }
 
   function handleGoalsubmit(e) {
+    console.log(goalForm);
     e.preventDefault();
     if (goalForm.title.length < 4) {
       return;
     }
     if (goalForm.title.length > 3) {
-      setAllDailyTasks((allDailyTasks) => [goalForm, ...allDailyTasks]);
-      setModalVisible(!modalVisible);
-      setIsAddTask(!isAddTask);
 
-      setGoalForm({
-        title: "",
-        body: "",
-        color: "#6665DD",
-        icon: "custom_task_icon",
-        message: "Good work. You completed another goal!",
-        coins: 10,
+      const sentItem = {
+        isDelete: false,
+        taskList: [ goalForm ]
+      }
+
+      fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sentItem),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.error){
+          console.log(data.error);
+          alert(`Goal setting error: ${data.error}`);
+        }
+        setModalVisible(false);
+        setIsAddTask(false);
+        setGoalForm({
+          title: "",
+          body: "",
+          iconUrl: "custom_task_icon",
+          message: "Good work. You completed another goal!"
+        });
+        setUser(data);
+      })
+      .catch((error) => {
+        alert(`Error setting goal`);
       });
     }
   }
@@ -142,6 +156,8 @@ const tasks = () => {
                   setGoalForm({
                     title: "",
                     body: "",
+                    iconUrl: "custom_task_icon",
+                    message: "Good work. You completed another goal!"
                   });
                 }}
               >
@@ -234,7 +250,7 @@ const tasks = () => {
                 onPress={() => {
                   setCompletedModalVisible(!completedModalVisible);
                   setIsAddTask(false);
-                  handleDeletedTask(selectedTask.id);
+                  handleDeletedTask(selectedTask);
                 }}
               >
                 <Text style={styles.skipBtn}>Skip</Text>
@@ -290,7 +306,7 @@ const tasks = () => {
             <ScrollView>
               <View style={styles.tasksView}>
                 <DailyTasks
-                  dailyTasks={allDailyTasks}
+                  dailyTasks={user.taskList}
                   setCompletedModalVisible={setCompletedModalVisible}
                   handleSelectedTask={handleSelectedTask}
                 />

@@ -1,18 +1,31 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import React,  { useState, useContext, useEffect } from "react";
 import megotchiPic from "../assets/images/megotchi_home_Avatar.svg";
+import userContext from "../app/(contexts)/userContext";
 
 const WelcomePage = () => {
-  const username = "Johnny";
-  const givenName = "littleGuy76";
+  const { user} = useContext(userContext);
+
+  useEffect(() => {
+    fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
+        method: "GET"
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          setUser(json);
+        })
+        .catch((error) => {
+          return { message: error };
+        });
+  });
 
   return (
     <View style={styles.welcomePage}>
-      <Text style={styles.welcomeText}>Welcome back, {username}</Text>
+      <Text style={styles.welcomeText}>Welcome back, {user.displayName}</Text>
       <View style={styles.logo}>
         <Image style={styles.image} source={megotchiPic} />
       </View>
-      <Text style={styles.avatarNameText}>My name is {givenName}</Text>
+      <Text style={styles.avatarNameText}>My name is {user.megotchi.name}</Text>
     </View>
   );
 };
