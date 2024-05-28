@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import userContext from "./(contexts)/userContext";
-// import shopItemsContext from "./(contexts)/userContext";
+import { ShopItemsProvider } from "./(contexts)/shopItemsContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,20 +22,22 @@ const RootLayout = () => {
   if (!fontsLoaded && !error) return null;
   return (
     <userContext.Provider value={{ user, setUser }}>
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="index"
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="(auth)"
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-      </Stack>
+      <ShopItemsProvider>
+        <Stack>
+          <Stack.Screen
+            name="(tabs)"
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="index"
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="(auth)"
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+        </Stack>
+      </ShopItemsProvider>
     </userContext.Provider>
   );
 };

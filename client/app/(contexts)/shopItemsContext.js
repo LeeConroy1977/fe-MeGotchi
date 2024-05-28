@@ -1,6 +1,6 @@
-import React from "react";
+import { createContext, useState } from "react";
 
-const shopItems = [
+const shopItemArr = [
   {
     id: 1,
     name: "Shima",
@@ -46,7 +46,14 @@ const shopItems = [
     purchased: false,
   },
 ];
+export const ShopItemsContext = createContext();
 
-const shopItemsContext = React.createContext({ shopItems });
+export const ShopItemsProvider = ({ children }) => {
+  const [shopItems, setShopItems] = useState(shopItemArr);
 
-export default shopItemsContext;
+  return (
+    <ShopItemsContext.Provider value={{ shopItems, setShopItems }}>
+      {children}
+    </ShopItemsContext.Provider>
+  );
+};
