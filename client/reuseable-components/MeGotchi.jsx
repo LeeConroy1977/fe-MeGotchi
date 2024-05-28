@@ -1,13 +1,20 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
+import MeGotchis from "../db/MeGotchis";
 
-const MeGotchi = ({ avatarBox, avatarImage, handlePress, isSelected }) => {
+const MeGotchi = ({
+  avatarBox,
+  avatarImage,
+  handlePress,
+  isSelected,
+  index,
+}) => {
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={[styles[avatarBox], isSelected && styles.selected]}>
         <Image
           style={styles[avatarImage]}
-          source={require("../assets/images/megotchi_home_Avatar.svg")}
+          source={MeGotchis[index].image_url}
         />
       </View>
     </TouchableOpacity>
@@ -28,8 +35,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   selectAvatarImage: {
-    width: "75px",
-    height: "75px",
+    width: "55px",
+    height: "55px",
     boxShadow: "10px 10px 5px 0px #000",
     zIndex: "2",
   },

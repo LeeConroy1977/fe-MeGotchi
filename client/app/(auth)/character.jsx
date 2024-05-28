@@ -112,7 +112,10 @@ const Character = () => {
 
   return (
     <SafeAreaView style={styles.character}>
-      <Text style={styles.logoHeader}>MeGotchi</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.logoHeader}>MeGotchi</Text>
+        <Text style={styles.tradeMark}>&trade;</Text>
+      </View>
       <View style={styles.pageMsgBox}>
         <Text style={styles.pageMessage}>Adopt a MeGotchi...</Text>
         {selected === null ? null : selected === false ? (
@@ -125,7 +128,7 @@ const Character = () => {
         )}
       </View>
       <View style={styles.avatarsContainer}>
-        {meGotchiArr.map((meGotchi) => {
+        {meGotchiArr.map((meGotchi, index) => {
           return (
             <MeGotchi
               avatarBox="selectAvatarBox"
@@ -133,6 +136,7 @@ const Character = () => {
               key={meGotchi.id}
               handlePress={() => handleSelected(meGotchi)}
               isSelected={selected === meGotchi}
+              index={index}
             />
           );
         })}
@@ -141,7 +145,7 @@ const Character = () => {
         <View style={styles.textBox}>
           <Text style={styles.inputQuestion}>What's my name?</Text>
           {!isValidated && isBlur ? (
-            <Text style={styles.inputinValidMsg}>Should not be empty...</Text>
+            <Text style={styles.inputinValidMsg}>Should not be empty</Text>
           ) : isValidated ? (
             <View style={styles.validMsgBox}>
               <Text style={styles.inputValidMsg}>Awesome</Text>
@@ -187,12 +191,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
   },
+  headerContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "2.1rem",
+    width: "50%",
+  },
+
   logoHeader: {
     fontSize: "1.8rem",
     fontWeight: "bold",
     fontFamily: "MarkoOne-regular",
-    marginTop: "2.3rem",
-    color: "#264653",
+    marginLeft: "0.2rem",
+  },
+
+  tradeMark: {
+    marginLeft: "0.2rem",
+    fontSize: "1.1rem",
+    fontWeight: "bold",
+    marginBottom: "1rem",
   },
   pageMsgBox: {
     width: "80%",
@@ -207,7 +226,7 @@ const styles = StyleSheet.create({
     color: "#264653",
     fontFamily: "MarkoOne-regular",
     fontSize: "0.85rem",
-    marginLeft: "0.2rem",
+    marginLeft: "0.3rem",
   },
   pageMessageValid: {
     fontWeight: "bold",
@@ -222,7 +241,7 @@ const styles = StyleSheet.create({
     color: "red",
     fontFamily: "MarkoOne-regular",
     fontSize: "0.75rem",
-    marginRight: "0.2rem",
+    marginRight: "0.2.5rem",
   },
   avatarsContainer: {
     display: "flex",
@@ -258,7 +277,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: "0.85rem",
     fontFamily: "MarkoOne-regular",
-    marginLeft: "0.2rem",
+    marginLeft: "0.3rem",
   },
   inputValidMsg: {
     color: "#264653",
@@ -281,11 +300,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: "0.75rem",
     fontFamily: "MarkoOne-regular",
+    marginRight: "0.3rem",
   },
   heart: {
     fontSize: "0.7rem",
     marginLeft: "0.3rem",
     color: "#FF6363",
+    marginRight: "0.3rem",
   },
   textInput: {
     color: "white",
