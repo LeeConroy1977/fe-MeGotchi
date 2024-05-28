@@ -111,7 +111,7 @@ const Character = () => {
       <Text style={styles.logoHeader}>MeGotchi</Text>
       <View style={styles.pageMsgBox}>
         <Text style={styles.pageMessage}>Adopt a MeGotchi...</Text>
-        {selected === false ? (
+        {selected === null ? null : selected === false ? (
           <Text style={styles.pageMessageInvalid}>Choose a MeGotchi...</Text>
         ) : (
           <View style={styles.validMsgBox}>
