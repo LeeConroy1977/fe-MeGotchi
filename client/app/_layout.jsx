@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import userContext from "./(contexts)/userContext";
+import tasksContext from "./(contexts)/tasksContext";
+// import shopItemsContext from "./(contexts)/userContext";
 import { ShopItemsProvider } from "./(contexts)/shopItemsContext";
 
 SplashScreen.preventAutoHideAsync();
@@ -13,6 +15,7 @@ const RootLayout = () => {
   });
 
   const [user, setUser] = useState(false);
+  const [taskInfo, setTaskInfo] = useState(false);
 
   useEffect(() => {
     if (error) throw error;
@@ -23,20 +26,22 @@ const RootLayout = () => {
   return (
     <userContext.Provider value={{ user, setUser }}>
       <ShopItemsProvider>
-        <Stack>
-          <Stack.Screen
-            name="(tabs)"
-            options={{ headerShown: false }}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="index"
-            options={{ headerShown: false }}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="(auth)"
-            options={{ headerShown: false }}
-          ></Stack.Screen>
-        </Stack>
+        <tasksContext.Provider value={{ taskInfo, setTaskInfo }}>
+          <Stack>
+            <Stack.Screen
+              name="(tabs)"
+              options={{ headerShown: false }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="index"
+              options={{ headerShown: false }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="(auth)"
+              options={{ headerShown: false }}
+            ></Stack.Screen>
+          </Stack>
+        </tasksContext.Provider>
       </ShopItemsProvider>
     </userContext.Provider>
   );

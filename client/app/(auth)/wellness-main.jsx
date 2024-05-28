@@ -25,7 +25,6 @@ const WellnessCheck = () => {
 
   const { user, setUser } = useContext(userContext);
 
-
   const options = [
     { id: 1, text: "Great", emoji: "😃" },
     { id: 2, text: "Okay", emoji: "😐" },

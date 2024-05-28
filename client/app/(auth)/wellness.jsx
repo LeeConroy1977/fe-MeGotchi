@@ -25,7 +25,6 @@ const WellnessCheck = () => {
 
   const { user, setUser } = useContext(userContext);
 
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowWelcomePage(false);

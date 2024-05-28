@@ -9,7 +9,7 @@ const DailyTaskListHome = ({ tasks, handleDeletedTask }) => {
         return (
           <TaskHome
             task={task}
-            key={task.id}
+            key={task._id}
             index={i}
             handleDeletedTask={handleDeletedTask}
           />
