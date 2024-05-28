@@ -12,7 +12,7 @@ const DailyTask = ({
   setCompletedModalVisible,
   handleSelectedTask,
 }) => {
-  const { title, body, color, coins, icon } = task;
+  const { title, body, iconUrl, message } = task;
 
   const isSelected = id === currOpen;
 

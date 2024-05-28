@@ -118,6 +118,7 @@ const dailyTasks = [
 
 const home = () => {
   const { user, setUser } = useContext(userContext);
+
   const [items, setItems] = useState(shopItems);
   const [allDailyTasks, setAllDailyTasks] = useState(dailyTasks);
   const [showMessage, setShowMessage] = useState(false);
@@ -151,6 +152,10 @@ const home = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+
+  
+
 
   return (
     <ScrollView>

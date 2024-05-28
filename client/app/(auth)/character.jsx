@@ -89,15 +89,18 @@ const Character = () => {
         body: JSON.stringify(userSubmit),
       })
         .then((response) => response.json())
-        .then((json) => {
-          //set user context
-
-          setUser(json);
-          //route to /home
-          router.push("/wellness");
+        .then((data) => {
+          if(data.error){
+            console.log(data.error);
+            alert(`Sign-up error: ${data.error}`);
+          }
+          else{
+            setUser(data);
+            router.push("/wellness");
+          }
         })
         .catch((error) => {
-          return { message: error };
+          alert("Error creating user");
         });
     }
     setName("");
