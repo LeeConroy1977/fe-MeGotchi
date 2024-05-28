@@ -94,6 +94,7 @@ const SignUp = () => {
     setCheckPassword(true);
   }
 
+
  function checkValidSubmit() {
     if (
       checkEmail &&
@@ -109,6 +110,7 @@ const SignUp = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (validSubmit) {
+
       router.push({
         pathname: "/character",
         params: {
