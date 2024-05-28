@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { ImageBackground, Modal, ScrollView } from "react-native-web";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ShopItemsList from "../../components/shopItemsList";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Foundation from "@expo/vector-icons/Foundation";
@@ -8,56 +8,12 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Profiles from "../../db/Images";
 import ConfettiCannon from "react-native-confetti-cannon";
 import { router } from "expo-router";
-const shopItems = [
-  {
-    id: 1,
-    name: "Shima",
-    description:
-      "Shima is a happy and playful Megotchi. She loves to make you smile",
-    purchasedMsg: `You have freed Shima and returned her back to the Megotchi tribe`,
-    celebrationMsg: `We Can't thank you enough for returning our friend Shima to us. She is the heart and soul of our village. We wish you luck in completing your goals...`,
-    price: 20,
-    available: true,
-    purchased: false,
-  },
-  {
-    id: 2,
-    name: "Noya",
-    description:
-      "Noya is a brave warrior. He protects our village with courage and valour",
-    purchasedMsg: `You have rescude Noya and returned him back to the Megotchi tribe`,
-    celebrationMsg: `How can we ever thank you for rescuing Noya from the wicked MeGotchi catcher Yamauba. Please try and complete some more goals so all our friends can be free...`,
-    price: 20,
-    available: true,
-    purchased: false,
-  },
-  {
-    id: 3,
-    name: "Mashimo",
-    description:
-      "Mashimo is a quite and thoughtful Megotchi. He is old and wise",
-    purchasedMsg: `You have saved Mashimo and returned him back to the Megotchi tribe`,
-    celebrationMsg: `You will be forever in our hearts for setting free the wise Mashimo. Now our tribe will be guided with great wisdom once again. Good luck with completing the rest of your goals...`,
-    price: 30,
-    available: true,
-    purchased: false,
-  },
-  {
-    id: 4,
-    name: "Okuma",
-    description:
-      "Okuma is a playful and mischievous MeGotchi. She is always getting into trouble",
-    purchasedMsg: `You have set free Okuma and returned her back to the MeGotchi tribe`,
-    celebrationMsg: `The tribe Will always love you for this kind act. The village was so quiet and well behaved without Okuma around. You are doing great. Keep reaching your goals... `,
-    price: 40,
-    available: true,
-    purchased: false,
-  },
-];
+import { ShopItemsContext } from "../(contexts)/shopItemsContext";
 
 const shop = () => {
-  const [items, setItems] = useState(shopItems);
-  const [selectedItem, setSelectedItem] = useState(items[0]);
+  const { shopItems, setShopItems } = useContext(ShopItemsContext);
+
+  const [selectedItem, setSelectedItem] = useState(shopItems[0]);
   const [isSelected, setIsSelected] = useState(false);
   const [isModalOpen, setisModalOpen] = useState(false);
   const [isPurchasedModalOpen, setisPurchasedModalOpen] = useState(false);
@@ -66,11 +22,9 @@ const shop = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [itemsCompleted, setItemsCompleted] = useState(false);
 
-  // const shopItems = React.useContext(shopItemsContext);
-
   function handleSelectedItem(index) {
     setItemIndex(index);
-    setSelectedItem(items[index]);
+    setSelectedItem(shopItems[index]);
     setisModalOpen((isModalOpen) => !isModalOpen);
     setSelectedImage(Profiles[itemIndex].image_url);
   }
@@ -79,33 +33,32 @@ const shop = () => {
     setIsSelected(true);
   }
   function handlePurchaseItem(index) {
-    setItems((items) =>
+    setShopItems((items) =>
       items.map((item) => {
         return item.id - 1 === index ? { ...item, purchased: true } : item;
       })
     );
-    console.log(items);
   }
 
   function handleItemsCompleted() {
     let count = 0;
-    items.map((item) => {
+    shopItems.map((item) => {
       if (item.purchased === true) {
         count++;
       }
     });
 
-    if (count === items.length) {
+    if (count === shopItems.length) {
       setisShopMessageModalOpen(true);
       return setItemsCompleted(true);
     }
   }
 
   useEffect(() => {
-    setSelectedItem(items[itemIndex]);
+    setSelectedItem(shopItems[itemIndex]);
     setSelectedImage(Profiles[itemIndex].image_url);
     handleItemsCompleted();
-  }, [itemIndex, items, itemsCompleted, isModalOpen, isPurchasedModalOpen]);
+  }, [itemIndex, shopItems, itemsCompleted, isModalOpen, isPurchasedModalOpen]);
 
   console.log(itemsCompleted, "itemcomp");
   console.log(isModalOpen, "modelopen");
@@ -121,43 +74,312 @@ const shop = () => {
           : styles.shop
       }
     >
-      {itemsCompleted && !isModalOpen && !isPurchasedModalOpen && (
-        <Modal
-          style={styles.modal}
-          animationType="fade"
-          transparent={true}
-          visible={isShopMessageModalOpen}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            setisShopMessageModalOpen(!isShopMessageModalOpen);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View style={styles.itemView}>
-                <View style={styles.itemContainerMessage}>
-                  <View style={styles.closeIcon}>
-                    <AntDesign
-                      name="closecircleo"
-                      size={24}
-                      color="white"
-                      onPress={() =>
-                        setisShopMessageModalOpen(!isShopMessageModalOpen)
-                      }
-                    />
+      {shopItems && (
+        <>
+          {itemsCompleted && !isModalOpen && !isPurchasedModalOpen && (
+            <Modal
+              style={styles.modal}
+              animationType="fade"
+              transparent={true}
+              visible={isShopMessageModalOpen}
+              onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setisShopMessageModalOpen(!isShopMessageModalOpen);
+              }}
+            >
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <View style={styles.itemView}>
+                    <View style={styles.itemContainerMessage}>
+                      <View style={styles.closeIcon}>
+                        <AntDesign
+                          name="closecircleo"
+                          size={24}
+                          color="white"
+                          onPress={() =>
+                            setisShopMessageModalOpen(!isShopMessageModalOpen)
+                          }
+                        />
+                      </View>
+                      <View style={styles.shopMessageBox}>
+                        <Text style={styles.shopMessage}>
+                          You have completed your daily goals and bought back
+                          the MeGotchis but I'll be out again soon to catch some
+                          more...
+                        </Text>
+                      </View>
+                      <Pressable
+                        style={styles.returnBtnCelebration}
+                        onPress={() => {
+                          setisShopMessageModalOpen(!isShopMessageModalOpen);
+                          router.replace("/home");
+                        }}
+                      >
+                        <AntDesign
+                          name="pluscircleo"
+                          size={24}
+                          color="white"
+                          style={styles.plusIcon}
+                        />
+                        <Text style={styles.returnShopMessage}>
+                          Return to Home
+                        </Text>
+                      </Pressable>
+                    </View>
                   </View>
-                  <View style={styles.shopMessageBox}>
-                    <Text style={styles.shopMessage}>
-                      You have completed your daily goals and bought back the
-                      MeGotchis but I'll be out again soon to catch some more...
+                </View>
+              </View>
+            </Modal>
+          )}
+          {!isPurchasedModalOpen && isSelected && (
+            <Modal
+              style={styles.modal}
+              animationType="fade"
+              transparent={true}
+              visible={isModalOpen}
+              onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setisModalOpen(!isModalOpen);
+              }}
+            >
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <View style={styles.itemView}>
+                    <View style={styles.itemContainer}>
+                      <View style={styles.closeIcon}>
+                        <AntDesign
+                          name="closecircleo"
+                          size={24}
+                          color="black"
+                          onPress={() =>
+                            setisModalOpen((isModalOpen) => !isModalOpen)
+                          }
+                        />
+                      </View>
+                      <View
+                        style={
+                          selectedItem.purchased
+                            ? styles.itemImageBoxPurchasedModal
+                            : styles.itemImageBoxModal
+                        }
+                      >
+                        <Image
+                          style={styles.itemImageModal}
+                          source={selectedImage}
+                        />
+                        <Text style={styles.itemNameModal}>
+                          {selectedItem.name}
+                        </Text>
+                      </View>
+                      <View style={styles.itemDescriptionModalBox}>
+                        {selectedItem.purchased ? (
+                          <Text
+                            style={
+                              selectedItem.purchased
+                                ? styles.itemDescriptionPurchasedModal
+                                : styles.itemDescriptionModal
+                            }
+                          >
+                            {selectedItem.purchasedMsg}{" "}
+                          </Text>
+                        ) : !selectedItem.purchased &&
+                          !selectedItem.available ? (
+                          <>
+                            <View style={styles.lockBox}>
+                              <Image
+                                style={styles.lock}
+                                source={require("../../assets/images/shop_item_lock.svg")}
+                              />
+                            </View>
+                          </>
+                        ) : (
+                          <>
+                            <Text style={styles.itemDescriptionModal}>
+                              {selectedItem.description}
+                            </Text>
+                          </>
+                        )}
+                      </View>
+                      <View style={styles.purchaseBoxModal}>
+                        <View style={styles.previousBtnBoxModal}>
+                          {itemIndex > 0 && (
+                            <Foundation
+                              name="previous"
+                              size={24}
+                              color="#264653"
+                              onPress={() =>
+                                setItemIndex((itemIndex) => itemIndex - 1)
+                              }
+                            />
+                          )}
+                        </View>
+
+                        {selectedItem.purchased ? (
+                          <View style={styles.purchasedBtnTextBoxModal}>
+                            <View style={styles.tickIconModal}>
+                              <MaterialIcons
+                                name="done-outline"
+                                size={14}
+                                color="green"
+                              />
+                            </View>
+                            <Text style={styles.purchasedBtnTextModal}>
+                              Purchased
+                            </Text>
+                          </View>
+                        ) : (
+                          <>
+                            {!selectedItem.available &&
+                            !selectedItem.purchased ? (
+                              <View style={styles.unlockMsgBox}>
+                                <Text style={styles.unlockMsg}>
+                                  Unlock {selectedItem.name}
+                                </Text>
+                              </View>
+                            ) : (
+                              <Pressable
+                                style={styles.purchaseBtnModal}
+                                onPress={() => {
+                                  handleItemsCompleted();
+                                  handlePurchaseItem(itemIndex);
+                                  setisPurchasedModalOpen(
+                                    (isPurchasedModalOpen) =>
+                                      !isPurchasedModalOpen
+                                  );
+                                }}
+                              >
+                                <Text style={styles.purchaseBtnTextModal}>
+                                  Free {selectedItem.name}
+                                </Text>
+                              </Pressable>
+                            )}
+                          </>
+                        )}
+
+                        <View style={styles.nextBtnBoxModal}>
+                          {itemIndex < shopItems.length - 1 && (
+                            <Foundation
+                              name="next"
+                              size={24}
+                              color="#264653"
+                              onPress={() => {
+                                setItemIndex((itemIndex) => itemIndex + 1);
+                              }}
+                            />
+                          )}
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </Modal>
+          )}
+
+          {/* sd */}
+
+          {/*  */}
+
+          {/* sd */}
+
+          {/*  */}
+
+          {/* sd */}
+
+          {/*  */}
+          <Modal
+            style={styles.modalCelebration}
+            animationType="slide"
+            transparent={true}
+            visible={isPurchasedModalOpen}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              setisPurchasedModalOpen(!isPurchasedModalOpen);
+            }}
+          >
+            <View style={styles.centeredViewCelebration}>
+              <View style={styles.modalViewCelebration}>
+                <View style={styles.celebrationBackgroundBox}>
+                  <ImageBackground
+                    style={styles.celebrationBackgroundImage}
+                    source={require("../../assets/images/village_background.svg")}
+                    resizeMode="cover"
+                  >
+                    <Image
+                      style={styles.backgrounMeGotchiCelebration}
+                      source={require("../../assets/images/celebration_meGotchi.svg")}
+                    />
+
+                    <Image
+                      style={styles.backgrounMeGotchiOneCelebration}
+                      source={require("../../assets/images/celebration_meGotchi_1.svg")}
+                    />
+                    <Image
+                      style={styles.backgrounMeGotchiTwoCelebration}
+                      source={require("../../assets/images/celebration_meGotchi_2.svg")}
+                    />
+                    <Image
+                      style={styles.backgrounMeGotchiThreeCelebration}
+                      source={require("../../assets/images/celebration_meGotchi_3.svg")}
+                    />
+                    {shopItems[0].purchased && (
+                      <Image
+                        style={styles.shopMeGotchiOneCelebration}
+                        source={require("../../assets/images/celebration_shop_meGotchi_1.svg")}
+                      />
+                    )}
+                    {shopItems[1].purchased && (
+                      <Image
+                        style={styles.shopMeGotchiTwoCelebration}
+                        source={require("../../assets/images/celebration_shop_meGotchi_2.svg")}
+                      />
+                    )}
+                    {shopItems[2].purchased && (
+                      <Image
+                        style={styles.shopMeGotchiThreeCelebration}
+                        source={require("../../assets/images/celebration_shop_meGotchi_3.svg")}
+                      />
+                    )}
+                    {shopItems[3].purchased && (
+                      <Image
+                        style={styles.shopMeGotchiFourCelebration}
+                        source={require("../../assets/images/celebration_shop_meGotchi_4.svg")}
+                      />
+                    )}
+                  </ImageBackground>
+                </View>
+                <View style={styles.mainCelebrationContainer}>
+                  {isPurchasedModalOpen && (
+                    <ConfettiCannon
+                      count={400}
+                      origin={{ x: -10, y: 200 }}
+                      explosionSpeed={400}
+                      fallSpeed={3000}
+                      fadeOut={true}
+                      autoStartDelay={200}
+                      zIndex={2}
+                      colors={[
+                        "#00D2FF",
+                        "#EC058E",
+                        "#E56399",
+                        "#AD00FF",
+                        "#264653",
+                        "white",
+                      ]}
+                    />
+                  )}
+                  <View style={styles.celebrationMsgBox}>
+                    <Text style={styles.celebrationMsg}>
+                      {shopItems[itemIndex].celebrationMsg}
                     </Text>
                   </View>
                   <Pressable
                     style={styles.returnBtnCelebration}
-                    onPress={() => {
-                      setisShopMessageModalOpen(!isShopMessageModalOpen);
-                      router.replace("/home");
-                    }}
+                    onPress={() =>
+                      setisPurchasedModalOpen(
+                        (isPurchasedModalOpen) => !isPurchasedModalOpen
+                      )
+                    }
                   >
                     <AntDesign
                       name="pluscircleo"
@@ -165,336 +387,79 @@ const shop = () => {
                       color="white"
                       style={styles.plusIcon}
                     />
-                    <Text style={styles.returnShopMessage}>Return to Home</Text>
+                    <Text style={styles.returnBtnCelebrationText}>
+                      Return to shop
+                    </Text>
                   </Pressable>
                 </View>
               </View>
             </View>
-          </View>
-        </Modal>
-      )}
-      {!isPurchasedModalOpen && isSelected && (
-        <Modal
-          style={styles.modal}
-          animationType="fade"
-          transparent={true}
-          visible={isModalOpen}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            setisModalOpen(!isModalOpen);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View style={styles.itemView}>
-                <View style={styles.itemContainer}>
-                  <View style={styles.closeIcon}>
-                    <AntDesign
-                      name="closecircleo"
-                      size={24}
-                      color="black"
-                      onPress={() =>
-                        setisModalOpen((isModalOpen) => !isModalOpen)
-                      }
-                    />
-                  </View>
-                  <View
-                    style={
-                      selectedItem.purchased
-                        ? styles.itemImageBoxPurchasedModal
-                        : styles.itemImageBoxModal
-                    }
-                  >
+          </Modal>
+          {/* sd */}
+
+          {/*  */}
+
+          {/* sd */}
+
+          {/*  */}
+
+          {/* sd */}
+
+          {/*  */}
+
+          {/* shop Message */}
+
+          {!isPurchasedModalOpen && (
+            <>
+              <View style={styles.imageBox}>
+                <ImageBackground
+                  source={require("../../assets/images/shop_background.svg")}
+                  resizeMode="cover"
+                  style={styles.backgroundImg}
+                >
+                  <Image
+                    style={styles.backgrounMeGotchi}
+                    source={require("../../assets/images/evil_shopkeeper.svg")}
+                  />
+                  {shopItems[0].purchased === false && (
                     <Image
-                      style={styles.itemImageModal}
-                      source={selectedImage}
+                      style={styles.backgrounMeGotchiOne}
+                      source={require("../../assets/images/shop_meGotchi_1.svg")}
                     />
-                    <Text style={styles.itemNameModal}>
-                      {selectedItem.name}
-                    </Text>
-                  </View>
-                  <View style={styles.itemDescriptionModalBox}>
-                    {selectedItem.purchased ? (
-                      <Text
-                        style={
-                          selectedItem.purchased
-                            ? styles.itemDescriptionPurchasedModal
-                            : styles.itemDescriptionModal
-                        }
-                      >
-                        {selectedItem.purchasedMsg}{" "}
-                      </Text>
-                    ) : !selectedItem.purchased && !selectedItem.available ? (
-                      <>
-                        <View style={styles.lockBox}>
-                          <Image
-                            style={styles.lock}
-                            source={require("../../assets/images/shop_item_lock.svg")}
-                          />
-                        </View>
-                      </>
-                    ) : (
-                      <>
-                        <Text style={styles.itemDescriptionModal}>
-                          {selectedItem.description}
-                        </Text>
-                      </>
-                    )}
-                  </View>
-                  <View style={styles.purchaseBoxModal}>
-                    <View style={styles.previousBtnBoxModal}>
-                      {itemIndex > 0 && (
-                        <Foundation
-                          name="previous"
-                          size={24}
-                          color="#264653"
-                          onPress={() =>
-                            setItemIndex((itemIndex) => itemIndex - 1)
-                          }
-                        />
-                      )}
-                    </View>
-
-                    {selectedItem.purchased ? (
-                      <View style={styles.purchasedBtnTextBoxModal}>
-                        <View style={styles.tickIconModal}>
-                          <MaterialIcons
-                            name="done-outline"
-                            size={14}
-                            color="green"
-                          />
-                        </View>
-                        <Text style={styles.purchasedBtnTextModal}>
-                          Purchased
-                        </Text>
-                      </View>
-                    ) : (
-                      <>
-                        {!selectedItem.available && !selectedItem.purchased ? (
-                          <View style={styles.unlockMsgBox}>
-                            <Text style={styles.unlockMsg}>
-                              Unlock {selectedItem.name}
-                            </Text>
-                          </View>
-                        ) : (
-                          <Pressable
-                            style={styles.purchaseBtnModal}
-                            onPress={() => {
-                              handleItemsCompleted();
-                              handlePurchaseItem(itemIndex);
-                              setisPurchasedModalOpen(
-                                (isPurchasedModalOpen) => !isPurchasedModalOpen
-                              );
-                            }}
-                          >
-                            <Text style={styles.purchaseBtnTextModal}>
-                              Free {selectedItem.name}
-                            </Text>
-                          </Pressable>
-                        )}
-                      </>
-                    )}
-
-                    <View style={styles.nextBtnBoxModal}>
-                      {itemIndex < shopItems.length - 1 && (
-                        <Foundation
-                          name="next"
-                          size={24}
-                          color="#264653"
-                          onPress={() => {
-                            setItemIndex((itemIndex) => itemIndex + 1);
-                          }}
-                        />
-                      )}
-                    </View>
-                  </View>
-                </View>
+                  )}
+                  {shopItems[1].purchased === false && (
+                    <Image
+                      style={styles.backgrounMeGotchiTwo}
+                      source={require("../../assets/images/shop_meGotchi_2.svg")}
+                    />
+                  )}
+                  {!shopItems[2].purchased && (
+                    <Image
+                      style={styles.backgrounMeGotchiThree}
+                      source={require("../../assets/images/shop_meGotchi_3.svg")}
+                    />
+                  )}
+                  {shopItems[3].purchased === false && (
+                    <Image
+                      style={styles.backgrounMeGotchiFour}
+                      source={require("../../assets/images/shop_meGotchi_4.svg")}
+                    />
+                  )}
+                </ImageBackground>
               </View>
-            </View>
-          </View>
-        </Modal>
-      )}
 
-      {/* sd */}
-
-      {/*  */}
-
-      {/* sd */}
-
-      {/*  */}
-
-      {/* sd */}
-
-      {/*  */}
-      <Modal
-        style={styles.modalCelebration}
-        animationType="slide"
-        transparent={true}
-        visible={isPurchasedModalOpen}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setisPurchasedModalOpen(!isPurchasedModalOpen);
-        }}
-      >
-        <View style={styles.centeredViewCelebration}>
-          <View style={styles.modalViewCelebration}>
-            <View style={styles.celebrationBackgroundBox}>
-              <ImageBackground
-                style={styles.celebrationBackgroundImage}
-                source={require("../../assets/images/village_background.svg")}
-                resizeMode="cover"
-              >
-                <Image
-                  style={styles.backgrounMeGotchiCelebration}
-                  source={require("../../assets/images/celebration_meGotchi.svg")}
-                />
-
-                <Image
-                  style={styles.backgrounMeGotchiOneCelebration}
-                  source={require("../../assets/images/celebration_meGotchi_1.svg")}
-                />
-                <Image
-                  style={styles.backgrounMeGotchiTwoCelebration}
-                  source={require("../../assets/images/celebration_meGotchi_2.svg")}
-                />
-                <Image
-                  style={styles.backgrounMeGotchiThreeCelebration}
-                  source={require("../../assets/images/celebration_meGotchi_3.svg")}
-                />
-                {items[0].purchased && (
-                  <Image
-                    style={styles.shopMeGotchiOneCelebration}
-                    source={require("../../assets/images/celebration_shop_meGotchi_1.svg")}
+              <View style={styles.shopCounter}></View>
+              <View style={styles.shopItemsContainer}>
+                {shopItems && (
+                  <ShopItemsList
+                    shopItems={shopItems}
+                    handleSelectedItem={handleSelectedItem}
+                    handleIsSelected={handleIsSelected}
                   />
                 )}
-                {items[1].purchased && (
-                  <Image
-                    style={styles.shopMeGotchiTwoCelebration}
-                    source={require("../../assets/images/celebration_shop_meGotchi_2.svg")}
-                  />
-                )}
-                {items[2].purchased && (
-                  <Image
-                    style={styles.shopMeGotchiThreeCelebration}
-                    source={require("../../assets/images/celebration_shop_meGotchi_3.svg")}
-                  />
-                )}
-                {items[3].purchased && (
-                  <Image
-                    style={styles.shopMeGotchiFourCelebration}
-                    source={require("../../assets/images/celebration_shop_meGotchi_4.svg")}
-                  />
-                )}
-              </ImageBackground>
-            </View>
-            <View style={styles.mainCelebrationContainer}>
-              {isPurchasedModalOpen && (
-                <ConfettiCannon
-                  count={400}
-                  origin={{ x: -10, y: 200 }}
-                  explosionSpeed={400}
-                  fallSpeed={3000}
-                  fadeOut={true}
-                  autoStartDelay={200}
-                  zIndex={2}
-                  colors={[
-                    "#00D2FF",
-                    "#EC058E",
-                    "#E56399",
-                    "#AD00FF",
-                    "#264653",
-                    "white",
-                  ]}
-                />
-              )}
-              <View style={styles.celebrationMsgBox}>
-                <Text style={styles.celebrationMsg}>
-                  {items[itemIndex].celebrationMsg}
-                </Text>
               </View>
-              <Pressable
-                style={styles.returnBtnCelebration}
-                onPress={() =>
-                  setisPurchasedModalOpen(
-                    (isPurchasedModalOpen) => !isPurchasedModalOpen
-                  )
-                }
-              >
-                <AntDesign
-                  name="pluscircleo"
-                  size={24}
-                  color="white"
-                  style={styles.plusIcon}
-                />
-                <Text style={styles.returnBtnCelebrationText}>
-                  Return to shop
-                </Text>
-              </Pressable>
-            </View>
-          </View>
-        </View>
-      </Modal>
-      {/* sd */}
-
-      {/*  */}
-
-      {/* sd */}
-
-      {/*  */}
-
-      {/* sd */}
-
-      {/*  */}
-
-      {/* shop Message */}
-
-      {!isPurchasedModalOpen && (
-        <>
-          <View style={styles.imageBox}>
-            <ImageBackground
-              source={require("../../assets/images/shop_background.svg")}
-              resizeMode="cover"
-              style={styles.backgroundImg}
-            >
-              <Image
-                style={styles.backgrounMeGotchi}
-                source={require("../../assets/images/evil_shopkeeper.svg")}
-              />
-              {items[0].purchased === false && (
-                <Image
-                  style={styles.backgrounMeGotchiOne}
-                  source={require("../../assets/images/shop_meGotchi_1.svg")}
-                />
-              )}
-              {items[1].purchased === false && (
-                <Image
-                  style={styles.backgrounMeGotchiTwo}
-                  source={require("../../assets/images/shop_meGotchi_2.svg")}
-                />
-              )}
-              {!items[2].purchased && (
-                <Image
-                  style={styles.backgrounMeGotchiThree}
-                  source={require("../../assets/images/shop_meGotchi_3.svg")}
-                />
-              )}
-              {items[3].purchased === false && (
-                <Image
-                  style={styles.backgrounMeGotchiFour}
-                  source={require("../../assets/images/shop_meGotchi_4.svg")}
-                />
-              )}
-            </ImageBackground>
-          </View>
-
-          <View style={styles.shopCounter}></View>
-          <View style={styles.shopItemsContainer}>
-            <ShopItemsList
-              shopItems={items}
-              handleSelectedItem={handleSelectedItem}
-              handleIsSelected={handleIsSelected}
-            />
-          </View>
+            </>
+          )}
         </>
       )}
     </View>

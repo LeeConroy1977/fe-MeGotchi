@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
 
 const profile = () => {
   return <View style={styles.profile}></View>;
