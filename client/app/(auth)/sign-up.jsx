@@ -94,13 +94,8 @@ const SignUp = () => {
     setCheckPassword(true);
   }
 
- function checkValidSubmit() {
-    if (
-      checkEmail &&
-      checkPassword &&
-      checkDisplayName &&
-      passwordMatch
-    ) {
+  function checkValidSubmit() {
+    if (checkEmail && checkPassword && checkDisplayName && passwordMatch) {
       setIsLoading(true);
       setValidSubmit(true);
     }
@@ -109,7 +104,6 @@ const SignUp = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (validSubmit) {
-
       router.push({
         pathname: "/character",
         params: {
@@ -124,7 +118,10 @@ const SignUp = () => {
 
   return (
     <SafeAreaView style={styles.signUp}>
-      <Text style={styles.logoHeader}>MeGotchi</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.logoHeader}>MeGotchi</Text>
+        <Text style={styles.tradeMark}>&trade;</Text>
+      </View>
       <View style={styles.logoBox}>
         <View style={styles.logo}>
           <Image
@@ -417,12 +414,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
   },
+  headerContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "2.1rem",
+    width: "50%",
+  },
 
   logoHeader: {
     fontSize: "1.8rem",
     fontWeight: "bold",
     fontFamily: "MarkoOne-regular",
-    marginTop: "2.3rem",
+    marginLeft: "0.2rem",
+  },
+
+  tradeMark: {
+    marginLeft: "0.2rem",
+    fontSize: "1.1rem",
+    fontWeight: "bold",
+    marginBottom: "1rem",
   },
 
   logoBox: {
@@ -511,7 +523,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginTop: "0.5rem",
     marginRight: "auto",
-    marginLeft: "2rem",
+    marginLeft: "2.5rem",
     fontFamily: "MarkoOne-regular",
   },
 
@@ -521,7 +533,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginTop: "0.5rem",
     fontFamily: "MarkoOne-regular",
-    marginRight: "2rem",
+    marginRight: "2.6rem",
   },
   validationMsgFalse: {
     fontSize: "0.6rem",
@@ -529,7 +541,7 @@ const styles = StyleSheet.create({
     color: "red",
     marginTop: "0.5rem",
     fontFamily: "MarkoOne-regular",
-    marginRight: "2rem",
+    marginRight: "2.4rem",
   },
 
   heart: {
@@ -557,6 +569,8 @@ const styles = StyleSheet.create({
     fontSize: "0.6rem",
     fontFamily: "MarkoOne-regular",
     outlineStyle: "none",
+    width: "80%",
+    height: "28px",
   },
 
   eyeBox: {

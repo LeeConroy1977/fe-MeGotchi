@@ -73,7 +73,7 @@ const SignIn = () => {
     setCheckPassword(true);
   }
 
-  function checkValidSubmit(){
+  function checkValidSubmit() {
     if (checkPassword && checkEmail) {
       setvalidSubmit(true);
     }
@@ -82,7 +82,7 @@ const SignIn = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (checkPassword && checkEmail) {
-        setIsLoading(true);
+      setIsLoading(true);
       const userSubmit = {
         email: form.email,
         password: form.password,
@@ -121,7 +121,10 @@ const SignIn = () => {
 
   return (
     <SafeAreaView style={styles.signIn}>
-      <Text style={styles.logoHeader}>MeGotchi</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.logoHeader}>MeGotchi</Text>
+        <Text style={styles.tradeMark}>&trade;</Text>
+      </View>
       <View style={styles.logo}>
         <Image
           style={styles.logoImage}
@@ -278,11 +281,27 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
 
+  headerContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "5rem",
+    width: "50%",
+  },
+
   logoHeader: {
     fontSize: "1.8rem",
     fontWeight: "bold",
     fontFamily: "MarkoOne-regular",
-    marginTop: "5rem",
+    marginLeft: "0.2rem",
+  },
+
+  tradeMark: {
+    marginLeft: "0.2rem",
+    fontSize: "1.1rem",
+    fontWeight: "bold",
+    marginBottom: "1rem",
   },
   logo: {
     width: "160px",
@@ -324,7 +343,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginTop: "0.5rem",
     marginRight: "auto",
-    marginLeft: "2rem",
+    marginLeft: "2.5rem",
     fontFamily: "MarkoOne-regular",
   },
 
@@ -334,7 +353,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginTop: "0.5rem",
     fontFamily: "MarkoOne-regular",
-    marginRight: "2rem",
+    marginRight: "2.6rem",
   },
   validationMsgFalse: {
     fontSize: "0.6rem",
@@ -342,7 +361,7 @@ const styles = StyleSheet.create({
     color: "red",
     marginTop: "0.5rem",
     fontFamily: "MarkoOne-regular",
-    marginRight: "2rem",
+    marginRight: "2.4rem",
   },
 
   heart: {
@@ -370,6 +389,9 @@ const styles = StyleSheet.create({
     fontSize: "0.6rem",
     fontFamily: "MarkoOne-regular",
     outlineStyle: "none",
+    width: "80%",
+    height: "28px",
+    // backgroundColor: "#959595",
   },
 
   eyeBox: {

@@ -25,7 +25,7 @@ const tasks = () => {
     title: "",
     body: "",
     iconUrl: "../assets/images/task_walking_icon.svg",
-    message: "Good work. You completed another goal!"
+    message: "Good work. You completed another goal!",
   });
   const [completedModalVisible, setCompletedModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
@@ -45,23 +45,23 @@ const tasks = () => {
   function handleDeletedTask(task) {
     const sentItem = {
       isDelete: true,
-      taskList: [ task ]
-    }
+      taskList: [task],
+    };
 
     fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
-        method: "PATCH",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sentItem),
-      })
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sentItem),
+    })
       .then((response) => response.json())
       .then((data) => {
-        if(data.error){
+        if (data.error) {
           console.log(data.error);
         }
-        const moneyIncrement = { balance: 10 }
+        const moneyIncrement = { balance: 10 };
         fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
           method: "PATCH",
           headers: {
@@ -85,11 +85,11 @@ const tasks = () => {
         .catch((error) => {
           alert(`Error completing goal`);
         });
+
       })
       .catch((error) => {
         alert(`Error completing goal`);
       });
-    
   }
 
   function handleGoalsubmit() {
@@ -99,8 +99,8 @@ const tasks = () => {
     if (goalForm.title.length > 3) {
       const sentItem = {
         isDelete: false,
-        taskList: [ goalForm ]
-      }
+        taskList: [goalForm],
+      };
 
       fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
         method: "PATCH",
@@ -110,19 +110,24 @@ const tasks = () => {
         },
         body: JSON.stringify(sentItem),
       })
-      .then((response) => response.json())
-      .then((data) => {
-        if(data.error){
-          console.log(data.error);
-          alert(`Goal setting error: ${data.error}`);
-        }
-        setModalVisible(false);
-        setIsAddTask(false);
-        setGoalForm({
-          title: "",
-          body: "",
-          iconUrl: "custom_task_icon",
-          message: "Good work. You completed another goal!"
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            console.log(data.error);
+            alert(`Goal setting error: ${data.error}`);
+          }
+          setModalVisible(false);
+          setIsAddTask(false);
+          setGoalForm({
+            title: "",
+            body: "",
+            iconUrl: "custom_task_icon",
+            message: "Good work. You completed another goal!",
+          });
+          setUser(data);
+        })
+        .catch((error) => {
+          alert(`Error setting goal`);
         });
         setTaskInfo(() => {
           const taskInfoCopy = {...taskInfo}
@@ -157,7 +162,6 @@ const tasks = () => {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-
               <View style={styles.imageContainerTask}>
                 <ImageBackground
                   source={require("../../assets/images/tasks_added_landscape.svg")}
@@ -195,7 +199,6 @@ const tasks = () => {
                     source={require("../../assets/images/little_meGotchi_3.svg")}
                   />
                 </ImageBackground>
-
               </View>
 
               <View style={styles.addGoalForm}>
@@ -241,19 +244,12 @@ const tasks = () => {
             </View>
           </View>
         </Modal>
-
         {/* // */}
-
         {/* // */}
-
         {/* // */}
-
         {/* // */}
-
         {/* // */}
-
         {/* // */}
-
         {/* // */}
         <Modal
           style={styles.modal}

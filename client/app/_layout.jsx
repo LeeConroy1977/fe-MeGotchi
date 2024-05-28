@@ -5,6 +5,7 @@ import { useFonts } from "expo-font";
 import userContext from "./(contexts)/userContext";
 import tasksContext from "./(contexts)/tasksContext";
 // import shopItemsContext from "./(contexts)/userContext";
+import { ShopItemsProvider } from "./(contexts)/shopItemsContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,6 +25,7 @@ const RootLayout = () => {
   if (!fontsLoaded && !error) return null;
   return (
     <userContext.Provider value={{ user, setUser }}>
+      <ShopItemsProvider>
         <tasksContext.Provider value={{ taskInfo, setTaskInfo }}>
           <Stack>
             <Stack.Screen
@@ -40,6 +42,7 @@ const RootLayout = () => {
             ></Stack.Screen>
           </Stack>
         </tasksContext.Provider>
+      </ShopItemsProvider>
     </userContext.Provider>
   );
 };

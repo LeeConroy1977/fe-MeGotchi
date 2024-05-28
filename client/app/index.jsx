@@ -26,7 +26,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logoHeader}>MeGotchi</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.logoHeader}>MeGotchi</Text>
+        <Text style={styles.tradeMark}>&trade;</Text>
+      </View>
       <View style={styles.logo}>
         <Image
           style={styles.logoImage}
@@ -51,16 +54,33 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     width: "100%",
-    height: " 100%",
+    height: "100%",
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-start",
   },
+
+  headerContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "5rem",
+    width: "50%",
+  },
+
   logoHeader: {
     fontSize: "1.8rem",
     fontWeight: "bold",
     fontFamily: "MarkoOne-regular",
-    marginTop: "5rem",
+    marginLeft: "0.2rem",
+  },
+
+  tradeMark: {
+    marginLeft: "0.2rem",
+    fontSize: "1.1rem",
+    fontWeight: "bold",
+    marginBottom: "1rem",
   },
 
   logo: {
