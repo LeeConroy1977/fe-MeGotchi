@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState, useContext } from "react";
-import { SafeAreaView, TextInput } from "react-native-web";
+import { ActivityIndicator, SafeAreaView, TextInput } from "react-native-web";
 import CustomButton from "../../reuseable-components/CustomButton";
 import MeGotchi from "../../reuseable-components/MeGotchi";
 import { useLocalSearchParams } from "expo-router";
@@ -41,6 +41,7 @@ const Character = () => {
   const [name, setName] = useState("");
   const [isValidated, setIsValidated] = useState(false);
   const [isBlur, setIsBlur] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSelected = (id) => {
     setSelected(id);
@@ -70,6 +71,7 @@ const Character = () => {
       (selected !== null && isValidated) ||
       (selected !== false && isValidated)
     ) {
+      setIsLoading(true);
       const userSubmit = {
         displayName: displayName,
         email: email,
@@ -90,17 +92,19 @@ const Character = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          if(data.error){
+          if (data.error) {
             console.log(data.error);
             alert(`Sign-up error: ${data.error}`);
-          }
-          else{
+          } else {
             setUser(data);
             router.push("/wellness");
           }
         })
         .catch((error) => {
           alert("Error creating user");
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
     setName("");
@@ -164,7 +168,7 @@ const Character = () => {
         />
       </View>
       <CustomButton
-        title="Submit"
+        title={isLoading ? <ActivityIndicator color="#FFF" /> : "Submit"}
         titleStyleName="homeTitle"
         styleName="btnSignIn"
         handlePress={handleSubmit}

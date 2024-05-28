@@ -1,22 +1,22 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React,  { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import megotchiPic from "../assets/images/megotchi_home_Avatar.svg";
 import userContext from "../app/(contexts)/userContext";
 
 const WelcomePage = () => {
-  const { user} = useContext(userContext);
+  const { user } = useContext(userContext);
 
   useEffect(() => {
     fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
-        method: "GET"
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setUser(json);
       })
-        .then((response) => response.json())
-        .then((json) => {
-          setUser(json);
-        })
-        .catch((error) => {
-          return { message: error };
-        });
+      .catch((error) => {
+        return { message: error };
+      });
   });
 
   return (
