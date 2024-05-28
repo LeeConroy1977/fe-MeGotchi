@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { TouchableOpacity } from "react-native-web";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-
+import { FontAwesome } from "@expo/vector-icons";
 const DailyTask = ({
   task,
   id,
@@ -29,8 +29,8 @@ const DailyTask = ({
         {
           boxShadow: "2px 2px 1px 0px black",
           borderRadius: "16px",
-          width: "320px",
-          minHeight: "54px",
+          width: "300px",
+          minHeight: "46px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -43,7 +43,7 @@ const DailyTask = ({
         <View style={styles.iconContainer}>
           {task && (
             <Image
-              source={require(`../assets/images/task_walking_icon.svg`)}
+              source={require(`../assets/images/task_icon.svg`)}
               style={styles.taskIcon}
             />
           )}
@@ -82,9 +82,8 @@ const DailyTask = ({
                 handleSelectedTask(task);
               }}
             >
-              <Text style={styles.completedText}>
-                <MaterialIcons name="done-outline" size={18} color="white" />
-              </Text>
+              {/* <Text style={styles.completedText}></Text> */}
+              <FontAwesome name="check" size={14} color="black" />
               <View style={styles.completedIndicator}></View>
             </TouchableOpacity>
           </View>
@@ -102,8 +101,8 @@ const styles = StyleSheet.create({
   },
 
   titleContainer: {
-    height: "54px",
-    width: "320px",
+    height: "46px",
+    width: "300px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
@@ -120,15 +119,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   taskIcon: {
-    width: "38px",
-    height: "38px",
+    width: "25px",
+    height: "25px",
   },
   title: {
-    fontSize: "0.8rem",
+    fontSize: "0.75rem",
     fontWeight: "bold",
     height: "50px",
     marginRight: "auto",
-    marginLeft: "1rem",
+    marginLeft: "0.5rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -142,7 +141,7 @@ const styles = StyleSheet.create({
   },
   accordion: {
     width: "100%",
-    height: "180px",
+    height: "170px",
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -196,21 +195,21 @@ const styles = StyleSheet.create({
     marginLeft: "0.7rem",
   },
   completedBox: {
-    height: "34px",
-    width: "70px",
+    height: "26px",
+    width: "55px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "8px",
+    borderRadius: "4px",
     padding: "0.2rem",
     marginRight: "0.4rem",
     backgroundColor: "#00D2FF",
-    boxShadow: "2px 2px 1px 0px #264653",
+    boxShadow: "1px 1px 1px 0px #264653",
   },
   completedText: {
     fontWeight: "500",
-    color: "white",
+    color: "#264653",
     fontSize: "0.55rem",
     fontFamily: "MarkoOne-regular",
   },

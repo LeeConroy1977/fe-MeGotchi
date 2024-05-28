@@ -109,6 +109,7 @@ const SignUp = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (validSubmit) {
+
       router.push({
         pathname: "/character",
         params: {

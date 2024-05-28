@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useEffect, useState, useContext } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import ConfettiCannon from "react-native-confetti-cannon";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import {
   Modal,
   SafeAreaView,
@@ -13,6 +14,60 @@ import {
 } from "react-native-web";
 import DailyTasks from "../../components/dailyTasks";
 import userContext from "../(contexts)/userContext";
+
+const dailyTasks = [
+  {
+    id: 1,
+    title: "Take a nice walk",
+    body: "Take a nice walk somewhere and breathe in the air!",
+    coins: 10,
+    icon: "task_walking_icon",
+    message:
+      "Congratulations on taking a walk. It's good to stay healthy and to get some exercise!",
+  },
+  {
+    id: 2,
+    title: "Make a lovely meal",
+    body: "Lorem Ipsum is simply dummy text of the printing.",
+    coins: 10,
+    icon: "food_icon",
+    message: "I hope your meal was tasty and nutritious!",
+  },
+  {
+    id: 3,
+    title: "Take a hot shower",
+    body: "Lorem Ipsum is simply dummy text of the printing.",
+    coins: 10,
+    icon: "food_icon",
+    message: "Congratulations on taking a walk!",
+  },
+  {
+    id: 4,
+    title: "Drink some water",
+    body: "Lorem Ipsum is simply dummy text of the printing.",
+    coins: 10,
+    icon: "food_icon",
+    message: "Congratulations on taking a walk!",
+  },
+  {
+    id: 5,
+    title: "Take a walk",
+    body: "Lorem Ipsum is simply dummy text of the printing.",
+    coins: 10,
+    icon: "food_icon",
+    message: "Congratulations on taking a walk!",
+  },
+  {
+    id: 6,
+    title: "Take a walk",
+    body: "Lorem Ipsum is simply dummy text of the printing.",
+    color: "#FFD0EF",
+    icon: "food_icon",
+    message: "Congratulations on taking a walk!",
+  },
+];
+
+
 
 const tasks = () => {
 
@@ -148,28 +203,47 @@ const tasks = () => {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Pressable
-                style={styles.closeIcon}
-                onPress={() => {
-                  setModalVisible(!modalVisible);
-                  setIsAddTask(!isAddTask);
-                  setGoalForm({
-                    title: "",
-                    body: "",
-                    iconUrl: "custom_task_icon",
-                    message: "Good work. You completed another goal!"
-                  });
-                }}
-              >
-                <AntDesign name="closecircleo" size={28} color="black" />
-              </Pressable>
-              <View style={styles.logo}>
-                <Image
-                  style={styles.logoImage}
-                  source={require("../../assets/images/megotchi_home_Avatar.svg")}
-                />
+
+              <View style={styles.imageContainerTask}>
+                <ImageBackground
+                  source={require("../../assets/images/tasks_added_landscape.svg")}
+                  resizeMode="cover"
+                  style={styles.taskCompletedBackgroundTask}
+                >
+                  <Pressable
+                    style={styles.closeIconTask}
+                    onPress={() => {
+                      setModalVisible(!modalVisible);
+                      setIsAddTask(!isAddTask);
+                      setGoalForm({
+                        title: "",
+                        body: "",
+                      });
+                    }}
+                  >
+                    <AntDesign name="closecircleo" size={28} color="black" />
+                  </Pressable>
+
+                  <Image
+                    style={styles.backgrounMeGotchiTask}
+                    source={require("../../assets/images/megotchi_home_Avatar.svg")}
+                  />
+                  <Image
+                    style={styles.backgrounMeGotchiOneTask}
+                    source={require("../../assets/images/little_meGotchi_1.svg")}
+                  />
+                  <Image
+                    style={styles.backgrounMeGotchiTwoTask}
+                    source={require("../../assets/images/little_meGotchi_2.svg")}
+                  />
+                  <Image
+                    style={styles.backgrounMeGotchiThreeTask}
+                    source={require("../../assets/images/little_meGotchi_3.svg")}
+                  />
+                </ImageBackground>
+
               </View>
-              <Text style={styles.modalText}>Add a goal...</Text>
+
               <View style={styles.addGoalForm}>
                 <View style={styles.inputBox}>
                   <View style={styles.inputTextBox}>
@@ -214,6 +288,19 @@ const tasks = () => {
           </View>
         </Modal>
 
+        {/* // */}
+
+        {/* // */}
+
+        {/* // */}
+
+        {/* // */}
+
+        {/* // */}
+
+        {/* // */}
+
+        {/* // */}
         <Modal
           style={styles.modal}
           animationType="slide"
@@ -226,25 +313,52 @@ const tasks = () => {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              {completedModalVisible && (
-                <ConfettiCannon
-                  count={400}
-                  origin={{ x: -10, y: 200 }}
-                  explosionSpeed={400}
-                  fallSpeed={3000}
-                  fadeOut={true}
-                  autoStartDelay={200}
-                  colors={[
-                    "#00D2FF",
-                    "#EC058E",
-                    "#E56399",
-                    "#AD00FF",
-                    "#264653",
-                    "white",
-                  ]}
-                />
-              )}
+              <View style={styles.imageContainerTask}>
+                <ImageBackground
+                  source={require("../../assets/images/tasks_completed_landscape.svg")}
+                  resizeMode="cover"
+                  style={styles.taskCompletedBackgroundTask}
+                >
+                  <Image
+                    style={styles.backgrounMeGotchiCelebration}
+                    source={require("../../assets/images/celebration_meGotchi.svg")}
+                  />
 
+                  <Image
+                    style={styles.backgrounMeGotchiOneCelebration}
+                    source={require("../../assets/images/celebration_meGotchi_1.svg")}
+                  />
+                  <Image
+                    style={styles.backgrounMeGotchiTwoCelebration}
+                    source={require("../../assets/images/celebration_meGotchi_2.svg")}
+                  />
+                  <Image
+                    style={styles.backgrounMeGotchiThreeCelebration}
+                    source={require("../../assets/images/celebration_meGotchi_3.svg")}
+                  />
+                </ImageBackground>
+              </View>
+              <View style={styles.messageBox}>
+                {completedModalVisible && (
+                  <ConfettiCannon
+                    count={400}
+                    origin={{ x: -10, y: 200 }}
+                    explosionSpeed={400}
+                    fallSpeed={3000}
+                    fadeOut={true}
+                    autoStartDelay={200}
+                    colors={[
+                      "#00D2FF",
+                      "#EC058E",
+                      "#E56399",
+                      "#AD00FF",
+                      "#264653",
+                      "white",
+                    ]}
+                  />
+                )}
+                <Text style={styles.messageText}>{selectedTask.message}</Text>
+              </View>
               <Pressable
                 style={styles.closeIcon}
                 onPress={() => {
@@ -253,24 +367,12 @@ const tasks = () => {
                   handleDeletedTask(selectedTask);
                 }}
               >
-                <Text style={styles.skipBtn}>Skip</Text>
+                <Text style={styles.skipBtn}>Skip...</Text>
               </Pressable>
-              <View style={styles.logo}>
-                <Image
-                  style={styles.logoImage}
-                  source={require("../../assets/images/megotchi_home_Avatar.svg")}
-                />
-              </View>
-              <View style={styles.messageBox}>
-                <Text style={styles.messageText}>
-                  <Text style={styles.emoji}>😎 </Text>
-                  {selectedTask.message}
-                </Text>
-              </View>
-              <View style={styles.rewardBox}>
+              {/* <View style={styles.rewardBox}>
                 <Text style={styles.rewardText}>You are awarded</Text>
                 <Text style={styles.rewardCoins}>10 Coins</Text>
-              </View>
+              </View> */}
             </View>
           </View>
         </Modal>
@@ -281,6 +383,12 @@ const tasks = () => {
               source={require("../../assets/images/tasks_landscape.svg")}
               style={styles.backgroundImg}
             >
+              <View style={styles.tasksRamaingBox}>
+                <FontAwesome6 name="circle-info" size={16} color="black" />
+                <Text style={styles.tasksRamainingText}>
+                  You have {allDailyTasks.length} tasks remaining
+                </Text>
+              </View>
               <Image
                 style={styles.backgrounMeGotchi}
                 source={require("../../assets/images/megotchi_home_Avatar.svg")}
@@ -313,18 +421,19 @@ const tasks = () => {
               </View>
             </ScrollView>
 
-            <View style={styles.addTaskContainer}>
-              <TouchableOpacity style={styles.addBtn} onPress={handleAddTask}>
-                <AntDesign
-                  name="pluscircleo"
-                  size={34}
-                  color="white"
-                  style={styles.plusIcon}
-                />
-                {}
-              </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.addTaskContainer}
+              onPress={handleAddTask}
+            >
+              <AntDesign
+                name="pluscircleo"
+                size={26}
+                color="white"
+                style={styles.plusIcon}
+              />
+
               <Text style={styles.btnText}>Add a Goal...</Text>
-            </View>
+            </TouchableOpacity>
           </>
         )}
       </SafeAreaView>
@@ -379,6 +488,27 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+
+  tasksRamaingBox: {
+    width: "55%",
+    height: "24px",
+    backgroundColor: "white",
+    borderRadius: "12px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginTop: "0.8rem",
+    marginLeft: "1rem",
+    paddingLeft: "0.5rem",
+  },
+  tasksRamainingText: {
+    marginLeft: "0.65rem",
+    fontFamily: "MarkoOne-regular",
+    fontWeight: "bold",
+    color: "#264653",
+    fontSize: "0.65rem",
+  },
   dailyTasks: {
     width: "80%",
     height: "80%",
@@ -414,29 +544,29 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "#706F6F",
-    marginTop: "1rem",
+    marginTop: "0.8rem",
   },
 
   modalView: {
     position: "relative",
     margin: 20,
     marginTop: "3rem",
-    backgroundColor: "#00D2FF",
-    borderRadius: 20,
-    padding: 20,
+    backgroundColor: "#706F6F",
+    // borderRadius: 20,
+    // padding: 20,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 5,
-      height: 3,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 5,
+    //   height: 3,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 4,
     elevation: 5,
     width: "84%",
     height: "520px",
     margin: "auto",
-    boxShadow: "1px 1px 10px 0px #00D2FF",
+    // boxShadow: "1px 1px 10px 0px #00D2FF",
   },
   button: {
     borderRadius: 20,
@@ -445,10 +575,15 @@ const styles = StyleSheet.create({
   },
   closeIcon: {
     marginLeft: "auto",
+    marginTop: "2.5rem",
   },
   skipBtn: {
-    color: "#F8FCDA",
+    color: "white",
+    fontSize: "0.8rem",
+    marginRight: "1.4rem",
+    marginBottom: "1rem",
     fontWeight: "bold",
+    fontFamily: "MarkoOne-regular",
   },
   textStyle: {
     color: "white",
@@ -461,45 +596,28 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  logo: {
-    width: "120px",
-    height: "120px",
-    borderRadius: "50%",
-    backgroundColor: "#F8FCDA",
-    border: "5px solid black",
-    marginBottom: "1rem",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logoImage: {
-    width: "110px",
-    height: "110px",
-    boxShadow: "10px 10px 5px 0px #000",
-  },
-
   backgrounMeGotchi: {
-    width: "160px",
-    height: "160px",
+    width: "140px",
+    height: "140px",
     boxShadow: "10px 10px 5px 0px #000",
     position: "absolute",
     bottom: "-25px",
-    left: "70px",
+    left: "75px",
   },
   backgrounMeGotchiOne: {
     width: "90px",
     height: "90px",
     boxShadow: "10px 10px 5px 0px #000",
     position: "absolute",
-    bottom: "5px",
+    bottom: "-5px",
     left: "30px",
   },
   backgrounMeGotchiTwo: {
-    width: "120px",
-    height: "120px",
+    width: "110px",
+    height: "110px",
     boxShadow: "10px 10px 5px 0px #000",
     position: "absolute",
-    bottom: "0px",
+    bottom: "-10px",
     left: "220px",
   },
   backgrounMeGotchiThree: {
@@ -508,11 +626,11 @@ const styles = StyleSheet.create({
     boxShadow: "10px 10px 5px 0px #000",
     position: "absolute",
     bottom: "-10px",
-    left: "210px",
+    left: "180px",
     zIndex: "3",
   },
   messageBox: {
-    width: "100%",
+    width: "80%",
     height: "40%",
     marginTop: "1rem",
     textAlign: "center",
@@ -522,9 +640,9 @@ const styles = StyleSheet.create({
   messageText: {
     fontSize: "1.2rem",
     fontFamily: "MarkoOne-regular",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     textAlign: "center",
-    color: "#264653",
+    color: "white",
     mixBlendMode: "difference",
     wordSpacing: "0.1rem",
     lineHeight: "1.8rem",
@@ -535,21 +653,21 @@ const styles = StyleSheet.create({
   rewardBox: {
     width: "70%",
     height: "14%",
-    marginTop: "2rem",
+    // marginTop: "2rem",
     display: "flex",
     flexDirection: "coloumn",
     alignItems: "center",
     justifyContent: "space-between",
   },
   rewardText: {
-    fontSize: "1.3rem",
+    fontSize: "1.2rem",
     fontFamily: "MarkoOne-regular",
     fontWeight: "bold",
+    color: "white",
     textAlign: "center",
-    color: "#264653",
   },
   rewardCoins: {
-    fontSize: "1.4rem",
+    fontSize: "1.2rem",
     fontFamily: "MarkoOne-regular",
     fontWeight: "bold",
     textAlign: "center",
@@ -557,14 +675,14 @@ const styles = StyleSheet.create({
   },
   addGoalForm: {
     width: "90%",
-    height: "50%",
+    height: "40%",
     display: "flex",
     flexDirection: "column",
-    marginTop: "0.4rem",
+    marginTop: "1rem",
   },
   inputBox: {
     width: "100%",
-    height: "90px",
+    height: "80px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -574,7 +692,7 @@ const styles = StyleSheet.create({
   },
   inputBoxBody: {
     width: "100%",
-    height: "120px",
+    height: "110px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -596,7 +714,7 @@ const styles = StyleSheet.create({
     border: "2px solid #264653",
     boxShadow: "1px 1px 1px 0px #264653",
     width: "100%",
-    height: "75%",
+    height: "65%",
     borderRadius: "8px",
     display: "flex",
     flexDirection: "row",
@@ -615,7 +733,7 @@ const styles = StyleSheet.create({
     outlineStyle: "none",
     backgroundColor: "white",
     width: "100%",
-    height: "80%",
+    height: "70%",
     border: "2px solid #264653",
     boxShadow: "1px 1px 1px 0px #264653",
     borderRadius: "8px",
@@ -637,12 +755,13 @@ const styles = StyleSheet.create({
   submitBtn: {
     width: "40%",
     height: "34px",
-    backgroundColor: "#706F6F",
+    backgroundColor: "#5adbb5",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "8px",
     boxShadow: "1px 1px 1px 1px #264653",
+    marginTop: "1.5rem",
   },
   submitBtnText: {
     fontFamily: "MarkoOne-regular",
@@ -650,14 +769,14 @@ const styles = StyleSheet.create({
     fontSize: "0.6",
   },
   addTaskContainer: {
-    height: "9%",
-    width: "320px",
+    height: "46px",
+    width: "300px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
     marginBottom: "1rem",
-    marginTop: "1rem",
+    marginTop: "0.8rem",
     borderRadius: "12px",
     backgroundColor: "#00D2FF",
   },
@@ -668,17 +787,102 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "50%",
-    marginLeft: "0.8rem",
   },
   btnText: {
     marginLeft: "1rem",
     fontFamily: "MarkoOne-regular",
     fontWeight: "bold",
     color: "#264653",
+    fontSize: "0.8rem",
   },
   plusIcon: {
     fontWeight: "bold",
     backgroundColor: "#00D2FF",
     borderRadius: "50%",
+    marginLeft: "0.8rem",
+  },
+
+  imageContainerTask: {
+    width: "100%",
+    height: "40%",
+  },
+
+  taskCompletedBackgroundTask: {
+    width: "100%",
+    height: "100%",
+  },
+  backgrounMeGotchiCelebration: {
+    width: "110px",
+    height: "110px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "5px",
+    left: "70px",
+    zIndex: "6",
+  },
+  backgrounMeGotchiOneCelebration: {
+    width: "78px",
+    height: "78px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "20px",
+    left: "10px",
+    zIndex: "5",
+  },
+  backgrounMeGotchiTwoCelebration: {
+    width: "75px",
+    height: "75px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "18px",
+    left: "210px",
+  },
+  backgrounMeGotchiThreeCelebration: {
+    width: "55px",
+    height: "55px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "15px",
+    left: "160px",
+    zIndex: "3",
+  },
+
+  backgrounMeGotchiTask: {
+    width: "115px",
+    height: "115px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "-20px",
+    left: "75px",
+  },
+  backgrounMeGotchiOneTask: {
+    width: "90px",
+    height: "90px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "-5px",
+    left: "20px",
+  },
+  backgrounMeGotchiTwoTask: {
+    width: "105px",
+    height: "105px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "-5px",
+    left: "210px",
+  },
+  backgrounMeGotchiThreeTask: {
+    width: "65px",
+    height: "65px",
+    boxShadow: "10px 10px 5px 0px #000",
+    position: "absolute",
+    bottom: "-10px",
+    left: "175px",
+    zIndex: "3",
+  },
+  closeIconTask: {
+    marginLeft: "auto",
+    marginRight: "1rem",
+    marginTop: "1rem",
   },
 });

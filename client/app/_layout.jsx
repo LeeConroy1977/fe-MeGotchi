@@ -2,7 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
-import userContext from './(contexts)/userContext';
+import userContext from "./(contexts)/userContext";
+// import shopItemsContext from "./(contexts)/userContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -12,7 +13,7 @@ const RootLayout = () => {
   });
 
   const [user, setUser] = useState(false);
-  
+
   useEffect(() => {
     if (error) throw error;
     if (fontsLoaded) SplashScreen.hideAsync();

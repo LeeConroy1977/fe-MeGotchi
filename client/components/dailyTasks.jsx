@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   tasksContainer: {
     marginTop: "1rem",
     width: "90%",
-    gap: "1.2rem",
+    gap: "1rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
