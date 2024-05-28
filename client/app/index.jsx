@@ -7,10 +7,23 @@ import {
   Image,
   TouchableOpacity,
   TouchableHighlight,
+  ActivityIndicator,
 } from "react-native";
 import CustomButton from "../reuseable-components/CustomButton";
+import { useState } from "react";
+import { router } from "expo-router";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePress = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      router.push("/sign-in");
+    }, 250);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.logoHeader}>MeGotchi</Text>
@@ -24,10 +37,10 @@ export default function App() {
         <Text style={styles.appSlogan}>Your new self-help friend</Text>
       </View>
       <CustomButton
-        title="Enter"
+        title={isLoading ? <ActivityIndicator color="#FFF" /> : "Enter"}
         titleStyleName="homeTitle"
-        route="/sign-in"
         styleName="btnHome"
+        handlePress={handlePress}
       />
       <StatusBar style="auto" />
     </View>
