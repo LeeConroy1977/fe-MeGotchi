@@ -433,7 +433,7 @@ const shop = () => {
                       source={require("../../assets/images/shop_meGotchi_2.svg")}
                     />
                   )}
-                  {!shopItems[2].purchased && (
+                  {shopItems[2].purchased && (
                     <Image
                       style={styles.backgrounMeGotchiThree}
                       source={require("../../assets/images/shop_meGotchi_3.svg")}
