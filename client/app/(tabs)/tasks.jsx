@@ -124,23 +124,18 @@ const tasks = () => {
             iconUrl: "custom_task_icon",
             message: "Good work. You completed another goal!",
           });
+          setTaskInfo(() => {
+            const taskInfoCopy = {...taskInfo}
+            taskInfoCopy.tasksTotal += 1
+            console.log(taskInfoCopy)
+            return taskInfoCopy;
+          });
           setUser(data);
         })
         .catch((error) => {
           alert(`Error setting goal`);
-        });
-        setTaskInfo(() => {
-          const taskInfoCopy = {...taskInfo}
-          taskInfoCopy.tasksTotal += 1
-          console.log(taskInfoCopy)
-          return taskInfoCopy;
-        });
-        setUser(data);
-      })
-      .catch((error) => {
-        alert(`Error setting goal`);
-      });
-    }
+        }); 
+      }
   }
 
   return (
