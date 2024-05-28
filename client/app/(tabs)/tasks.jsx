@@ -317,7 +317,7 @@ const tasks = () => {
               <View style={styles.tasksRamaingBox}>
                 <FontAwesome6 name="circle-info" size={16} color="black" />
                 <Text style={styles.tasksRamainingText}>
-                  You have 6 tasks remaining
+                  You have {allDailyTasks.length} tasks remaining
                 </Text>
               </View>
               <Image

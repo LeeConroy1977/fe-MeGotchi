@@ -8,7 +8,6 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Profiles from "../../db/Images";
 import ConfettiCannon from "react-native-confetti-cannon";
 import { router } from "expo-router";
-
 const shopItems = [
   {
     id: 1,
@@ -66,6 +65,8 @@ const shop = () => {
   const [itemIndex, setItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [itemsCompleted, setItemsCompleted] = useState(false);
+
+  // const shopItems = React.useContext(shopItemsContext);
 
   function handleSelectedItem(index) {
     setItemIndex(index);
