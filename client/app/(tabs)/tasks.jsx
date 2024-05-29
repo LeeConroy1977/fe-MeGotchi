@@ -30,8 +30,7 @@ const tasks = () => {
   const [completedModalVisible, setCompletedModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
 
-  useEffect(() => {
-  }, [setUser, setTaskInfo])
+  useEffect(() => {}, [setUser, setTaskInfo]);
 
   function handleAddTask() {
     setIsAddTask(true);
@@ -70,22 +69,21 @@ const tasks = () => {
           },
           body: JSON.stringify(moneyIncrement),
         })
-        .then((response) => response.json())
-        .then((data) => {
-          if(data.error){
-            console.log(data.error);
-          }
-          setTaskInfo(() => {
-            const taskInfoCopy = {...taskInfo}
-            taskInfoCopy.tasksCompleted += 1
-            return taskInfoCopy;
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              console.log(data.error);
+            }
+            setTaskInfo(() => {
+              const taskInfoCopy = { ...taskInfo };
+              taskInfoCopy.tasksCompleted += 1;
+              return taskInfoCopy;
+            });
+            setUser(data);
+          })
+          .catch((error) => {
+            alert(`Error completing goal`);
           });
-          setUser(data);
-        })
-        .catch((error) => {
-          alert(`Error completing goal`);
-        });
-
       })
       .catch((error) => {
         alert(`Error completing goal`);
@@ -125,16 +123,17 @@ const tasks = () => {
             message: "Good work. You completed another goal!",
           });
           setTaskInfo(() => {
-            const taskInfoCopy = {...taskInfo}
-            taskInfoCopy.tasksTotal += 1
+            const taskInfoCopy = { ...taskInfo };
+            taskInfoCopy.tasksTotal += 1;
+            console.log(taskInfoCopy);
             return taskInfoCopy;
           });
           setUser(data);
         })
         .catch((error) => {
           alert(`Error setting goal`);
-        }); 
-      }
+        });
+    }
   }
 
   return (
@@ -327,6 +326,13 @@ const tasks = () => {
               source={require("../../assets/images/tasks_landscape.svg")}
               style={styles.backgroundImg}
             >
+              <View style={styles.coinsContainer}>
+                <Image
+                  source={require("../../assets/images/japanese_coins_1.svg")}
+                  style={styles.coinsImg}
+                />
+                <Text style={styles.coinText}>{user.balance}</Text>
+              </View>
               <View style={styles.tasksRamaingBox}>
                 <FontAwesome6 name="circle-info" size={16} color="black" />
                 <Text style={styles.tasksRamainingText}>
@@ -427,6 +433,37 @@ const styles = StyleSheet.create({
     backgroundColor: "#706F6F",
     position: "relative",
   },
+  coinsImg: {
+    width: "20px",
+    height: "20px",
+    marginLeft: "0.5rem",
+  },
+  coinText: {
+    fontSize: "0.85rem",
+    marginLeft: "0.4rem",
+    marginTop: "0.1rem",
+    fontFamily: "MarkoOne-regular",
+    fontWeight: "bold",
+    color: "#264653",
+  },
+  coinsContainer: {
+    width: "70px",
+    height: "24px",
+
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginLeft: "auto",
+    backgroundColor: "white",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    marginRight: "1rem",
+    marginTop: "1rem",
+    borderRadius: "12px",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+  },
 
   backgroundImg: {
     width: "100%",
@@ -436,13 +473,13 @@ const styles = StyleSheet.create({
   tasksRamaingBox: {
     width: "55%",
     height: "24px",
-    backgroundColor: "white",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     borderRadius: "12px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    marginTop: "0.8rem",
+    marginTop: "1rem",
     marginLeft: "1rem",
     paddingLeft: "0.5rem",
   },
