@@ -21,7 +21,7 @@ import userContext from "../(contexts)/userContext";
 const shop = () => {
   const { user, setUser } = useContext(userContext);
   const { shopItems, setShopItems } = useContext(ShopItemsContext);
-
+  
   const [selectedItem, setSelectedItem] = useState(shopItems[0]);
   const [isSelected, setIsSelected] = useState(false);
   const [isModalOpen, setisModalOpen] = useState(false);
@@ -31,6 +31,18 @@ const shop = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [itemsCompleted, setItemsCompleted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    setSelectedItem(shopItems[itemIndex]);
+    setSelectedImage(Profiles[itemIndex].image_url);
+    handleItemsCompleted();
+    setIsLoading(false);
+    setShopItems(() =>
+      shopItems.map((item) => {
+        return user.balance >= item.price ? { ...item, available: true } : item;
+      })
+    );
+  }, [itemIndex, user, itemsCompleted, isModalOpen, isPurchasedModalOpen]);
 
   function handleSelectedItem(index) {
     setItemIndex(index);
@@ -38,16 +50,36 @@ const shop = () => {
     setisModalOpen((isModalOpen) => !isModalOpen);
     setSelectedImage(Profiles[itemIndex].image_url);
   }
-
+  
   function handleIsSelected() {
     setIsSelected(true);
   }
+
   function handlePurchaseItem(index) {
-    setShopItems((items) =>
-      items.map((item) => {
-        return item.id - 1 === index ? { ...item, purchased: true } : item;
-      })
-    );
+    const moneyIncrement = { balance :-shopItems[index].price };
+    fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(moneyIncrement),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      }
+      setShopItems((items) =>
+        items.map((item) => {
+          return item.id - 1 === index ? { ...item, purchased: true } : item;
+        })
+      );
+      setUser(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   function handleItemsCompleted() {
@@ -63,18 +95,7 @@ const shop = () => {
       return setItemsCompleted(true);
     }
   }
-
-  useEffect(() => {
-    setSelectedItem(shopItems[itemIndex]);
-    setSelectedImage(Profiles[itemIndex].image_url);
-    handleItemsCompleted();
-    setIsLoading(false);
-  }, [itemIndex, shopItems, itemsCompleted, isModalOpen, isPurchasedModalOpen]);
-
-  console.log(itemsCompleted, "itemcomp");
-  console.log(isModalOpen, "modelopen");
-  console.log(isPurchasedModalOpen, "purchaseMoadl");
-
+  
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
@@ -83,7 +104,6 @@ const shop = () => {
       </View>
     );
   }
-
   return (
     <View
       style={
@@ -261,11 +281,11 @@ const shop = () => {
                                 style={styles.purchaseBtnModal}
                                 onPress={() => {
                                   handleItemsCompleted();
-                                  handlePurchaseItem(itemIndex);
                                   setisPurchasedModalOpen(
                                     (isPurchasedModalOpen) =>
                                       !isPurchasedModalOpen
                                   );
+                                  handlePurchaseItem(itemIndex);
                                 }}
                               >
                                 <Text style={styles.purchaseBtnTextModal}>
