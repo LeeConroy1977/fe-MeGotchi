@@ -56,9 +56,6 @@ const Character = () => {
     }
   }
 
-  console.log(name);
-  console.log(selected);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name === "") {

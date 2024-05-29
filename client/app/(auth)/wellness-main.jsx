@@ -7,22 +7,18 @@ import {
   Image,
   ActivityIndicator,
 } from "react-native";
-
-
-
 import React, { useEffect, useState, useContext } from "react";
-
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
 import { router } from "expo-router";
 import dailyTasks from '../../assets/Data/dailyTasks'
 import userContext from "../(contexts)/userContext";
+import tasksContext from "../(contexts)/tasksContext";
 
 const WellnessCheck = () => {
   const [selectedOption, setSelectedOption] = useState(null);
-
   const [isLoading, setIsLoading] = useState(false);
-
+  const { taskInfo, setTaskInfo } = useContext(tasksContext);
   const { user, setUser } = useContext(userContext);
 
   const options = [
@@ -57,6 +53,7 @@ const WellnessCheck = () => {
       .then((response) => response.json())
       .then((json) => {
         setUser(json);
+        setTaskInfo({ tasksCompleted: 0, tasksTotal: data.taskList.length });
         router.push("/home");
       })
       .catch((error) => {

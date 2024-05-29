@@ -127,7 +127,6 @@ const tasks = () => {
           setTaskInfo(() => {
             const taskInfoCopy = {...taskInfo}
             taskInfoCopy.tasksTotal += 1
-            console.log(taskInfoCopy)
             return taskInfoCopy;
           });
           setUser(data);

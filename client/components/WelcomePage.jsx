@@ -21,7 +21,7 @@ const WelcomePage = () => {
 
   return (
     <View style={styles.welcomePage}>
-      <Text style={styles.welcomeText}>Welcome back, {user.displayName}</Text>
+      <Text style={styles.welcomeText}>Welcome, {user.displayName}</Text>
       <View style={styles.logo}>
         <Image style={styles.image} source={megotchiPic} />
       </View>
