@@ -79,29 +79,29 @@ const home = () => {
   const [progress, setProgress] = useState(1);
 
   useEffect(() => {
-    setProgress(1 * taskInfo.tasksCompleted / taskInfo.tasksTotal);
+    setProgress((1 * taskInfo.tasksCompleted) / taskInfo.tasksTotal);
     setShowMessage(true);
   }, [user, taskInfo]);
 
   function handleDeletedTask(task) {
     const sentItem = {
       isDelete: true,
-      taskList: [ task ]
-    }
+      taskList: [task],
+    };
     fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
-        method: "PATCH",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sentItem),
-      })
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sentItem),
+    })
       .then((response) => response.json())
       .then((data) => {
-        if(data.error){
+        if (data.error) {
           console.log(data.error);
         }
-        const moneyIncrement = { balance: 10 }
+        const moneyIncrement = { balance: 10 };
         fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
           method: "PATCH",
           headers: {
@@ -110,29 +110,29 @@ const home = () => {
           },
           body: JSON.stringify(moneyIncrement),
         })
-        .then((response) => response.json())
-        .then((data) => {
-          if(data.error){
-            console.log(data.error);
-          }
-          setTaskInfo(() => {
-            const taskInfoCopy = {...taskInfo}
-            taskInfoCopy.tasksCompleted += 1
-            return taskInfoCopy;
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              console.log(data.error);
+            }
+            setTaskInfo(() => {
+              const taskInfoCopy = { ...taskInfo };
+              taskInfoCopy.tasksCompleted += 1;
+              return taskInfoCopy;
+            });
+            setShowTaskMessage(true);
+            let timer1 = setTimeout(() => setShowTaskMessage(false), 3000);
+            setUser(data);
+            return () => {
+              clearTimeout(timer1);
+            };
+          })
+          .catch((error) => {
+            console.log(error);
           });
-          setShowTaskMessage(true);
-          let timer1 = setTimeout(() => setShowTaskMessage(false), 3000);
-          setUser(data);
-          return () => {
-            clearTimeout(timer1);
-          }   
-        })
-        .catch((error) => {
-          console.log(error);
-        });
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -170,8 +170,8 @@ const home = () => {
                 <FontAwesome6 name="circle-info" size={16} color="black" />
                 <View style={styles.homeMsgTextBox}>
                   <Text style={styles.homeMsg}>
-                    That's great {user.displayName}! Congratulations on completing your
-                    goal...
+                    That's great {user.displayName}! Congratulations on
+                    completing your goal...
                   </Text>
                 </View>
               </View>
@@ -398,7 +398,37 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     borderRadius: "8rem",
     paddingLeft: "0.7rem",
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    coinsImg: {
+      width: "20px",
+      height: "20px",
+      marginLeft: "0.5rem",
+    },
+    coinText: {
+      fontSize: "0.85rem",
+      marginLeft: "0.4rem",
+      marginTop: "0.1rem",
+      fontFamily: "MarkoOne-regular",
+      fontWeight: "bold",
+      color: "#264653",
+    },
+    coinsContainer: {
+      width: "70px",
+      height: "24px",
+
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "flex-start",
+      marginLeft: "auto",
+      backgroundColor: "white",
+      position: "absolute",
+      top: 0,
+      right: 0,
+      marginRight: "1rem",
+      marginTop: "1rem",
+      borderRadius: "12px",
+      backgroundColor: "rgba(255, 255, 255, 0.95)",
+    },
   },
 
   homeMsgBox: {
