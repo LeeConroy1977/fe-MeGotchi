@@ -9,8 +9,10 @@ import Profiles from "../../db/Images";
 import ConfettiCannon from "react-native-confetti-cannon";
 import { router } from "expo-router";
 import { ShopItemsContext } from "../(contexts)/shopItemsContext";
+import userContext from "../(contexts)/userContext";
 
 const shop = () => {
+  const { user, setUser } = useContext(userContext);
   const { shopItems, setShopItems } = useContext(ShopItemsContext);
 
   const [selectedItem, setSelectedItem] = useState(shopItems[0]);
@@ -417,6 +419,13 @@ const shop = () => {
                   resizeMode="cover"
                   style={styles.backgroundImg}
                 >
+                  <View style={styles.coinsContainer}>
+                    <Image
+                      source={require("../../assets/images/japanese_coins_1.svg")}
+                      style={styles.coinsImg}
+                    />
+                    <Text style={styles.coinText}>{user.balance}</Text>
+                  </View>
                   <Image
                     style={styles.backgrounMeGotchi}
                     source={require("../../assets/images/evil_shopkeeper.svg")}
@@ -493,9 +502,41 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "40%",
   },
+  coinsImg: {
+    width: "20px",
+    height: "20px",
+    marginLeft: "0.5rem",
+  },
+  coinText: {
+    fontSize: "0.85rem",
+    marginLeft: "0.4rem",
+    marginTop: "0.1rem",
+    fontFamily: "MarkoOne-regular",
+    fontWeight: "bold",
+    color: "#264653",
+  },
+  coinsContainer: {
+    width: "70px",
+    height: "24px",
+
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginLeft: "auto",
+    backgroundColor: "white",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    marginRight: "1rem",
+    marginTop: "1rem",
+    borderRadius: "12px",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+  },
   backgroundImg: {
     width: "100%",
     height: "100%",
+    position: "relative",
   },
   backgrounMeGotchi: {
     width: "130px",
