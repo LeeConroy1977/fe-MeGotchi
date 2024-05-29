@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Pressable,
+  ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState, useContext } from "react";
 import userContext from "../(contexts)/userContext";
@@ -77,13 +78,16 @@ const home = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [showTaskMessage, setShowTaskMessage] = useState(false);
   const [progress, setProgress] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setProgress((1 * taskInfo.tasksCompleted) / taskInfo.tasksTotal);
     setShowMessage(true);
+    setIsLoading(false);
   }, [user, taskInfo]);
 
   function handleDeletedTask(task) {
+    setIsLoading(true);
     const sentItem = {
       isDelete: true,
       taskList: [task],
@@ -123,17 +127,29 @@ const home = () => {
             setShowTaskMessage(true);
             let timer1 = setTimeout(() => setShowTaskMessage(false), 3000);
             setUser(data);
+            setIsLoading(false);
             return () => {
               clearTimeout(timer1);
             };
           })
           .catch((error) => {
             console.log(error);
+            setIsLoading(false);
           });
       })
       .catch((error) => {
         console.log(error);
+        setIsLoading(false);
       });
+  }
+
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
   return (
@@ -290,6 +306,11 @@ const home = () => {
 export default home;
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   modalView: {
     position: "relative",
     margin: 20,

@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import { ImageBackground, Modal, ScrollView } from "react-native-web";
 import React, { useContext, useEffect, useState } from "react";
 import ShopItemsList from "../../components/shopItemsList";
@@ -23,6 +30,7 @@ const shop = () => {
   const [itemIndex, setItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [itemsCompleted, setItemsCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleSelectedItem(index) {
     setItemIndex(index);
@@ -60,11 +68,21 @@ const shop = () => {
     setSelectedItem(shopItems[itemIndex]);
     setSelectedImage(Profiles[itemIndex].image_url);
     handleItemsCompleted();
+    setIsLoading(false);
   }, [itemIndex, shopItems, itemsCompleted, isModalOpen, isPurchasedModalOpen]);
 
   console.log(itemsCompleted, "itemcomp");
   console.log(isModalOpen, "modelopen");
   console.log(isPurchasedModalOpen, "purchaseMoadl");
+
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <View
@@ -478,6 +496,11 @@ const shop = () => {
 export default shop;
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   shop: {
     width: "100%",
     height: "100%",

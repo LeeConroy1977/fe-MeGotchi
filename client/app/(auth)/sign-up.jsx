@@ -96,7 +96,6 @@ const SignUp = () => {
 
   function checkValidSubmit() {
     if (checkEmail && checkPassword && checkDisplayName && passwordMatch) {
-      setIsLoading(true);
       setValidSubmit(true);
     }
   }
@@ -104,6 +103,7 @@ const SignUp = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (validSubmit) {
+      setIsLoading(true);
       router.push({
         pathname: "/character",
         params: {
