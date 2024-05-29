@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import { ImageBackground, Modal, ScrollView } from "react-native-web";
 import React, { useContext, useEffect, useState } from "react";
 import ShopItemsList from "../../components/shopItemsList";
@@ -23,11 +30,13 @@ const shop = () => {
   const [itemIndex, setItemIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [itemsCompleted, setItemsCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
     setSelectedItem(shopItems[itemIndex]);
     setSelectedImage(Profiles[itemIndex].image_url);
     handleItemsCompleted();
+    setIsLoading(false);
     setShopItems(() =>
       shopItems.map((item) => {
         return user.balance >= item.price ? { ...item, available: true } : item;
@@ -86,7 +95,15 @@ const shop = () => {
       return setItemsCompleted(true);
     }
   }
-
+  
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
   return (
     <View
       style={
@@ -499,6 +516,11 @@ const shop = () => {
 export default shop;
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   shop: {
     width: "100%",
     height: "100%",

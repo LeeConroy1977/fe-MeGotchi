@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ActivityIndicator } from "react-native";
 import React, { useEffect, useState, useContext } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import ConfettiCannon from "react-native-confetti-cannon";
@@ -29,6 +29,14 @@ const tasks = () => {
   });
   const [completedModalVisible, setCompletedModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate initial loading
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 250);
+  }, []);
 
   useEffect(() => {}, [setUser, setTaskInfo]);
 
@@ -80,13 +88,16 @@ const tasks = () => {
               return taskInfoCopy;
             });
             setUser(data);
+            setIsLoading(false);
           })
           .catch((error) => {
             alert(`Error completing goal`);
+            setIsLoading(false);
           });
       })
       .catch((error) => {
         alert(`Error completing goal`);
+        setIsLoading(false);
       });
   }
 
@@ -134,6 +145,15 @@ const tasks = () => {
           alert(`Error setting goal`);
         });
     }
+  }
+
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
   return (
@@ -394,6 +414,11 @@ const tasks = () => {
 export default tasks;
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   modalOpen: {
     width: "100%",
     height: "100%",
