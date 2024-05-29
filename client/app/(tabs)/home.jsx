@@ -81,6 +81,13 @@ const home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Simulate initial loading
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }, []);
+
+  useEffect(() => {
     setProgress((1 * taskInfo.tasksCompleted) / taskInfo.tasksTotal);
     setShowMessage(true);
     setIsLoading(false);
