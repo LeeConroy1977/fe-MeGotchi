@@ -17,6 +17,7 @@ import { Modal, ScrollView } from "react-native-web";
 import ConfettiCannon from "react-native-confetti-cannon";
 import * as Progress from "react-native-progress";
 import { ShopItemsContext } from "../(contexts)/shopItemsContext";
+import Story from "../../components/story";
 
 const dailyTasks = [
   {
@@ -79,6 +80,7 @@ const home = () => {
   const [showTaskMessage, setShowTaskMessage] = useState(false);
   const [progress, setProgress] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [isStoryOpen, setIsStoryOpen] = useState(true);
 
   useEffect(() => {
     // Simulate initial loading
@@ -161,136 +163,139 @@ const home = () => {
 
   return (
     <ScrollView>
-      <View style={styles.home}>
-        {/* <View style={styles.coinsContainer}>
+      {isStoryOpen ? (
+        <Story setIsStoryOpen={setIsStoryOpen} />
+      ) : (
+        <View style={styles.home}>
+          {/* <View style={styles.coinsContainer}>
           <Coins />
         </View> */}
-        <View style={styles.imageContainer}>
-          <ImageBackground
-            source={require("../../assets/images/home_background.svg")}
-            resizeMode="cover"
-            style={styles.backgroudImage}
-          >
-            <View style={styles.coinsContainer}>
-              <Image
-                source={require("../../assets/images/japanese_coins_1.svg")}
-                style={styles.coinsImg}
-              />
-              <Text style={styles.coinText}>{user.balance}</Text>
-            </View>
-            {showMessage && (
-              <View style={styles.homeMsgBox}>
-                <FontAwesome6 name="circle-info" size={16} color="black" />
-                <View style={styles.homeMsgTextBox}>
-                  <Text style={styles.homeMsg}>
-                    Complete your goals to rescue the MeGotchis...
-                  </Text>
-                </View>
+          <View style={styles.imageContainer}>
+            <ImageBackground
+              source={require("../../assets/images/home_background.svg")}
+              resizeMode="cover"
+              style={styles.backgroudImage}
+            >
+              <View style={styles.coinsContainer}>
+                <Image
+                  source={require("../../assets/images/japanese_coins_1.svg")}
+                  style={styles.coinsImg}
+                />
+                <Text style={styles.coinText}>{user.balance}</Text>
               </View>
-            )}
-            {showTaskMessage && (
-              <View style={styles.completedTaskMsgBox}>
-                <FontAwesome6 name="circle-info" size={16} color="black" />
-                <View style={styles.homeMsgTextBox}>
-                  <Text style={styles.homeMsg}>
-                    That's great {user.displayName}! Congratulations on
-                    completing your goal...
-                  </Text>
+              {showMessage && (
+                <View style={styles.homeMsgBox}>
+                  <FontAwesome6 name="circle-info" size={16} color="black" />
+                  <View style={styles.homeMsgTextBox}>
+                    <Text style={styles.homeMsg}>
+                      Complete your goals to rescue the MeGotchis...
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            )}
+              )}
+              {showTaskMessage && (
+                <View style={styles.completedTaskMsgBox}>
+                  <FontAwesome6 name="circle-info" size={16} color="black" />
+                  <View style={styles.homeMsgTextBox}>
+                    <Text style={styles.homeMsg}>
+                      That's great {user.displayName}! Congratulations on
+                      completing your goal...
+                    </Text>
+                  </View>
+                </View>
+              )}
 
-            {/* <View style={styles.meGotchiBox}>
+              {/* <View style={styles.meGotchiBox}>
               <Text style={styles.meGotchiName}>Henry</Text> */}
-            <Image
-              style={styles.backgrounMeGotchi}
-              source={require("../../assets/images/megotchi_home_Avatar.svg")}
-            />
-            {/* </View> */}
-            <Image
-              style={styles.backgrounMeGotchiOne}
-              source={require("../../assets/images/little_meGotchi_1.svg")}
-            />
-            <Image
-              style={styles.backgrounMeGotchiTwo}
-              source={require("../../assets/images/little_meGotchi_2.svg")}
-            />
-            <Image
-              style={styles.backgrounMeGotchiThree}
-              source={require("../../assets/images/little_meGotchi_3.svg")}
-            />
-            {shopItems[0].purchased && (
               <Image
-                style={styles.backgrounMeGotchiOneShop}
-                source={require("../../assets/images/shop_meGotchi_1.svg")}
+                style={styles.backgrounMeGotchi}
+                source={require("../../assets/images/megotchi_home_Avatar.svg")}
               />
-            )}
-            {shopItems[1].purchased && (
+              {/* </View> */}
               <Image
-                style={styles.backgrounMeGotchiTwoShop}
-                source={require("../../assets/images/shop_meGotchi_2.svg")}
+                style={styles.backgrounMeGotchiOne}
+                source={require("../../assets/images/little_meGotchi_1.svg")}
               />
-            )}
-            {shopItems[2].purchased && (
               <Image
-                style={styles.backgrounMeGotchiThreeShop}
-                source={require("../../assets/images/shop_meGotchi_3.svg")}
+                style={styles.backgrounMeGotchiTwo}
+                source={require("../../assets/images/little_meGotchi_2.svg")}
               />
-            )}
-            {shopItems[3].purchased && (
               <Image
-                style={styles.backgrounMeGotchiFourShop}
-                source={require("../../assets/images/shop_meGotchi_4.svg")}
+                style={styles.backgrounMeGotchiThree}
+                source={require("../../assets/images/little_meGotchi_3.svg")}
               />
-            )}
-          </ImageBackground>
-        </View>
-        <View style={styles.homeMain}>
-          {showTaskMessage && (
-            <ConfettiCannon
-              count={400}
-              origin={{ x: -10, y: 200 }}
-              explosionSpeed={400}
-              fallSpeed={2000}
-              fadeOut={true}
-              autoStartDelay={200}
-              colors={[
-                "#00D2FF",
-                "#EC058E",
-                "#E56399",
-                "#AD00FF",
-                "#264653",
-                "white",
-              ]}
-            />
-          )}
-          <View style={styles.infoContainer}>
-            <Text style={styles.progressText}>
-              Completed tasks {taskInfo.tasksCompleted}/{taskInfo.tasksTotal}
-            </Text>
-            <Progress.Bar
-              progress={progress}
-              width={294}
-              height={12}
-              borderColor="black"
-              color="#00D2FF"
-              borderWidth={2}
-              borderRadius={8}
-            />
+              {shopItems[0].purchased && (
+                <Image
+                  style={styles.backgrounMeGotchiOneShop}
+                  source={require("../../assets/images/shop_meGotchi_1.svg")}
+                />
+              )}
+              {shopItems[1].purchased && (
+                <Image
+                  style={styles.backgrounMeGotchiTwoShop}
+                  source={require("../../assets/images/shop_meGotchi_2.svg")}
+                />
+              )}
+              {shopItems[2].purchased && (
+                <Image
+                  style={styles.backgrounMeGotchiThreeShop}
+                  source={require("../../assets/images/shop_meGotchi_3.svg")}
+                />
+              )}
+              {shopItems[3].purchased && (
+                <Image
+                  style={styles.backgrounMeGotchiFourShop}
+                  source={require("../../assets/images/shop_meGotchi_4.svg")}
+                />
+              )}
+            </ImageBackground>
           </View>
-          <View style={styles.tasksContainer}>
-            <View style={styles.tasksRemaingBox}>
-              <FontAwesome6 name="circle-info" size={16} color="white" />
-              <Text style={styles.tasksRemainingText}>
-                You have {user.taskList.length} tasks remaining
-              </Text>
-            </View>
-            <View style={styles.tasksListContainer}>
-              <DailyTaskListHome
-                tasks={user.taskList}
-                handleDeletedTask={handleDeletedTask}
+          <View style={styles.homeMain}>
+            {showTaskMessage && (
+              <ConfettiCannon
+                count={400}
+                origin={{ x: -10, y: 200 }}
+                explosionSpeed={400}
+                fallSpeed={2000}
+                fadeOut={true}
+                autoStartDelay={200}
+                colors={[
+                  "#00D2FF",
+                  "#EC058E",
+                  "#E56399",
+                  "#AD00FF",
+                  "#264653",
+                  "white",
+                ]}
               />
-              {/* <TouchableOpacity
+            )}
+            <View style={styles.infoContainer}>
+              <Text style={styles.progressText}>
+                Completed tasks {taskInfo.tasksCompleted}/{taskInfo.tasksTotal}
+              </Text>
+              <Progress.Bar
+                progress={progress}
+                width={294}
+                height={12}
+                borderColor="black"
+                color="#00D2FF"
+                borderWidth={2}
+                borderRadius={8}
+              />
+            </View>
+            <View style={styles.tasksContainer}>
+              <View style={styles.tasksRemaingBox}>
+                <FontAwesome6 name="circle-info" size={16} color="white" />
+                <Text style={styles.tasksRemainingText}>
+                  You have {user.taskList.length} tasks remaining
+                </Text>
+              </View>
+              <View style={styles.tasksListContainer}>
+                <DailyTaskListHome
+                  tasks={user.taskList}
+                  handleDeletedTask={handleDeletedTask}
+                />
+                {/* <TouchableOpacity
                 style={styles.addTaskContainer}
                 onPress={handleAddTask}
               >
@@ -303,10 +308,11 @@ const home = () => {
 
                 <Text style={styles.btnText}>Add a Goal...</Text>
               </TouchableOpacity> */}
+              </View>
             </View>
           </View>
         </View>
-      </View>
+      )}
     </ScrollView>
   );
 };

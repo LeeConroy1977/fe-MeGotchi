@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useEffect } from "react";
 import { Tabs, SplashScreen } from "expo-router";
 import { useFonts } from "expo-font";
@@ -21,7 +21,7 @@ const TabsLayout = () => {
       screenOptions={{
         tabBarActiveTintColor: "#FFA001",
         tabBarInactiveTintColor: "#CDCDE0",
-        tabBarShowLabel: true,
+        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "#161622",
           borderTopWidth: 1,
@@ -32,19 +32,71 @@ const TabsLayout = () => {
     >
       <Tabs.Screen
         name="home"
-        options={{ title: "Home", headerShown: false }}
-      />
+        options={{
+          title: "Home",
+          headerShown: false,
+          tabBarIcon: () => (
+            <Image
+              source={require("../../assets/images/icons8-home-50.png")}
+              style={styles.icon}
+            />
+          ),
+          tabBarIconStyle: {
+            height: "40px",
+            width: "40px",
+          },
+        }}
+      ></Tabs.Screen>
       <Tabs.Screen
-        name="profile"
-        options={{ title: "Profile", headerShown: false }}
+        name="daily-quest"
+        options={{
+          title: "Profile",
+          headerShown: false,
+          tabBarIcon: () => (
+            <Image
+              source={require("../../assets/images/icons8-book-50.png")}
+              style={styles.icon}
+            />
+          ),
+          tabBarIconStyle: {
+            height: "40px",
+            width: "40px",
+          },
+        }}
       />
       <Tabs.Screen
         name="tasks"
-        options={{ title: "Tasks", headerShown: false }}
+        options={{
+          title: "Tasks",
+          headerShown: false,
+          tabBarIcon: () => (
+            <Image
+              source={require("../../assets/images/icons8-task-50.png")}
+              style={styles.icon}
+            />
+          ),
+          tabBarIconStyle: {
+            height: "40px",
+            width: "40px",
+          },
+        }}
       />
       <Tabs.Screen
         name="shop"
-        options={{ title: "Shop", headerShown: false }}
+        options={{
+          title: "Shop",
+          headerShown: false,
+          tabBarIcon: () => (
+            <Image
+              source={require("../../assets/images/icons8-shop-50.png")}
+              style={styles.icon}
+            />
+          ),
+          tabBarIconStyle: {
+            height: "40px",
+            width: "40px",
+          },
+        }}
       />
     </Tabs>
   );
@@ -52,4 +104,9 @@ const TabsLayout = () => {
 
 export default TabsLayout;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  icon: {
+    height: "25px",
+    width: "25px",
+  },
+});
