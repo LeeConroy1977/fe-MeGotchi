@@ -1,12 +1,12 @@
 
 const dailyTasks = {
   setHappy: [
-      {
-        title: "Do the thing you've been putting off",
-        body: "Lets get rid of that worry in the back of your mind.",
-        iconUrl: "../../assets/images/food_icon.svg",
-        message: "Wow, you're on a roll today. No more worrying about that thing for us!",
-      },
+    {
+      title: "Drink some water",
+      body: "We're around 70% water, lets keep it that way.",
+      iconUrl: "../../assets/images/food_icon.svg",
+      message: "Keeping hydrated is important, it also helps clear skin!",
+    },
       {
         title: "Enjoy your hobby",
         body: "Hobbies are important to keep us feeling good.",
