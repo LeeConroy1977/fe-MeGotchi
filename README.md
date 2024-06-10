@@ -14,7 +14,7 @@ This project was developed by a team of four in the last three weeks of a three-
 
 ## Backend Repository
 
-[Link to Backend Repository](https://github.com/hassan0341/My-Back-End-Project)
+[Link to Backend Repository](https://github.com/joecomyn/be-megotchi.git)
 
 ## Tech Stack
 
