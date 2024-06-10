@@ -12,6 +12,10 @@ This project was developed by a team of four in the last three weeks of a three-
 - **Custom Tasks:** Add your own tasks that you want to complete.
 - **Digital Companion:** A digital companion, Megotchi, that helps you stay motivated and on track.
 
+## Backend Repository
+
+[Link to Backend Repository](https://github.com/hassan0341/My-Back-End-Project)
+
 ## Tech Stack
 
 - **Frontend:** React Native, Expo
