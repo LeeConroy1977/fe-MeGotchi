@@ -101,7 +101,7 @@ const home = () => {
       isDelete: true,
       taskList: [task],
     };
-    fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+    fetch(`https://megotch-be.onrender.com/users/${user._id}/tasks`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -115,7 +115,7 @@ const home = () => {
           console.log(data.error);
         }
         const moneyIncrement = { balance: 10 };
-        fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
+        fetch(`https://megotch-be.onrender.com/users/${user._id}`, {
           method: "PATCH",
           headers: {
             Accept: "application/json",

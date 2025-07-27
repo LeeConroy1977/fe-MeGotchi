@@ -21,7 +21,7 @@ import userContext from "../(contexts)/userContext";
 const shop = () => {
   const { user, setUser } = useContext(userContext);
   const { shopItems, setShopItems } = useContext(ShopItemsContext);
-  
+
   const [selectedItem, setSelectedItem] = useState(shopItems[0]);
   const [isSelected, setIsSelected] = useState(false);
   const [isModalOpen, setisModalOpen] = useState(false);
@@ -31,7 +31,7 @@ const shop = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [itemsCompleted, setItemsCompleted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     setSelectedItem(shopItems[itemIndex]);
     setSelectedImage(Profiles[itemIndex].image_url);
@@ -50,14 +50,14 @@ const shop = () => {
     setisModalOpen((isModalOpen) => !isModalOpen);
     setSelectedImage(Profiles[itemIndex].image_url);
   }
-  
+
   function handleIsSelected() {
     setIsSelected(true);
   }
 
   function handlePurchaseItem(index) {
-    const moneyIncrement = { balance :-shopItems[index].price };
-    fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
+    const moneyIncrement = { balance: -shopItems[index].price };
+    fetch(`https://megotch-be.onrender.com/users/${user._id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -65,21 +65,21 @@ const shop = () => {
       },
       body: JSON.stringify(moneyIncrement),
     })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.error) {
-        console.log(data.error);
-      }
-      setShopItems((items) =>
-        items.map((item) => {
-          return item.id - 1 === index ? { ...item, purchased: true } : item;
-        })
-      );
-      setUser(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          console.log(data.error);
+        }
+        setShopItems((items) =>
+          items.map((item) => {
+            return item.id - 1 === index ? { ...item, purchased: true } : item;
+          })
+        );
+        setUser(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function handleItemsCompleted() {
@@ -95,7 +95,7 @@ const shop = () => {
       return setItemsCompleted(true);
     }
   }
-  
+
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
@@ -112,8 +112,7 @@ const shop = () => {
           : isModalOpen
           ? styles.shopModalOpen
           : styles.shop
-      }
-    >
+      }>
       {shopItems && (
         <>
           {itemsCompleted && !isModalOpen && !isPurchasedModalOpen && (
@@ -125,8 +124,7 @@ const shop = () => {
               onRequestClose={() => {
                 Alert.alert("Modal has been closed.");
                 setisShopMessageModalOpen(!isShopMessageModalOpen);
-              }}
-            >
+              }}>
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                   <View style={styles.itemView}>
@@ -153,8 +151,7 @@ const shop = () => {
                         onPress={() => {
                           setisShopMessageModalOpen(!isShopMessageModalOpen);
                           router.replace("/home");
-                        }}
-                      >
+                        }}>
                         <AntDesign
                           name="pluscircleo"
                           size={24}
@@ -180,8 +177,7 @@ const shop = () => {
               onRequestClose={() => {
                 Alert.alert("Modal has been closed.");
                 setisModalOpen(!isModalOpen);
-              }}
-            >
+              }}>
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                   <View style={styles.itemView}>
@@ -201,8 +197,7 @@ const shop = () => {
                           selectedItem.purchased
                             ? styles.itemImageBoxPurchasedModal
                             : styles.itemImageBoxModal
-                        }
-                      >
+                        }>
                         <Image
                           style={styles.itemImageModal}
                           source={selectedImage}
@@ -218,8 +213,7 @@ const shop = () => {
                               selectedItem.purchased
                                 ? styles.itemDescriptionPurchasedModal
                                 : styles.itemDescriptionModal
-                            }
-                          >
+                            }>
                             {selectedItem.purchasedMsg}{" "}
                           </Text>
                         ) : !selectedItem.purchased &&
@@ -286,8 +280,7 @@ const shop = () => {
                                       !isPurchasedModalOpen
                                   );
                                   handlePurchaseItem(itemIndex);
-                                }}
-                              >
+                                }}>
                                 <Text style={styles.purchaseBtnTextModal}>
                                   Free {selectedItem.name}
                                 </Text>
@@ -335,16 +328,14 @@ const shop = () => {
             onRequestClose={() => {
               Alert.alert("Modal has been closed.");
               setisPurchasedModalOpen(!isPurchasedModalOpen);
-            }}
-          >
+            }}>
             <View style={styles.centeredViewCelebration}>
               <View style={styles.modalViewCelebration}>
                 <View style={styles.celebrationBackgroundBox}>
                   <ImageBackground
                     style={styles.celebrationBackgroundImage}
                     source={require("../../assets/images/village_background.svg")}
-                    resizeMode="cover"
-                  >
+                    resizeMode="cover">
                     <Image
                       style={styles.backgrounMeGotchiCelebration}
                       source={require("../../assets/images/celebration_meGotchi.svg")}
@@ -419,8 +410,7 @@ const shop = () => {
                       setisPurchasedModalOpen(
                         (isPurchasedModalOpen) => !isPurchasedModalOpen
                       )
-                    }
-                  >
+                    }>
                     <AntDesign
                       name="pluscircleo"
                       size={24}
@@ -455,8 +445,7 @@ const shop = () => {
                 <ImageBackground
                   source={require("../../assets/images/shop_background.svg")}
                   resizeMode="cover"
-                  style={styles.backgroundImg}
-                >
+                  style={styles.backgroundImg}>
                   <View style={styles.coinsContainer}>
                     <Image
                       source={require("../../assets/images/japanese_coins_1.svg")}

@@ -79,7 +79,7 @@ const Character = () => {
         },
       };
 
-      fetch("https://megotchi-api.onrender.com/users", {
+      fetch("https://megotch-be.onrender.com/users", {
         method: "POST",
         headers: {
           Accept: "application/json",

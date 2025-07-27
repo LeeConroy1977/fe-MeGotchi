@@ -48,7 +48,7 @@ const WellnessCheck = () => {
       else if (selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
       else if (selectedOption === 3) sentList.taskList = dailyTasks.setSad;
 
-      fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+      fetch(`https://megotch-be.onrender.com/users/${user._id}/tasks`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
@@ -84,8 +84,7 @@ const WellnessCheck = () => {
           <View style={styles.imageContainer}>
             <ImageBackground
               style={styles.backgroundImage}
-              source={require("../../assets/images/wellness_background.svg")}
-            >
+              source={require("../../assets/images/wellness_background.svg")}>
               <View style={styles.headerContainer}>
                 <Text style={styles.logoHeader}>MeGotchi</Text>
                 <Text style={styles.tradeMark}>&trade;</Text>
@@ -143,8 +142,7 @@ const WellnessCheck = () => {
                           : styles.optionContainer
                       }
                       onPress={() => handleOptionSelect(option.id)}
-                      key={option.id}
-                    >
+                      key={option.id}>
                       <View style={styles.emoji}>{option.emoji}</View>
                       <Text style={styles.optionText}>{option.text}</Text>
                       {selectedOption === option.id && (
@@ -161,7 +159,7 @@ const WellnessCheck = () => {
                 <AntDesign name="caretright" size={18} color="#264653" />
               </Pressable> */}
               <CustomButton
-                styleName="btnWellness"
+                styleName="btnSignIn"
                 title={
                   isLoading ? (
                     <ActivityIndicator size="small" color="#FFFFFF" />
@@ -396,6 +394,21 @@ const styles = StyleSheet.create({
     fontFamily: "MarkoOne-Regular",
     // fontWeight: "bold",
     marginRight: "0.5rem",
+  },
+
+  buttonStyle: {
+    width: "80%",
+    height: "40px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    marginTop: "2.4rem",
+    backgroundColor: "#FF6363",
+    borderRadius: "8px",
+    color: "white",
+    boxShadow: "2px 2px 2px 0px #000",
+    letterSpacing: "0.03rem",
   },
 
   // question: {

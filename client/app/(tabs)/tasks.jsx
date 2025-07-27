@@ -32,7 +32,6 @@ const tasks = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate initial loading
     setTimeout(() => {
       setIsLoading(false);
     }, 250);
@@ -55,7 +54,7 @@ const tasks = () => {
       taskList: [task],
     };
 
-    fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+    fetch(`https://megotch-be.onrender.com/users/${user._id}/tasks`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -69,7 +68,7 @@ const tasks = () => {
           console.log(data.error);
         }
         const moneyIncrement = { balance: 10 };
-        fetch(`https://megotchi-api.onrender.com/users/${user._id}`, {
+        fetch(`https://megotch-be.onrender.com/users/${user._id}`, {
           method: "PATCH",
           headers: {
             Accept: "application/json",
@@ -111,7 +110,7 @@ const tasks = () => {
         taskList: [goalForm],
       };
 
-      fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+      fetch(`https://megotch-be.onrender.com/users/${user._id}/tasks`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
@@ -161,8 +160,7 @@ const tasks = () => {
       <SafeAreaView
         style={
           isAddTask || completedModalVisible ? styles.modalOpen : styles.tasks
-        }
-      >
+        }>
         <Modal
           style={styles.modal}
           animationType="fade"
@@ -171,16 +169,14 @@ const tasks = () => {
           onRequestClose={() => {
             Alert.alert("Modal has been closed.");
             setModalVisible(!modalVisible);
-          }}
-        >
+          }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <View style={styles.imageContainerTask}>
                 <ImageBackground
                   source={require("../../assets/images/tasks_added_landscape.svg")}
                   resizeMode="cover"
-                  style={styles.taskCompletedBackgroundTask}
-                >
+                  style={styles.taskCompletedBackgroundTask}>
                   <Pressable
                     style={styles.closeIconTask}
                     onPress={() => {
@@ -190,8 +186,7 @@ const tasks = () => {
                         title: "",
                         body: "",
                       });
-                    }}
-                  >
+                    }}>
                     <AntDesign name="closecircleo" size={28} color="black" />
                   </Pressable>
 
@@ -250,8 +245,7 @@ const tasks = () => {
                 style={styles.submitBtn}
                 onPress={(e) => {
                   handleGoalsubmit(e);
-                }}
-              >
+                }}>
                 <Text style={styles.submitBtnText}>Submit</Text>
               </TouchableOpacity>
             </View>
@@ -272,16 +266,14 @@ const tasks = () => {
           onRequestClose={() => {
             Alert.alert("Modal has been closed.");
             setCompletedModalVisible(!completedModalVisible);
-          }}
-        >
+          }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <View style={styles.imageContainerTask}>
                 <ImageBackground
                   source={require("../../assets/images/tasks_completed_landscape.svg")}
                   resizeMode="cover"
-                  style={styles.taskCompletedBackgroundTask}
-                >
+                  style={styles.taskCompletedBackgroundTask}>
                   <Image
                     style={styles.backgrounMeGotchiCelebration}
                     source={require("../../assets/images/celebration_meGotchi.svg")}
@@ -328,8 +320,7 @@ const tasks = () => {
                   setCompletedModalVisible(!completedModalVisible);
                   setIsAddTask(false);
                   handleDeletedTask(selectedTask);
-                }}
-              >
+                }}>
                 <Text style={styles.skipBtn}>Skip...</Text>
               </Pressable>
               {/* <View style={styles.rewardBox}>
@@ -344,8 +335,7 @@ const tasks = () => {
             <ImageBackground
               resizeMode="cover"
               source={require("../../assets/images/tasks_landscape.svg")}
-              style={styles.backgroundImg}
-            >
+              style={styles.backgroundImg}>
               <View style={styles.coinsContainer}>
                 <Image
                   source={require("../../assets/images/japanese_coins_1.svg")}
@@ -393,8 +383,7 @@ const tasks = () => {
 
             <TouchableOpacity
               style={styles.addTaskContainer}
-              onPress={handleAddTask}
-            >
+              onPress={handleAddTask}>
               <AntDesign
                 name="pluscircleo"
                 size={26}

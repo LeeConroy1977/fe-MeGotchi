@@ -1,4 +1,3 @@
-
 import {
   StyleSheet,
   Text,
@@ -11,7 +10,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import megotchiPic from "../../assets/images/megotchi_home_Avatar.svg";
 import { router } from "expo-router";
-import dailyTasks from '../../assets/Data/dailyTasks'
+import dailyTasks from "../../assets/Data/dailyTasks";
 import userContext from "../(contexts)/userContext";
 import tasksContext from "../(contexts)/tasksContext";
 
@@ -35,14 +34,14 @@ const WellnessCheck = () => {
     if (selectedOption !== null) {
       setIsLoading(true);
       const sentList = {
-        isDelete: false,  
-        taskList: []
+        isDelete: false,
+        taskList: [],
       };
-      
-      if(selectedOption === 1) sentList.taskList = dailyTasks.setHappy;
-      else if(selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
-      else if(selectedOption === 3) sentList.taskList = dailyTasks.setSad;
-      fetch(`https://megotchi-api.onrender.com/users/${user._id}/tasks`, {
+
+      if (selectedOption === 1) sentList.taskList = dailyTasks.setHappy;
+      else if (selectedOption === 2) sentList.taskList = dailyTasks.setNeutral;
+      else if (selectedOption === 3) sentList.taskList = dailyTasks.setSad;
+      fetch(`https://megotch-be.onrender.com/users/${user._id}/tasks`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
@@ -50,18 +49,18 @@ const WellnessCheck = () => {
         },
         body: JSON.stringify(sentList),
       })
-      .then((response) => response.json())
-      .then((json) => {
-        setUser(json);
-        setTaskInfo({ tasksCompleted: 0, tasksTotal: data.taskList.length });
-        router.push("/home");
-      })
-      .catch((error) => {
-        return { message: error };
-      })
-      .finally(() => {
-      setIsLoading(false);
-    });
+        .then((response) => response.json())
+        .then((json) => {
+          setUser(json);
+          setTaskInfo({ tasksCompleted: 0, tasksTotal: data.taskList.length });
+          router.push("/home");
+        })
+        .catch((error) => {
+          return { message: error };
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   };
 
@@ -80,8 +79,7 @@ const WellnessCheck = () => {
                 borderBlockColor: selectedOption === option.id && "green",
               },
             ]}
-            onPress={() => handleOptionSelect(option.id)}
-          >
+            onPress={() => handleOptionSelect(option.id)}>
             <Text style={styles.emoji}>{option.emoji}</Text>
             <Text style={styles.optionText}>{option.text}</Text>
             {selectedOption === option.id && (
@@ -101,8 +99,7 @@ const WellnessCheck = () => {
           { backgroundColor: selectedOption !== null ? "#FF6363" : "gray" },
         ]}
         onPress={handleNextPress}
-        disabled={selectedOption === null || isLoading}
-      >
+        disabled={selectedOption === null || isLoading}>
         {isLoading ? (
           <ActivityIndicator size="small" color="#FFFFFF" />
         ) : (
