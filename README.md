@@ -6,6 +6,14 @@ Welcome to the **Megotchi Self-Care App**! This application is designed to help 
 
 This project was developed by a team of four in the last three weeks of a three-month BootCamp with Northcoders.
 
+## Image Gallery
+
+![Image 1](../fe-MeGotchi/client/assets/images/read_me_1.png)
+
+![Image 2](../fe-MeGotchi/client/assets/images/read_me_2.png)
+
+![Image 3](../fe-MeGotchi/client/assets/images/read_me_3.png)
+
 ## Features
 
 - **Daily Tasks:** Complete daily pre-defined tasks to ensure you maintain a good self-care routine.
@@ -25,29 +33,29 @@ This project was developed by a team of four in the last three weeks of a three-
 
 1. **Clone the repository:**
 
-    ```bash
-    git clone https://github.com/LeeConroy1977/fe-MeGotchi.git
-    cd client
-    ```
+   ```bash
+   git clone https://github.com/LeeConroy1977/fe-MeGotchi.git
+   cd client
+   ```
 
 2. **Install dependencies:**
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 3. **Start the application:**
 
-    ```bash
-    cd client
-    npx expo start -c
-    ```
+   ```bash
+   cd client
+   npx expo start -c
+   ```
 
 4. **Open the app in a web browser:**
 
-    - Press `w` to open the app on the web.
-    - Right-click on the browser and select **Inspect** to open the developer tools.
-    - Toggle the device toolbar to view the app in mobile phone dimensions.
+   - Press `w` to open the app on the web.
+   - Right-click on the browser and select **Inspect** to open the developer tools.
+   - Toggle the device toolbar to view the app in iPhone 6/7/8 dimensions.
 
 ## Minimum Node Version
 
@@ -60,4 +68,3 @@ Special thanks to Northcoders for the guidance and support throughout the BootCa
 ---
 
 Enjoy using the Megotchi Self-Care App and take good care of yourself! 🚀
-
