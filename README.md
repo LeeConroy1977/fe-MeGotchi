@@ -8,11 +8,11 @@ This project was developed by a team of four in the last three weeks of a three-
 
 ## Image Gallery
 
-![Image 1](../fe-MeGotchi/client/assets/images/read_me_1.png)
+![Image 1](./read-me-images/read_me_1.png)
 
-![Image 2](../fe-MeGotchi/client/assets/images/read_me_2.png)
+![Image 2](./read-me-images/read_me_2.png)
 
-![Image 3](../fe-MeGotchi/client/assets/images/read_me_3.png)
+![Image 3](./read-me-images/read_me_3.png)
 
 ## Features
 
