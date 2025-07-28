@@ -22,7 +22,7 @@ This project was developed by a team of four in the last three weeks of a three-
 
 ## Backend Repository
 
-[Link to Backend Repository](https://github.com/joecomyn/be-megotchi.git)
+[Link to Backend Repository](https://github.com/LeeConroy1977/MeGotch-be)
 
 ## Tech Stack
 
